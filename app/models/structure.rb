@@ -5,11 +5,11 @@ class Structure < ApplicationRecord
 	has_many :structure_individuals
 	has_many :individuals, through: :structure_individuals
 
-	has_many :parent_child_relations, foreign_key: "parent_id", class_name: "ParentChildRelation"
-	has_many :parent_child_relations, foreign_key: "child_id", class_name: "ParentChildRelation"
+	has_many :parent_structures, foreign_key: "parent_id", class_name: "ParentChildRelation"
+	has_many :child_structures, foreign_key: "child_id", class_name: "ParentChildRelation"
 
-	has_many :structure_relations, foreign_key: "supported_id", class_name: "StructureRelation"
-	has_many :structure_relations, foreign_key: "supporting_id", class_name: "StructureRelation"
+	has_many :supported_structures, foreign_key: "supported_id", class_name: "StructureRelation"
+	has_many :supporting_structures, foreign_key: "supporting_id", class_name: "StructureRelation"
 
 	has_one :association_detail
 
