@@ -10,15 +10,34 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_11_093208) do
+ActiveRecord::Schema.define(version: 2019_04_11_100050) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "individuals", force: :cascade do |t|
+    t.string "first_name"
+    t.string "last_name"
+    t.string "email"
+    t.string "telephone"
+    t.string "linkedin"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "structure_classifications", force: :cascade do |t|
     t.string "class"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "structure_individuals", force: :cascade do |t|
+    t.bigint "structure_id"
+    t.bigint "individual_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["individual_id"], name: "index_structure_individuals_on_individual_id"
+    t.index ["structure_id"], name: "index_structure_individuals_on_structure_id"
   end
 
   create_table "structure_types", force: :cascade do |t|
