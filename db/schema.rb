@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_11_101434) do
+ActiveRecord::Schema.define(version: 2019_04_11_101847) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -55,6 +55,15 @@ ActiveRecord::Schema.define(version: 2019_04_11_101434) do
     t.datetime "updated_at", null: false
     t.index ["individual_id"], name: "index_structure_individuals_on_individual_id"
     t.index ["structure_id"], name: "index_structure_individuals_on_structure_id"
+  end
+
+  create_table "structure_relations", force: :cascade do |t|
+    t.bigint "supported_id"
+    t.bigint "supporting_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["supported_id"], name: "index_structure_relations_on_supported_id"
+    t.index ["supporting_id"], name: "index_structure_relations_on_supporting_id"
   end
 
   create_table "structure_types", force: :cascade do |t|
