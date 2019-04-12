@@ -1,2 +1,112 @@
-<h1>Structures#edit</h1>
-<p>Find me in app/views/structures/edit.html.erb</p>
+<div class="container">
+	<div class="row justify-content-center">
+		<div class="col-lg-8">
+
+			<h2>Éditer une structure</h2>
+			<br>
+
+			<%= form_tag url_for(action: 'update'), method: "put" do %>
+
+			<div class="form-group">
+			  <%= label_tag 'Acteur, partenaire, ou les deux ?' %>
+				<%= select_tag(:status, options_for_select([['Choix', "3"], ['Acteur', "0"], ['Partenaire', "1"], ['Les deux', "2"]]), {:class => "form-control"}) %>
+			</div>
+
+			<div class="form-group">
+			<%= label_tag 'Nom de la structure' %>
+			<%= text_field_tag 'name', @structure.name, :class => "form-control" %>
+			</div>
+
+			<div class="row form-group">
+			    <div class="col">
+			      	<%= label_tag 'Type de structure' %>
+							<%= select_tag(:structure_type_id, options_for_select(@structure_types, @selected_structure_type), {:class => "form-control"}) %>
+			    </div>
+			   
+			    <div class="col">
+			      	<%= label_tag 'Classification de la structure' %>
+							<%= select_tag(:structure_classification_id, options_for_select(@structure_classifications, @selected_structure_classification), {:class => "form-control"}) %>
+			    </div>
+			</div>
+
+			<div class="form-group">
+			<%= label_tag 'Description' %>
+			<%= text_area_tag 'description', @structure.description, :class => "form-control", :rows => "4" %>
+			</div>
+
+			<div class="form-group">
+			<%= label_tag 'Adresse' %>
+			<%= text_field_tag 'address', @structure.address, :class => "form-control" %>
+			</div>
+
+			<div class="row form-group">
+			    <div class="col">
+			      	<%= label_tag 'Code postal' %>
+					<%= text_field_tag 'zip_code', @structure.zip_code, :class => "form-control" %> 
+			    </div>
+			   
+			    <div class="col">
+			      	<%= label_tag 'Ville' %>
+					<%= text_field_tag 'city', @structure.city, :class => "form-control" %>
+			    </div>
+			</div>
+
+			<div class="row form-group">
+			    <div class="col">
+			      	<%= label_tag 'Email' %>
+					<%= text_field_tag 'email', @structure.email, :class => "form-control" %> 
+			    </div>
+			   
+			    <div class="col">
+			      	<%= label_tag 'Telephone' %>
+					<%= text_field_tag 'telephone', @structure.telephone, :class => "form-control" %>
+			    </div>
+			</div>
+
+			<div class="form-group">
+			<%= label_tag 'Site Internet' %>
+			<%= text_field_tag 'website', @structure.website, :class => "form-control" %>
+			</div>
+
+			<div class="row form-group">
+			    <div class="col">
+			      	<%= label_tag 'Facebook' %>
+					<%= text_field_tag 'facebook', @structure.facebook, :class => "form-control" %> 
+			    </div>
+			   
+			    <div class="col">
+			      	<%= label_tag 'Twitter' %>
+					<%= text_field_tag 'twitter', @structure.twitter, :class => "form-control" %>
+			    </div>
+
+			    <div class="col">
+			      	<%= label_tag 'Instagram' %>
+					<%= text_field_tag 'instagram', @structure.instagram, :class => "form-control" %>
+			    </div>
+			</div>
+
+			<div class="row form-group">
+			    <div class="col">
+			      	<%= label_tag 'Année de création' %>
+					<%= text_field_tag 'creation', @structure.creation, :class => "form-control" %> 
+			    </div>
+			   
+			    <div class="col">
+			      	<%= label_tag "Nombre d'employés" %>
+					<%= text_field_tag 'staff_number', @structure.staff_number, :class => "form-control" %>
+			    </div>
+			</div>
+
+			<div class="form-group">
+			<%= label_tag 'Notes' %>
+			<%= text_area_tag 'notes', @structure.notes, :class => "form-control", :rows => "4" %>
+			</div>
+
+			<br>
+			<%= submit_tag "Éditer la structure", :class => "btn btn-lg btn-sm btn-block btn-success" %>
+			<br><br>
+			<% end %>
+
+		</div>
+	</div>
+</div>

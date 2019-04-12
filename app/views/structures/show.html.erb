@@ -1,2 +1,47 @@
-<h1>Structures#show</h1>
-<p>Find me in app/views/structures/show.html.erb</p>
+<div class="container">
+	<div class="row justify-content-center">
+		<div class="col-lg-8" style="margin-bottom: 5vh">
+
+			<div class="card">
+			  <div class="card-body">
+			    <h5 class="card-title"><%= @structure.name %></h5>
+			    <span class="badge badge-secondary"><%= @structure_classification.name %></span><br>
+			    <span class="badge badge-info"><%= @structure_type.name %></span><br>
+			   	<span class="badge badge-light"><%= @structure.status %></span>
+			   	<span class="float-right">Créé en <%= @structure.creation %></span>
+			  </div>
+			  <ul class="list-group list-group-flush">
+			  	<li class="list-group-item">Description : <%= @structure.description %></li>
+			  	<li class="list-group-item">Nombre d'employés / de membres actifs : <%= @structure.staff_number %></li>
+			    <li class="list-group-item">Adresse : <%= @structure.address %>, <%= @structure.zip_code %>, <%= @structure.city %></li>
+			    <li class="list-group-item">Email : <%= link_to @structure.email, "mailto:#{@structure.email}" %> <span class="float-right">Telephone : <%= @structure.telephone %></span></li>
+			    <li class="list-group-item">Site internet : <%= link_to @structure.website, "http://#{@structure.website}" %>
+			    	<span class="float-right">
+			    		<%= link_to "http://#{@structure.facebook}" do %>
+			    		<i class="fab fa-facebook-f"></i><% end %> &nbsp;&nbsp;&nbsp;
+			    		<%= link_to "http://#{@structure.twitter}" do %>
+			    		<i class="fab fa-twitter"></i><% end %> &nbsp;&nbsp;&nbsp;
+			    		<%= link_to "http://#{@structure.instagram}" do %>
+			    		<i class="fab fa-instagram"></i><% end %>
+			    	</span>
+			    </li>
+			  </ul>
+			</div>
+
+			<% if @structure.notes != "" %>
+			<div class="card" style="margin-top: 30px">
+				<div class="card-body">
+					<h5 class="card-title">Notes</h5>
+					<p><%= @structure.notes %></p>
+				</div>
+			</div>
+			<% end %>
+
+			<div class="float-right" style="margin-top: 10px">
+				<%= link_to "Éditer", edit_structure_path(@structure.id), :class => "btn btn-warning" %> &nbsp;
+				<%= link_to "Supprimer", structure_path(@structure.id), :class => "btn btn-danger", data: { confirm: "Êtes-vous sûr(e) ?" }, :method => "delete" %>
+			</div>
+
+		</div>
+	</div>
+</div>

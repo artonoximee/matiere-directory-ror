@@ -8,8 +8,26 @@
 			<%= form_tag url_for(action: 'create'), method: "post" do %>
 
 			<div class="form-group">
+			  <%= label_tag 'Acteur, partenaire, ou les deux ?' %>
+				<%= select_tag(:status, options_for_select([['Acteur', "0"], ['Partenaire', "1"], ['Les deux', "2"]]), {:class => "form-control"}) %>
+			</div>
+
+
+			<div class="form-group">
 			<%= label_tag 'Nom de la structure' %>
 			<%= text_field_tag 'name', "", :placeholder => "Nom de la structure", :class => "form-control" %>
+			</div>
+
+			<div class="row form-group">
+			    <div class="col">
+			      	<%= label_tag 'Type de structure' %>
+							<%= select_tag(:structure_type_id, options_for_select(@structure_types), {:class => "form-control"}) %>
+			    </div>
+			   
+			    <div class="col">
+			      	<%= label_tag 'Classification de la structure' %>
+							<%= select_tag(:structure_classification_id, options_for_select(@structure_classifications), {:class => "form-control"}) %>
+			    </div>
 			</div>
 
 			<div class="form-group">
@@ -44,6 +62,11 @@
 			      	<%= label_tag 'Telephone' %>
 					<%= text_field_tag 'telephone', "", :placeholder => "Numéro de téléphone", :class => "form-control" %>
 			    </div>
+			</div>
+
+			<div class="form-group">
+			<%= label_tag 'Site Internet' %>
+			<%= text_field_tag 'website', "", :placeholder => "Adresse du site internet", :class => "form-control" %>
 			</div>
 
 			<div class="row form-group">
