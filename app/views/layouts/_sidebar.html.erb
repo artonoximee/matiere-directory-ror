@@ -1,0 +1,22 @@
+<nav id="sidebar">
+    <div class="sidebar-header">
+        <h3>Matière Directory</h3>
+    </div>
+
+    <ul class="list-unstyled components">
+        <p>Experimental Alpha Version 0.1</p>
+        <li>
+            <%= link_to "Toutes les structures", root_path, :class => "small" %>
+        </li>
+        <hr/>
+        <li>
+            <%= link_to "Nouvelle structure", new_structure_path, :class => "small" %>
+        </li>
+        <li class="nav-item">
+            <%= link_to "Nouveau type de structure", new_structure_type_path, :class => "small" %>
+        </li>
+        <li class="nav-item">
+            <%= link_to "Nouvelle classification de structure", new_structure_classification_path, :class => "small" %>
+        </li>
+    </ul>
+</nav>

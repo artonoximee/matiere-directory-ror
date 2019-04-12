@@ -13,3 +13,60 @@
  *= require_tree .
  *= require_self
  */
+
+body {
+	margin-top: 5vh;
+}
+
+.container {
+  margin-left: 400px !important;
+  transition: all 0.3s;
+}
+
+.container.active {
+  margin-left: 15px !important;
+}
+
+#sidebar {
+    min-width: 300px;
+    max-width: 300px;
+    min-height: 100vh;
+    padding: 15px;
+    top: 0px;
+    position: fixed;
+    height: 100vh;
+    transition: all 0.3s;
+    overflow-y: hidden !important;
+    margin-left: 0px;
+    word-wrap: break-word;
+    background: #F8F9FA;
+    transition: all 0.3s;
+}
+
+#sidebar.active {
+    margin-left: -300px;
+}
+
+a[data-toggle="collapse"] {
+    position: relative;
+}
+
+.dropdown-toggle::after {
+    display: block;
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+}
+
+@media (max-width: 990px) {
+    #sidebar {
+        margin-left: -300px;
+    }
+    #sidebar.active {
+        margin-left: 0;
+    }
+    .conatiner {
+        margin-left: 0;
+    }
+}
