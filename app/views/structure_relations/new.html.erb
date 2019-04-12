@@ -12,8 +12,10 @@
 				<%= select_tag(:supported, options_for_select(@structures), {:class => "form-control"}) %>
 			</div>
 
+			<br>
+
 			<div class="form-group">
-			  <%= label_tag 'Supporte la structure suivante :' %>
+			  <%= label_tag 'Est supportée par la structure suivante :' %>
 				<%= select_tag(:supporting, options_for_select(@structures), {:class => "form-control"}) %>
 			</div>
 
