@@ -15,16 +15,32 @@
 			  	<li class="list-group-item">Nombre d'employés / de membres actifs : <%= @structure.staff_number %></li>
 			    <li class="list-group-item">Adresse : <%= @structure.address %>, <%= @structure.zip_code %>, <%= @structure.city %></li>
 			    <li class="list-group-item">Email : <%= link_to @structure.email, "mailto:#{@structure.email}" %> <span class="float-right">Telephone : <%= @structure.telephone %></span></li>
-			    <li class="list-group-item">Site internet : <%= link_to @structure.website, "http://#{@structure.website}" %>
+			    <li class="list-group-item">Site internet : <a href="<%= @structure.website %>"><%= @structure.website %></a>
 			    	<span class="float-right">
-			    		<%= link_to "http://#{@structure.facebook}" do %>
-			    		<i class="fab fa-facebook-f"></i><% end %> &nbsp;&nbsp;&nbsp;
-			    		<%= link_to "http://#{@structure.twitter}" do %>
-			    		<i class="fab fa-twitter"></i><% end %> &nbsp;&nbsp;&nbsp;
-			    		<%= link_to "http://#{@structure.instagram}" do %>
-			    		<i class="fab fa-instagram"></i><% end %>
+			    		<% if @structure.facebook != "" %>
+			    			<a href="<%= @structure.facebook %>">
+			    			<i class="fab fa-facebook-f"></i></a> &nbsp;&nbsp;&nbsp;
+			    		<% end %>
+			    		<% if @structure.twitter != "" %>
+			    			<a href="<%= @structure.twitter %>">
+			    			<i class="fab fa-twitter"></i></a> &nbsp;&nbsp;&nbsp;
+			    		<% end %>
+			    		<% if @structure.instagram != "" %>
+			    			<a href="<%= @structure.instagram %>">
+			    			<i class="fab fa-instagram"></i></a>
+			    		<% end %>
 			    	</span>
 			    </li>
+			    <% if @structure.is_supported_by != [] %>
+			    <li class="list-group-item">
+			    	Est supporté par <% @structure.is_supported_by.each do |support| %><%= link_to support.name, structure_path(support.id) %><% end %>
+			    </li>
+			    <% end %>
+			    <% if @structure.supports != [] %>
+			    <li class="list-group-item">
+			    	Supporte <% @structure.supports.each do |support| %><%= link_to support.name, structure_path(support.id) %><% end %>
+			    </li>
+			    <% end %>
 			  </ul>
 			</div>
 

@@ -1,0 +1,29 @@
+<div class="container">
+	<div class="row justify-content-center">
+		<div class="col-lg-8">
+
+			<h2>Créer une nouvelle relation entre deux structures</h2>
+			<br>
+
+			<%= form_tag url_for(action: 'create'), method: "post" do %>
+
+			<div class="form-group">
+			  <%= label_tag 'La structure suivante' %>
+				<%= select_tag(:supported, options_for_select(@structures), {:class => "form-control"}) %>
+			</div>
+
+			<div class="form-group">
+			  <%= label_tag 'Supporte la structure suivante :' %>
+				<%= select_tag(:supporting, options_for_select(@structures), {:class => "form-control"}) %>
+			</div>
+
+			
+
+			<br>
+			<%= submit_tag "Créer une nouvelle relation entre deux structures", :class => "btn btn-lg btn-sm btn-block btn-success" %>
+			<br><br>
+			<% end %>
+
+		</div>
+	</div>
+</div>
