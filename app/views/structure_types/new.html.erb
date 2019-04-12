@@ -1,0 +1,31 @@
+<div class="container">
+	<div class="row justify-content-center" style="margin-top: 5vh">
+		<div class="col-lg-8">
+
+			<h2>Créer un nouveau type de structure</h2>
+			<br>
+
+			<%= form_tag url_for(action: 'create'), method: "post" do %>
+
+			<div class="form-group">
+			<%= label_tag 'Nom du type de structure' %>
+			<%= text_field_tag 'name', "", :placeholder => "Nom du type de structure", :class => "form-control" %>
+			</div>
+
+			<br>
+			<%= submit_tag "Créer un nouveau type de structure", :class => "btn btn-lg btn-sm btn-block btn-success" %>
+			<br><br>
+			<% end %>
+
+			<hr/>
+
+			<h2>Types de structures</h2>
+			<br>
+
+			<% @structure_types.each do |structure_type| %>
+				<p><%= structure_type.name %></p>
+			<% end %>
+
+		</div>
+	</div>
+</div>
