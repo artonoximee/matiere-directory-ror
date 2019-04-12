@@ -1,0 +1,90 @@
+<div class="container">
+	<div class="row justify-content-center" style="margin-top: 5vh">
+		<div class="col-lg-8">
+
+			<h2>Créer une nouvelle structure</h2>
+			<br>
+
+			<%= form_tag url_for(action: 'create'), method: "post" do %>
+
+			<div class="form-group">
+			<%= label_tag 'Nom de la structure' %>
+			<%= text_field_tag 'name', "", :placeholder => "Nom de la structure", :class => "form-control" %>
+			</div>
+
+			<div class="form-group">
+			<%= label_tag 'Description' %>
+			<%= text_area_tag 'description', "", :placeholder =>"Description de la structure", :class => "form-control", :rows => "4" %>
+			</div>
+
+			<div class="form-group">
+			<%= label_tag 'Adresse' %>
+			<%= text_field_tag 'address', "", :placeholder => "Numéro de rue et nom de rue", :class => "form-control" %>
+			</div>
+
+			<div class="row form-group">
+			    <div class="col">
+			      	<%= label_tag 'Code postal' %>
+					<%= text_field_tag 'zip_code', "", :placeholder => "Code postal", :class => "form-control" %> 
+			    </div>
+			   
+			    <div class="col">
+			      	<%= label_tag 'Ville' %>
+					<%= text_field_tag 'city', "", :placeholder => "Nom de la ville", :class => "form-control" %>
+			    </div>
+			</div>
+
+			<div class="row form-group">
+			    <div class="col">
+			      	<%= label_tag 'Email' %>
+					<%= text_field_tag 'email', "", :placeholder => "Adresse email de la structure", :class => "form-control" %> 
+			    </div>
+			   
+			    <div class="col">
+			      	<%= label_tag 'Telephone' %>
+					<%= text_field_tag 'telephone', "", :placeholder => "Numéro de téléphone", :class => "form-control" %>
+			    </div>
+			</div>
+
+			<div class="row form-group">
+			    <div class="col">
+			      	<%= label_tag 'Facebook' %>
+					<%= text_field_tag 'facebook', "", :placeholder => "Adresse Facebook", :class => "form-control" %> 
+			    </div>
+			   
+			    <div class="col">
+			      	<%= label_tag 'Twitter' %>
+					<%= text_field_tag 'twitter', "", :placeholder => "Adresse Twitter", :class => "form-control" %>
+			    </div>
+
+			    <div class="col">
+			      	<%= label_tag 'Instagram' %>
+					<%= text_field_tag 'instagram', "", :placeholder => "Adresse Instagram", :class => "form-control" %>
+			    </div>
+			</div>
+
+			<div class="row form-group">
+			    <div class="col">
+			      	<%= label_tag 'Année de création' %>
+					<%= text_field_tag 'creation', "", :placeholder => "Année de création", :class => "form-control" %> 
+			    </div>
+			   
+			    <div class="col">
+			      	<%= label_tag "Nombre d'employés" %>
+					<%= text_field_tag 'staff_number', "", :placeholder => "Nombre d'employés", :class => "form-control" %>
+			    </div>
+			</div>
+
+			<div class="form-group">
+			<%= label_tag 'Notes' %>
+			<%= text_area_tag 'notes', "", :placeholder =>"Notes supplémentaires", :class => "form-control", :rows => "4" %>
+			</div>
+
+			<br>
+			<%= submit_tag "Créer une nouvelle structure", :class => "btn btn-lg btn-sm btn-block btn-success" %>
+			<br><br>
+			<% end %>
+
+		</div>
+	</div>
+</div>
