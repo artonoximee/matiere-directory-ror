@@ -1,0 +1,31 @@
+<div class="container">
+	<div class="row justify-content-center">
+		<div class="col-lg-8">
+
+			<h2>Créer une nouvelle classification de structure</h2>
+			<br>
+
+			<%= form_tag url_for(action: 'create'), method: "post" do %>
+
+			<div class="form-group">
+			<%= label_tag 'Nom de la classification de structure' %>
+			<%= text_field_tag 'name', "", :placeholder => "Nom de la classification de structure", :class => "form-control" %>
+			</div>
+
+			<br>
+			<%= submit_tag "Créer une nouvelle classification de structure", :class => "btn btn-lg btn-sm btn-block btn-success" %>
+			<br><br>
+			<% end %>
+
+			<hr/>
+
+			<h2>Classifications de structures</h2>
+			<br>
+
+			<% @structure_classifications.each do |structure_classification| %>
+				<p><%= structure_classification.name %></p>
+			<% end %>
+
+		</div>
+	</div>
+</div>
