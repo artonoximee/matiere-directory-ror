@@ -15,5 +15,8 @@ class StructureClassificationsController < ApplicationController
   end
 
   def destroy
+    @structure_classification = StructureClassification.find(params[:id])
+    @structure_classification.destroy
+    redirect_to new_structure_classification_path
   end
 end

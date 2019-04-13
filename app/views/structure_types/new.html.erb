@@ -22,9 +22,19 @@
 			<h2>Types de structures</h2>
 			<br>
 
-			<% @structure_types.each do |structure_type| %>
-				<p><%= structure_type.name %></p>
-			<% end %>
+			<div class="card">
+			  <ul class="list-group list-group-flush">
+			  	<% @structure_types.each do |structure_type| %>
+					<li class="list-group-item d-flex justify-content-between align-items-center">
+						<span><%= structure_type.name %>
+						</span>
+						<span>
+							<%= link_to "Supprimer la classification", structure_type_path(structure_type.id), :class => "btn btn-danger btn-sm", data: { confirm: "Êtes-vous sûr(e) ?" }, :method => "delete" %>
+						</span>
+					</li>
+				<% end %>
+			  </ul>
+			</div>
 
 		</div>
 	</div>

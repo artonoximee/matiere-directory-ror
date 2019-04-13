@@ -22,9 +22,19 @@
 			<h2>Classifications de structures</h2>
 			<br>
 
-			<% @structure_classifications.each do |structure_classification| %>
-				<p><%= structure_classification.name %></p>
-			<% end %>
+			<div class="card">
+			  <ul class="list-group list-group-flush">
+			  	<% @structure_classifications.each do |structure_classification| %>
+					<li class="list-group-item d-flex justify-content-between align-items-center">
+						<span><%= structure_classification.name %>
+						</span>
+						<span>
+							<%= link_to "Supprimer la classification", structure_classification_path(structure_classification.id), :class => "btn btn-danger btn-sm", data: { confirm: "Êtes-vous sûr(e) ?" }, :method => "delete" %>
+						</span>
+					</li>
+				<% end %>
+			  </ul>
+			</div>
 
 		</div>
 	</div>

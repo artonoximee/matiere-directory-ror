@@ -15,5 +15,8 @@ class StructureTypesController < ApplicationController
 	end
 
 	def destroy
+		@structure_type = StructureType.find(params[:id])
+    @structure_type.destroy
+    redirect_to new_structure_type_path
 	end
 end
