@@ -1,2 +1,36 @@
-<h1>References#show</h1>
-<p>Find me in app/views/references/show.html.erb</p>
+<div class="container">
+	<div class="row justify-content-center">
+		<div class="col-lg-8" style="margin-bottom: 5vh">
+
+			<div class="card">
+			  <div class="card-body">
+			    <h5 class="card-title"><%= @reference.title %></h5>
+			   
+			  </div>
+			  <ul class="list-group list-group-flush">
+			  	<li class="list-group-item">Auteur(e) : <%= @reference.first_name.capitalize %> <%= @reference.last_name.upcase %></li>
+			  	<li class="list-group-item">Année : <%= @reference.year %></li>
+			  	<li class="list-group-item">Éditeur : <%= @reference.editor.capitalize %> </li>
+			  	<li class="list-group-item">Ville : <%= @reference.city.capitalize %> </li>
+			  	<li class="list-group-item">PAYS : <%= @reference.country.upcase %> </li>
+			  	<li class="list-group-item">Lien : <a href="<%= @reference.link %>" target="_blank"> <%= @reference.link %> </a></li>
+			  </ul>
+			</div>
+
+			<% if @reference.notes != "" %>
+			<div class="card" style="margin-top: 30px">
+				<div class="card-body">
+					<h5 class="card-title">Notes</h5>
+					<p><%= @reference.notes %></p>
+				</div>
+			</div>
+			<% end %>
+
+			<div class="float-right" style="margin-top: 30px">
+				<%= link_to "Éditer", edit_reference_path(@reference.id), :class => "btn btn-warning" %> &nbsp;
+				<%= link_to "Supprimer", reference_path(@reference.id), :class => "btn btn-danger", data: { confirm: "Êtes-vous sûr(e) ?" }, :method => "delete" %>
+			</div>
+
+		</div>
+	</div>
+</div>

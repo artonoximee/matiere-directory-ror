@@ -1,2 +1,57 @@
-<h1>References#edit</h1>
-<p>Find me in app/views/references/edit.html.erb</p>
+<div class="container">
+	<div class="row justify-content-center">
+		<div class="col-lg-8">
+
+			<h2>Éditer la référence</h2>
+			<br>
+
+			<%= form_tag url_for(action: 'update'), method: "put" do %>
+
+			<div class="form-group">
+			<%= label_tag 'Titre' %>
+			<%= text_field_tag 'title', @reference.title, :class => "form-control" %>
+			<br>
+
+			<%= label_tag "Prénom de l'auteur(e)" %>
+			<%= text_field_tag 'first_name', @reference.first_name, :class => "form-control" %>
+			<br>
+
+			<%= label_tag "Nom de l'auteur(e)" %>
+			<%= text_field_tag 'last_name', @reference.last_name, :class => "form-control" %>
+			<br>
+
+			<%= label_tag "Année de publication" %>
+			<%= text_field_tag 'year', @reference.year, :class => "form-control" %>
+			<br>
+
+			<%= label_tag "Éditeur" %>
+			<%= text_field_tag 'editor', @reference.editor, :class => "form-control" %>
+			<br>
+
+			<div class="row form-group">
+				<div class="col">
+					<%= label_tag "Ville" %>
+					<%= text_field_tag 'city', @reference.city, :class => "form-control" %>
+				</div>
+				<div class="col">
+					<%= label_tag "Pays" %>
+					<%= text_field_tag 'country', @reference.country, :class => "form-control" %>
+				</div>
+			</div>
+
+			<%= label_tag "Lien" %>
+			<%= text_field_tag 'link', @reference.link, :class => "form-control" %>
+			<br>
+
+			<%= label_tag 'Notes' %>
+			<%= text_area_tag 'notes', @reference.notes, :class => "form-control", :rows => "4" %>
+			</div>
+
+			<br>
+			<%= submit_tag "Éditer la référence", :class => "btn btn-lg btn-sm btn-block btn-success" %>
+			<br><br>
+			<% end %>
+
+		</div>
+	</div>
+</div>
