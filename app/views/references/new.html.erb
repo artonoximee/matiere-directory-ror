@@ -1,0 +1,57 @@
+<div class="container">
+	<div class="row justify-content-center">
+		<div class="col-lg-8">
+
+			<h2>Créer une nouvelle référence</h2>
+			<br>
+
+			<%= form_tag url_for(action: 'create'), method: "post" do %>
+
+			<div class="form-group">
+			<%= label_tag 'Titre' %>
+			<%= text_field_tag 'title', "", :placeholder => "Titre", :class => "form-control" %>
+			<br>
+
+			<%= label_tag "Prénom de l'auteur(e)" %>
+			<%= text_field_tag 'first_name', "", :placeholder => "Prénom", :class => "form-control" %>
+			<br>
+
+			<%= label_tag "Nom de l'auteur(e)" %>
+			<%= text_field_tag 'last_name', "", :placeholder => "Nom", :class => "form-control" %>
+			<br>
+
+			<%= label_tag "Année de publication" %>
+			<%= text_field_tag 'year', "", :placeholder => "Année", :class => "form-control" %>
+			<br>
+
+			<%= label_tag "Éditeur" %>
+			<%= text_field_tag 'editor', "", :placeholder => "Éditeur", :class => "form-control" %>
+			<br>
+
+			<div class="row form-group">
+				<div class="col">
+					<%= label_tag "Ville" %>
+					<%= text_field_tag 'city', "", :placeholder => "Ville", :class => "form-control" %>
+				</div>
+				<div class="col">
+					<%= label_tag "Pays" %>
+					<%= text_field_tag 'country', "", :placeholder => "Pays", :class => "form-control" %>
+				</div>
+			</div>
+
+			<%= label_tag "Lien" %>
+			<%= text_field_tag 'link', "", :placeholder => "Lien", :class => "form-control" %>
+			<br>
+
+			<%= label_tag 'Notes' %>
+			<%= text_area_tag 'notes', "", :placeholder =>"Notes supplémentaires", :class => "form-control", :rows => "4" %>
+			</div>
+
+			<br>
+			<%= submit_tag "Créer une nouvelle référence", :class => "btn btn-lg btn-sm btn-block btn-success" %>
+			<br><br>
+			<% end %>
+
+		</div>
+	</div>
+</div>

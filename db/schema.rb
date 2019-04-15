@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_11_101847) do
+ActiveRecord::Schema.define(version: 2019_04_15_085327) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -40,6 +40,20 @@ ActiveRecord::Schema.define(version: 2019_04_11_101847) do
     t.datetime "updated_at", null: false
     t.index ["child_id"], name: "index_parent_child_relations_on_child_id"
     t.index ["parent_id"], name: "index_parent_child_relations_on_parent_id"
+  end
+
+  create_table "references", force: :cascade do |t|
+    t.string "title"
+    t.string "first_name"
+    t.string "last_name"
+    t.integer "year"
+    t.string "editor"
+    t.string "city"
+    t.string "country"
+    t.string "link"
+    t.text "notes"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "structure_classifications", force: :cascade do |t|
