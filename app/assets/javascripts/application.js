@@ -33,6 +33,10 @@ $(document).ready(function () {
     	$("#associationdetails").toggleClass('active');
     });
 
+    $("#second_structure").on("change", function(){
+        $("#secondstructure").toggleClass('active');
+    });
+
     $.fn.inputFilter = function(inputFilter) {
     return this.on("input keydown keyup mousedown mouseup select contextmenu drop", function() {
       if (inputFilter(this.value)) {

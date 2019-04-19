@@ -9,6 +9,16 @@
 			  <ul class="list-group list-group-flush">
 			  	<% @individuals.each do |individual| %>
 					<li class="list-group-item align-items-center"><%= link_to individual.first_name.capitalize + " " + individual.last_name.upcase, individual_path(individual.id) %>
+						<% if individual.structures != [] %>
+						<br/>
+						<small>
+							<% i = 1 %>
+			  				Appartient à <% individual.structures.each do |structure| %> 
+			  				<%= link_to structure.name, structure_path(structure.id) %><% if individual.structures.count > 1 && i != individual.structures.count %> et <% end %>
+			  				<% i = i + 1 %>
+			  				<% end %>
+			  			</small>
+			  			<% end %>
 					</li>
 				<% end %>
 			  </ul>

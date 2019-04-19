@@ -39,8 +39,23 @@
 				</div>
 			</div>
 
+			<div class="form-group">
+			<%= label_tag 'Appartient à la structure' %>
+			<%= select_tag(:structure_id, options_for_select(@structures), {:class => "form-control"}) %>
+			</div>
 
-			<br>
+			<%= check_box_tag 'second_structure' %>
+			<small><%= label_tag "Ajouter une seconde structure" %></small>
+
+			<div class="second_structure" id="secondstructure">
+				<div class="form-group">
+				<%= label_tag 'Appartient également à la structure' %>
+				<%= select_tag(:structure_2_id, options_for_select(@structures), {:class => "form-control"}) %>
+				</div>
+			</div>
+
+
+			<br><br>
 			<%= submit_tag "Créer une nouvelle personne", :class => "btn btn-lg btn-sm btn-block btn-success" %>
 			<br><br>
 			<% end %>

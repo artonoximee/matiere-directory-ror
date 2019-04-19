@@ -4,7 +4,7 @@
 
 			<div class="card">
 			  <div class="card-body">
-			    <h2 class="card-title"><b><%= @individual.first_name.capitalize %> <%= @individual.last_name.upcase %></b></h2>
+			    <h5 class="card-title"><b><%= @individual.first_name.capitalize %> <%= @individual.last_name.upcase %></b></h5>
 			   
 			  </div>
 			  <ul class="list-group list-group-flush">
@@ -14,11 +14,23 @@
 			  	<% if @individual.telephone != "" %>
 			  	<li class="list-group-item"><b>Téléphone</b> : <%= @individual.telephone %></li>
 			  	<% end %>
-			  	<% if @individual.linkedin != "" %>
+			  	<% if @individual.linkedin != "http://" %>
 			  	<li class="list-group-item"><b>LinkedIn</b> : <%= link_to @individual.linkedin, @individual.linkedin %> </li>
 			  	<% end %>
 			  </ul>
 			</div>
+
+			<% if @individual.structures != [] %>
+			<div class="card" style="margin-top: 30px">
+				<div class="card-body">
+					<% i = 1 %>
+			  		Appartient à <% @individual.structures.each do |structure| %> 
+			  			<%= link_to structure.name, structure_path(structure.id) %><% if @count > 1 && i != @count %> et <% end %>
+			  			<% i = i + 1 %>
+			  		<% end %>
+			  	</div>
+			</div>
+			<% end %>
 
 			<div class="float-right" style="margin-top: 30px">
 				<%= link_to "Éditer", edit_individual_path(@individual.id), :class => "btn btn-warning" %> &nbsp;
