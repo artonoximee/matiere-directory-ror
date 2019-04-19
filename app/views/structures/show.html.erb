@@ -87,6 +87,8 @@
 			</div>
 			<% end %>
 
+			<% if user_signed_in? && current_user.admin == true %>
+
 			<% if @structure.notes != "" %>
 			<div class="card" style="margin-top: 30px">
 				<div class="card-body">
@@ -97,9 +99,11 @@
 			<% end %>
 
 			<div class="float-right" style="margin-top: 30px">
-				<%= link_to "Éditer", edit_structure_path(@structure.id), :class => "btn btn-warning" %> &nbsp;
-				<%= link_to "Supprimer", structure_path(@structure.id), :class => "btn btn-danger", data: { confirm: "Êtes-vous sûr(e) ?" }, :method => "delete" %>
+				<%= link_to "Éditer", edit_admin_structure_path(@structure.id), :class => "btn btn-warning" %> &nbsp;
+				<%= link_to "Supprimer", admin_structure_path(@structure.id), :class => "btn btn-danger", data: { confirm: "Êtes-vous sûr(e) ?" }, :method => "delete" %>
 			</div>
+
+			<% end %>
 
 		</div>
 	</div>

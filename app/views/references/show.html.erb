@@ -26,11 +26,12 @@
 				</div>
 			</div>
 			<% end %>
-
+			<% if user_signed_in? && current_user.admin == true %>
 			<div class="float-right" style="margin-top: 30px">
-				<%= link_to "Éditer", edit_reference_path(@reference.id), :class => "btn btn-warning" %> &nbsp;
-				<%= link_to "Supprimer", reference_path(@reference.id), :class => "btn btn-danger", data: { confirm: "Êtes-vous sûr(e) ?" }, :method => "delete" %>
+				<%= link_to "Éditer", edit_admin_reference_path(@reference.id), :class => "btn btn-warning" %> &nbsp;
+				<%= link_to "Supprimer", admin_reference_path(@reference.id), :class => "btn btn-danger", data: { confirm: "Êtes-vous sûr(e) ?" }, :method => "delete" %>
 			</div>
+			<% end %>
 
 		</div>
 	</div>

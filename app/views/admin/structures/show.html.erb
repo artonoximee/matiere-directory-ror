@@ -1,0 +1,106 @@
+<div class="container">
+	<div class="row justify-content-center">
+		<div class="col-lg-8" style="margin-bottom: 5vh">
+
+			<div class="card">
+			  <div class="card-body">
+			    <h2 class="card-title"><b><%= @structure.name %></b></h2>
+			    <span class="badge badge-secondary"><%= @structure_classification.name %></span><br>
+			    <span class="badge badge-info"><%= @structure_type.name %></span><br>
+				<span class="badge badge-light"><%= @structure.status_fr %></span>
+			   	<span class="float-right">Créé en <%= @structure.creation %></span>
+			  </div>
+			  <ul class="list-group list-group-flush">
+			  	<li class="list-group-item"><b>Description</b> : <%= @structure.description %></li>
+			  	<li class="list-group-item"><b>Nombre d'employés / de membres actifs</b> : <%= @structure.staff_number %></li>
+			    <li class="list-group-item"><b>Adresse</b> : <%= @structure.address %>, <%= @structure.zip_code %>, <%= @structure.city %>, <%= @structure.country.upcase %></li>
+			    <li class="list-group-item"><b>Email</b> : <%= link_to @structure.email, "mailto:#{@structure.email}" %> 
+			    	<% if @structure.telephone != "" %>
+			    	<span class="float-right">Telephone : <%= @structure.telephone %></span>
+			    	<% end %>
+			    </li>
+			    <li class="list-group-item"><b>Site internet</b> : <a href="<%= @structure.website %>"><%= @structure.website %></a>
+			    	<span class="float-right">
+			    		<% if @structure.facebook != "" %>
+			    			<a href="<%= @structure.facebook %>" target="_blank">
+			    			<i class="fab fa-facebook-f"></i></a> &nbsp;&nbsp;&nbsp;
+			    		<% end %>
+			    		<% if @structure.twitter != "" %>
+			    			<a href="<%= @structure.twitter %>" target="_blank">
+			    			<i class="fab fa-twitter"></i></a> &nbsp;&nbsp;&nbsp;
+			    		<% end %>
+			    		<% if @structure.instagram != "" %>
+			    			<a href="<%= @structure.instagram %>" target="_blank">
+			    			<i class="fab fa-instagram"></i></a>
+			    		<% end %>
+			    	</span>
+			    </li>
+			    <% if @structure.is_supported_by != [] %>
+			    <li class="list-group-item">
+			    	<b>Est supporté par</b> : <% @structure.is_supported_by.each do |support| %><%= link_to support.name, structure_path(support.id) %><% end %>
+			    </li>
+			    <% end %>
+			    <% if @structure.supports != [] %>
+			    <li class="list-group-item">
+			    	<b>Supporte</b> : <% @structure.supports.each do |support| %><%= link_to support.name, structure_path(support.id) %><% end %>
+			    </li>
+			    <% end %>
+			    <% if @structure.child_structures != [] %>
+			    <li class="list-group-item">
+			    	<b>Est parent de</b> : <% @structure.child_structures.each do |child| %><%= link_to child.name, structure_path(child.id) %><% end %>
+			    </li>
+			    <% end %>
+			    <% if @structure.parent_structures != [] %>
+			    <li class="list-group-item">
+			    	<b>Est enfant de</b> : <% @structure.parent_structures.each do |parent| %><%= link_to parent.name, structure_path(parent.id) %><% end %>
+			    </li>
+			    <% end %>
+			  </ul>
+			</div>
+
+			<% if @structure.individuals.count > 0 %>
+			<div class="card" style="margin-top: 30px">
+				<div class="card-body">
+					<% if @structure.individuals.count == 1 %>
+					<h5 class="card-title">Personne associée</h5>
+					<% else %>
+					<h5 class="card-title">Personnes associées</h5>
+					<% end %>
+				</div>
+				<ul class="list-group list-group-flush">
+					<% @structure.individuals.each do |individual| %>
+			  		<li class="list-group-item"> <%= link_to individual.first_name.capitalize + " " + individual.last_name.upcase, individual_path(individual.id) %> </li>
+			  		<% end %>
+			  	</ul>
+			</div>
+			<% end %>
+
+			<% if @structure.association_detail %>
+			<div class="card" style="margin-top: 30px">
+				<div class="card-body">
+					<h5 class="card-title">Détails de l'association</h5>
+				</div>
+				<ul class="list-group list-group-flush">
+			  		<li class="list-group-item"><b>Nombre d'adhérents</b> : <%= @structure.association_detail.supporters_amount %></li>
+			  		<li class="list-group-item"><b>Objet de l'association</b> : <%= @structure.association_detail.object %></li>
+			  	</ul>
+			</div>
+			<% end %>
+
+			<% if @structure.notes != "" %>
+			<div class="card" style="margin-top: 30px">
+				<div class="card-body">
+					<h5 class="card-title">Notes</h5>
+					<p><%= @structure.notes %></p>
+				</div>
+			</div>
+			<% end %>
+
+			<div class="float-right" style="margin-top: 30px">
+				<%= link_to "Éditer", edit_admin_structure_path(@structure.id), :class => "btn btn-warning" %> &nbsp;
+				<%= link_to "Supprimer", admin_structure_path(@structure.id), :class => "btn btn-danger", data: { confirm: "Êtes-vous sûr(e) ?" }, :method => "delete" %>
+			</div>
+
+		</div>
+	</div>
+</div>

@@ -11,7 +11,9 @@
 						<span><%= link_to Structure.find(parent_child_relation.parent_id).name, structure_path(parent_child_relation.parent_id) %> est parent de <%= link_to Structure.find(parent_child_relation.child_id).name, structure_path(parent_child_relation.child_id) %>
 						</span>
 						<span>
-							<%= link_to "Supprimer la relation", parent_child_relation_path(parent_child_relation.id), :class => "btn btn-danger btn-sm", data: { confirm: "Êtes-vous sûr(e) ?" }, :method => "delete" %>
+							<% if user_signed_in? && current_user.admin == true %>
+							<%= link_to "Supprimer la relation", admin_parent_child_relation_path(parent_child_relation.id), :class => "btn btn-danger btn-sm", data: { confirm: "Êtes-vous sûr(e) ?" }, :method => "delete" %>
+							<% end %>
 						</span>
 					</li>
 				<% end %>

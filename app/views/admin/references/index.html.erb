@@ -1,0 +1,22 @@
+<div class="container">
+	<div class="row justify-content-center">
+		<div class="col-lg-8" style="margin-bottom: 5vh">
+
+			<h2>Références bibliographiques</h2>
+			<br>
+
+			<div class="card">
+			  <ul class="list-group list-group-flush">
+			  	<% @references.each do |reference| %>
+					<li class="list-group-item align-items-center">
+						<i class="fas fa-bookmark"></i>
+						<%= link_to reference.title, reference_path(reference.id) %>
+						<br/><span class="small"><%= reference.authors_array.join(', ') %></span>
+						<span class="float-right small"><%= reference.year %></span>
+					</li>
+				<% end %>
+			  </ul>
+			</div>
+		</div>
+	</div>
+</div>

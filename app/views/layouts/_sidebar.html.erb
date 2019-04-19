@@ -18,35 +18,48 @@
         <li>
             <%= link_to "Toutes les relations parent/enfant", parent_child_relations_path, :class => "small" %>
         </li>
+        <% if user_signed_in? && current_user.admin == true %>
         <hr>
         <li><small><b><i class="fas fa-plus"></i> Ajout de nouvelles informations</b></small></li>
         <li>
-            <%= link_to "Ajouter une structure", new_structure_path, :class => "small" %>
+            <%= link_to "Ajouter une structure", new_admin_structure_path, :class => "small" %>
         </li>
         <li>
-            <%= link_to "Ajouter une personne", new_individual_path, :class => "small" %>
+            <%= link_to "Ajouter une personne", new_admin_individual_path, :class => "small" %>
         </li>
         <li class="nav-item">
-            <%= link_to "Ajouter une relation entre deux structures", new_structure_relation_path, :class => "small" %>
+            <%= link_to "Ajouter une relation entre deux structures", new_admin_structure_relation_path, :class => "small" %>
         </li>
         <li class="nav-item">
-            <%= link_to "Ajouter relation parent/enfant", new_parent_child_relation_path, :class => "small" %>
+            <%= link_to "Ajouter relation parent/enfant", new_admin_parent_child_relation_path, :class => "small" %>
         </li>
         <hr>
         <li><small><b><i class="fas fa-edit"></i> Gérer les types et classifications</b></small></li>
         <li class="nav-item">
-            <%= link_to "Gérer les types de structures", new_structure_type_path, :class => "small" %>
+            <%= link_to "Gérer les types de structures", new_admin_structure_type_path, :class => "small" %>
         </li>
         <li class="nav-item">
-            <%= link_to "Gérer les classifications de structures", new_structure_classification_path, :class => "small" %>
+            <%= link_to "Gérer les classifications de structures", new_admin_structure_classification_path, :class => "small" %>
         </li>
+        <% end %>
         <hr>
         <li><small><b><i class="fas fa-bookmark"></i> Bibliographie</b></small></li>
         <li>
             <%= link_to "Toutes les réferences", references_path, :class => "small" %> 
         </li>
+        <% if user_signed_in? && current_user.admin == true %>
          <li>
-            <%= link_to "Ajouter une réference", new_reference_path, :class => "small" %> 
+            <%= link_to "Ajouter une réference", new_admin_reference_path, :class => "small" %> 
         </li>
+        <% end %>
+        <hr>
+        <li>
+        <% if user_signed_in? %>
+            <i class="fas fa-sign-out-alt"></i> <%= link_to "Déconnexion", destroy_user_session_path, method: :delete, :class => "small" %>
+        <% else %>
+            <i class="fas fa-sign-in-alt"></i> <%= link_to "Connexion", new_user_session_path, :class => "small" %>
+        <% end %>
+        </li>
+
     </ul>
 </nav>

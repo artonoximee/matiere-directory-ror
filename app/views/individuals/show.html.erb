@@ -33,6 +33,8 @@
 			</div>
 			<% end %>
 
+			<% if user_signed_in? && current_user.admin == true %>
+
 			<% if @individual.notes != "" %>
 			<div class="card" style="margin-top: 30px">
 				<div class="card-body">
@@ -43,9 +45,10 @@
 			<% end %>
 
 			<div class="float-right" style="margin-top: 30px">
-				<%= link_to "Éditer", edit_individual_path(@individual.id), :class => "btn btn-warning" %> &nbsp;
-				<%= link_to "Supprimer", individual_path(@individual.id), :class => "btn btn-danger", data: { confirm: "Êtes-vous sûr(e) ?" }, :method => "delete" %>
+				<%= link_to "Éditer", edit_admin_individual_path(@individual.id), :class => "btn btn-warning" %> &nbsp;
+				<%= link_to "Supprimer", admin_individual_path(@individual.id), :class => "btn btn-danger", data: { confirm: "Êtes-vous sûr(e) ?" }, :method => "delete" %>
 			</div>
+			<% end %>
 
 		</div>
 	</div>

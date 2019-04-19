@@ -11,7 +11,9 @@
 						<span><%= link_to Structure.find(structure_relation.supported_id).name, structure_path(structure_relation.supported_id) %> est supporté par <%= link_to Structure.find(structure_relation.supporting_id).name, structure_path(structure_relation.supporting_id) %>
 						</span>
 						<span>
-							<%= link_to "Supprimer la relation", structure_relation_path(structure_relation.id), :class => "btn btn-danger btn-sm", data: { confirm: "Êtes-vous sûr(e) ?" }, :method => "delete" %>
+							<% if user_signed_in? && current_user.admin == true %>
+							<%= link_to "Supprimer la relation", admin_structure_relation_path(structure_relation.id), :class => "btn btn-danger btn-sm", data: { confirm: "Êtes-vous sûr(e) ?" }, :method => "delete" %>
+							<% end %>
 						</span>
 					</li>
 				<% end %>

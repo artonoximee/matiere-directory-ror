@@ -1,0 +1,29 @@
+<div class="container">
+	<div class="row justify-content-center">
+		<div class="col-lg-8" style="margin-bottom: 5vh">
+
+			<h2>Personnes</h2>
+			<br>
+
+			<div class="card">
+			  <ul class="list-group list-group-flush">
+			  	<% @individuals.each do |individual| %>
+					<li class="list-group-item align-items-center"><i class="fas fa-user"></i> <%= link_to individual.first_name.capitalize + " " + individual.last_name.upcase, individual_path(individual.id) %>
+						<% if individual.structures != [] %>
+						<br/>
+						<small>
+							<% i = 1 %>
+			  				Appartient à <% individual.structures.each do |structure| %> 
+			  				<%= link_to structure.name, structure_path(structure.id) %><% if individual.structures.count > 1 && i != individual.structures.count %> et à <% end %>
+			  				<% i = i + 1 %>
+			  				<% end %>
+			  			</small>
+			  			<% end %>
+					</li>
+				<% end %>
+			  </ul>
+			</div>
+			
+		</div>
+	</div>
+</div>

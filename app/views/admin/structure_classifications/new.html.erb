@@ -29,9 +29,9 @@
 						<span><%= structure_classification.name %>
 						</span>
 						<span>
-							<%= link_to "Éditer", edit_structure_classification_path(structure_classification.id), :class => "btn btn-warning btn-sm" %>
+							<%= link_to "Éditer", edit_admin_structure_classification_path(structure_classification.id), :class => "btn btn-warning btn-sm" %>
 
-							<%= link_to "X", structure_classification_path(structure_classification.id), :class => "btn btn-danger btn-sm", data: { confirm: "Attention ! Supprimer un type de catégorie va entraîner la suppression des structures catégorisées selon cette classification. Êtes-vous sûr(e) de vouloir continuer cette action ?" }, :method => "delete" %>
+							<%= link_to "X", admin_structure_classification_path(structure_classification.id), :class => "btn btn-danger btn-sm", data: { confirm: "Attention ! Supprimer un type de catégorie va entraîner la suppression des structures catégorisées selon cette classification. Êtes-vous sûr(e) de vouloir continuer cette action ?" }, :method => "delete" %>
 						</span>
 					</li>
 				<% end %>

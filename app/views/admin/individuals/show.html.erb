@@ -1,0 +1,52 @@
+<div class="container">
+	<div class="row justify-content-center">
+		<div class="col-lg-8" style="margin-bottom: 5vh">
+
+			<div class="card">
+			  <div class="card-body">
+			    <h5 class="card-title"><b><%= @individual.first_name.capitalize %> <%= @individual.last_name.upcase %></b></h5>
+			    <small class="badge badge-info"><%= @individual.profession %></small>
+			   
+			  </div>
+			  <ul class="list-group list-group-flush">
+			  	<% if @individual.email != "" %>
+			  	<li class="list-group-item"><b>Email</b> : <%= link_to @individual.email, "mailto:#{@individual.email}" %> </li>
+			  	<% end %>
+			  	<% if @individual.telephone != "" %>
+			  	<li class="list-group-item"><b>Téléphone</b> : <%= @individual.telephone %></li>
+			  	<% end %>
+			  	<% if @individual.linkedin != "http://" %>
+			  	<li class="list-group-item"><b>LinkedIn</b> : <%= link_to @individual.linkedin, @individual.linkedin %> </li>
+			  	<% end %>
+			  </ul>
+			</div>
+
+			<% if @individual.structures != [] %>
+			<div class="card" style="margin-top: 30px">
+				<div class="card-body">
+					<% i = 1 %>
+			  		Appartient à <% @individual.structures.each do |structure| %> 
+			  			<%= link_to structure.name, structure_path(structure.id) %><% if @count > 1 && i != @count %> et à <% end %>
+			  			<% i = i + 1 %>
+			  		<% end %>
+			  	</div>
+			</div>
+			<% end %>
+
+			<% if @individual.notes != "" %>
+			<div class="card" style="margin-top: 30px">
+				<div class="card-body">
+					<h5 class="card-title">Notes</h5>
+					<p><%= @individual.notes %></p>
+				</div>
+			</div>
+			<% end %>
+
+			<div class="float-right" style="margin-top: 30px">
+				<%= link_to "Éditer", edit_admin_individual_path(@individual.id), :class => "btn btn-warning" %> &nbsp;
+				<%= link_to "Supprimer", admin_individual_path(@individual.id), :class => "btn btn-danger", data: { confirm: "Êtes-vous sûr(e) ?" }, :method => "delete" %>
+			</div>
+
+		</div>
+	</div>
+</div>
