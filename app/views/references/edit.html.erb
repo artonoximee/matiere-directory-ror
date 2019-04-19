@@ -11,14 +11,20 @@
 			<%= label_tag 'Titre' %>
 			<%= text_field_tag 'title', @reference.title, :class => "form-control" %>
 			<br>
-
-			<%= label_tag "Prénom de l'auteur(e)" %>
-			<%= text_field_tag 'first_name', @reference.first_name, :class => "form-control" %>
-			<br>
-
-			<%= label_tag "Nom de l'auteur(e)" %>
-			<%= text_field_tag 'last_name', @reference.last_name, :class => "form-control" %>
-			<br>
+			<% i = 1 %>
+			<% @reference.authors.each do |author| %>
+				<div class="row form-group">
+					<div class="col">
+						<%= label_tag "Prénom de l'auteur.e" %>
+						<%= text_field_tag 'first_name' + i.to_s, author.first_name, :class => "form-control" %>
+					</div>
+					<div class="col">
+						<%= label_tag "Nom de l'auteur.e" %>
+						<%= text_field_tag 'last_name' + i.to_s, author.last_name, :class => "form-control" %>
+					</div>
+				</div>
+				<% i = i + 1 %>
+			<% end %>
 
 			<%= label_tag "Année de publication" %>
 			<%= text_field_tag 'year', @reference.year, :class => "form-control" %>
@@ -41,6 +47,10 @@
 
 			<%= label_tag "Lien" %>
 			<%= text_field_tag 'link', @reference.link, :class => "form-control" %>
+			<br>
+
+			<%= label_tag 'Résumé' %>
+			<%= text_area_tag 'summary', @reference.summary, :class => "form-control", :rows => "4" %>
 			<br>
 
 			<%= label_tag 'Notes' %>

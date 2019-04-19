@@ -4,23 +4,24 @@
 
 			<div class="card">
 			  <div class="card-body">
-			    <h5 class="card-title"><%= @reference.title %></h5>
+			    <h5 class="card-title"><b><%= @reference.title %></b></h5>
 			   
 			  </div>
 			  <ul class="list-group list-group-flush">
-			  	<li class="list-group-item">Auteur(e) : <%= @reference.first_name.capitalize %> <%= @reference.last_name.upcase %></li>
-			  	<li class="list-group-item">Année : <%= @reference.year %></li>
-			  	<li class="list-group-item">Éditeur : <%= @reference.editor.capitalize %> </li>
-			  	<li class="list-group-item">Ville : <%= @reference.city.capitalize %> </li>
-			  	<li class="list-group-item">PAYS : <%= @reference.country.upcase %> </li>
-			  	<li class="list-group-item">Lien : <a href="<%= @reference.link %>" target="_blank"> <%= @reference.link %> </a></li>
+			  	<li class="list-group-item"><b>Auteur.e.s</b> : <%= @reference.authors_array.join(', ') %></li>
+			  	<li class="list-group-item"><b>Année</b> : <%= @reference.year %></li>
+			  	<li class="list-group-item"><b>Éditeur</b> : <%= @reference.editor.capitalize %> </li>
+			  	<li class="list-group-item"><b>Ville</b> : <%= @reference.city.capitalize %> </li>
+			  	<li class="list-group-item"><b>PAYS</b> : <%= @reference.country.upcase %> </li>
+			  	<li class="list-group-item"><b>Lien</b> : <a href="<%= @reference.link %>" target="_blank"> <%= @reference.link %> </a></li>
+			  	<li class="list-group-item"><b>Résumé</b> : <%= @reference.summary %></li>
 			  </ul>
 			</div>
 
 			<% if @reference.notes != "" %>
 			<div class="card" style="margin-top: 30px">
 				<div class="card-body">
-					<h5 class="card-title">Notes</h5>
+					<h5 class="card-title"><b>Notes</b></h5>
 					<p><%= @reference.notes %></p>
 				</div>
 			</div>

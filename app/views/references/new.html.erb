@@ -14,14 +14,66 @@
 
 			<div class="row form-group">
 				<div class="col">
-					<%= label_tag "Prénom de l'auteur(e)" %>
-			<%= text_field_tag 'first_name', "", :placeholder => "Prénom", :class => "form-control" %>
+					<%= label_tag "Prénom de l'auteur.e" %>
+					<%= text_field_tag 'first_name', "", :placeholder => "Prénom", :class => "form-control" %>
 				</div>
 				<div class="col">
-					<%= label_tag "Nom de l'auteur(e)" %>
-			<%= text_field_tag 'last_name', "", :placeholder => "Nom", :class => "form-control" %>
+					<%= label_tag "Nom de l'auteur.e" %>
+					<%= text_field_tag 'last_name', "", :placeholder => "Nom", :class => "form-control" %>
 				</div>
 			</div>
+
+			<%= check_box_tag 'second_author' %>
+			<small><%= label_tag "Ajouter un.e second.e auteur.e" %></small>
+			<br>
+
+			<div class="second_author" id="secondauthor">
+				<div class="row form-group">
+					<div class="col">
+						<%= label_tag "Prénom de l'auteur.e" %>
+						<%= text_field_tag 'second_first_name', "", :placeholder => "Prénom", :class => "form-control" %>
+					</div>
+					<div class="col">
+						<%= label_tag "Nom de l'auteur.e" %>
+						<%= text_field_tag 'second_last_name', "", :placeholder => "Nom", :class => "form-control" %>
+					</div>
+				</div>
+
+					<%= check_box_tag 'third_author' %>
+					<small><%= label_tag "Ajouter un.e troisième auteur.e" %></small>
+					<br>
+					
+					<div class="third_author" id="thirdauthor">
+						<div class="row form-group">
+							<div class="col">
+								<%= label_tag "Prénom de l'auteur.e" %>
+								<%= text_field_tag 'third_first_name', "", :placeholder => "Prénom", :class => "form-control" %>
+							</div>
+							<div class="col">
+								<%= label_tag "Nom de l'auteur.e" %>
+								<%= text_field_tag 'third_last_name', "", :placeholder => "Nom", :class => "form-control" %>
+							</div>
+						</div>
+
+						<%= check_box_tag 'fourth_author' %>
+						<small><%= label_tag "Ajouter un.e quatrième auteur.e" %></small>
+						<br>
+						
+						<div class="fourth_author" id="fourthauthor">
+							<div class="row form-group">
+								<div class="col">
+									<%= label_tag "Prénom de l'auteur.e" %>
+									<%= text_field_tag 'fourth_first_name', "", :placeholder => "Prénom", :class => "form-control" %>
+								</div>
+								<div class="col">
+									<%= label_tag "Nom de l'auteur.e" %>
+									<%= text_field_tag 'fourth_last_name', "", :placeholder => "Nom", :class => "form-control" %>
+								</div>
+							</div>
+						</div>
+					</div>
+			</div>
+			<br>
 
 			<%= label_tag "Année de publication" %>
 			<%= text_field_tag 'year', "", :placeholder => "Année", :class => "form-control" %>
@@ -49,6 +101,10 @@
 	        	</div>
 				<%= text_field_tag 'link', "", :placeholder => "url.domaine", :class => "form-control" %>
 			</div>
+			<br>
+
+			<%= label_tag 'Résumé' %>
+			<%= text_area_tag 'summary', "", :placeholder =>"Résumé de la référence", :class => "form-control", :rows => "4" %>
 			<br>
 
 			<%= label_tag 'Notes' %>

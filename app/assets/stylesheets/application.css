@@ -18,6 +18,16 @@ body {
 	margin-top: 5vh;
 }
 
+.second_author, .third_author, .fourth_author{
+  display: none;
+}
+
+
+
+.second_author.active, .third_author.active, .fourth_author.active{
+  display: inherit;
+}
+
 .container {
   margin-left: 400px !important;
   transition: all 0.3s;
