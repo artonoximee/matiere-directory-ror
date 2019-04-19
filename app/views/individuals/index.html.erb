@@ -1,0 +1,19 @@
+<div class="container">
+	<div class="row justify-content-center">
+		<div class="col-lg-8" style="margin-bottom: 5vh">
+
+			<h2>Personnes</h2>
+			<br>
+
+			<div class="card">
+			  <ul class="list-group list-group-flush">
+			  	<% @individuals.each do |individual| %>
+					<li class="list-group-item align-items-center"><%= link_to individual.first_name.capitalize + " " + individual.last_name.upcase, individual_path(individual.id) %>
+					</li>
+				<% end %>
+			  </ul>
+			</div>
+			
+		</div>
+	</div>
+</div>

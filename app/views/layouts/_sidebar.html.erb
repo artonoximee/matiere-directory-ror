@@ -10,6 +10,9 @@
             <%= link_to "Toutes les structures", root_path, :class => "small" %>
         </li>
         <li>
+            <%= link_to "Toutes les personnes", individuals_path, :class => "small" %>
+        </li>
+        <li>
             <%= link_to "Toutes les relations entre structures", structure_relations_path, :class => "small" %>
         </li>
         <li>
@@ -19,6 +22,9 @@
         <li><small><b>Ajout de nouvelles informations</b></small></li>
         <li>
             <%= link_to "Ajouter une structure", new_structure_path, :class => "small" %>
+        </li>
+        <li>
+            <%= link_to "Ajouter une personne", new_individual_path, :class => "small" %>
         </li>
         <li class="nav-item">
             <%= link_to "Ajouter une relation entre deux structures", new_structure_relation_path, :class => "small" %>
