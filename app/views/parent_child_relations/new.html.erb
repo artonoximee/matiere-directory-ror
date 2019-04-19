@@ -1,0 +1,31 @@
+<div class="container">
+	<div class="row justify-content-center">
+		<div class="col-lg-8">
+
+			<h2>Ajouter une nouvelle relation parent/enfant</h2>
+			<br>
+
+			<%= form_tag url_for(action: 'create'), method: "post" do %>
+
+			<div class="form-group">
+			  <%= label_tag 'La structure suivante' %>
+				<%= select_tag(:parent, options_for_select(@structures), {:class => "form-control"}) %>
+			</div>
+
+			<br>
+
+			<div class="form-group">
+			  <%= label_tag 'Est parent de la structure suivante :' %>
+				<%= select_tag(:child, options_for_select(@structures), {:class => "form-control"}) %>
+			</div>
+
+			
+
+			<br>
+			<%= submit_tag "Créer une nouvelle relation parent/enfant entre deux structures", :class => "btn btn-lg btn-sm btn-block btn-success" %>
+			<br><br>
+			<% end %>
+
+		</div>
+	</div>
+</div>
