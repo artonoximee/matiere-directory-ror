@@ -5,6 +5,7 @@
 
     <ul class="list-unstyled components">
         <p>Experimental Alpha Version 0.2</p>
+        <li><small><b>Annuaire</b></small></li>
         <li>
             <%= link_to "Toutes les structures", root_path, :class => "small" %>
         </li>
@@ -14,15 +15,10 @@
         <li>
             <%= link_to "Toutes les relations parent/enfant", parent_child_relations_path, :class => "small" %>
         </li>
-        <hr/>
+        <hr>
+        <li><small><b>Ajout de nouvelles informations</b></small></li>
         <li>
             <%= link_to "Ajouter une structure", new_structure_path, :class => "small" %>
-        </li>
-        <li class="nav-item">
-            <%= link_to "Gérer les types de structures", new_structure_type_path, :class => "small" %>
-        </li>
-        <li class="nav-item">
-            <%= link_to "Gérer les classifications de structures", new_structure_classification_path, :class => "small" %>
         </li>
         <li class="nav-item">
             <%= link_to "Ajouter une relation entre deux structures", new_structure_relation_path, :class => "small" %>
@@ -30,7 +26,16 @@
         <li class="nav-item">
             <%= link_to "Ajouter relation parent/enfant", new_parent_child_relation_path, :class => "small" %>
         </li>
-        <hr/>
+        <hr>
+        <li><small><b>Gérer les types et classifications</b></small></li>
+        <li class="nav-item">
+            <%= link_to "Gérer les types de structures", new_structure_type_path, :class => "small" %>
+        </li>
+        <li class="nav-item">
+            <%= link_to "Gérer les classifications de structures", new_structure_classification_path, :class => "small" %>
+        </li>
+        <hr>
+        <li><small><b>Bibliographie</b></small></li>
         <li>
             <%= link_to "Toutes les réferences", references_path, :class => "small" %> 
         </li>
