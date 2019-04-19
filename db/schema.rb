@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_15_085327) do
+ActiveRecord::Schema.define(version: 2019_04_19_072705) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,6 +21,13 @@ ActiveRecord::Schema.define(version: 2019_04_15_085327) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["structure_id"], name: "index_association_details_on_structure_id"
+  end
+
+  create_table "authors", force: :cascade do |t|
+    t.string "first_name"
+    t.string "last_name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "individuals", force: :cascade do |t|
@@ -40,6 +47,15 @@ ActiveRecord::Schema.define(version: 2019_04_15_085327) do
     t.datetime "updated_at", null: false
     t.index ["child_id"], name: "index_parent_child_relations_on_child_id"
     t.index ["parent_id"], name: "index_parent_child_relations_on_parent_id"
+  end
+
+  create_table "reference_authors", force: :cascade do |t|
+    t.bigint "reference_id"
+    t.bigint "author_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["author_id"], name: "index_reference_authors_on_author_id"
+    t.index ["reference_id"], name: "index_reference_authors_on_reference_id"
   end
 
   create_table "references", force: :cascade do |t|

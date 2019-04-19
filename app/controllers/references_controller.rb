@@ -9,7 +9,7 @@ class ReferencesController < ApplicationController
   end
 
   def create
-    reference = Reference.create(title: params[:title], first_name: params[:first_name], last_name: params[:last_name], year: params[:year], editor: params[:editor], city: params[:city], country: params[:country], link: params[:link], notes: params[:notes])
+    reference = Reference.create(title: params[:title], first_name: params[:first_name], last_name: params[:last_name], year: params[:year], editor: params[:editor], city: params[:city], country: params[:country], link: "http://" + params[:link], notes: params[:notes])
     redirect_to reference_path(reference.id)
   end
 

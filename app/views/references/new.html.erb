@@ -2,7 +2,7 @@
 	<div class="row justify-content-center">
 		<div class="col-lg-8">
 
-			<h2>Créer une nouvelle référence</h2>
+			<h2>Ajouter une nouvelle référence</h2>
 			<br>
 
 			<%= form_tag url_for(action: 'create'), method: "post" do %>
@@ -12,13 +12,16 @@
 			<%= text_field_tag 'title', "", :placeholder => "Titre", :class => "form-control" %>
 			<br>
 
-			<%= label_tag "Prénom de l'auteur(e)" %>
+			<div class="row form-group">
+				<div class="col">
+					<%= label_tag "Prénom de l'auteur(e)" %>
 			<%= text_field_tag 'first_name', "", :placeholder => "Prénom", :class => "form-control" %>
-			<br>
-
-			<%= label_tag "Nom de l'auteur(e)" %>
+				</div>
+				<div class="col">
+					<%= label_tag "Nom de l'auteur(e)" %>
 			<%= text_field_tag 'last_name', "", :placeholder => "Nom", :class => "form-control" %>
-			<br>
+				</div>
+			</div>
 
 			<%= label_tag "Année de publication" %>
 			<%= text_field_tag 'year', "", :placeholder => "Année", :class => "form-control" %>
@@ -40,7 +43,12 @@
 			</div>
 
 			<%= label_tag "Lien" %>
-			<%= text_field_tag 'link', "http://", :placeholder => "Lien", :class => "form-control" %>
+			<div class="input-group mb-2">
+				<div class="input-group-prepend">
+	          		<div class="input-group-text">http://</div>
+	        	</div>
+				<%= text_field_tag 'link', "", :placeholder => "url.domaine", :class => "form-control" %>
+			</div>
 			<br>
 
 			<%= label_tag 'Notes' %>
