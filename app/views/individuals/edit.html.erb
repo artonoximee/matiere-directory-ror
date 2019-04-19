@@ -5,7 +5,7 @@
 			<h2>Editer une entrée de personne</h2>
 			<br>
 
-			<%= form_tag url_for(action: 'create'), method: "post" do %>
+			<%= form_tag url_for(action: 'update'), method: "put" do %>
 
 			<div class="row form-group">
 				<div class="col">
@@ -39,6 +39,29 @@
 				</div>
 			</div>
 
+			<% if @individual.structures != [] %>
+			<div class="form-group">
+				<%= label_tag 'Appartient à la structure' %>
+				<%= select_tag(:structure_id, options_for_select(@structures, @selected_structures[0]), {:class => "form-control"}) %>
+			</div>
+			<% if @individual.structures.count == 1 %>
+			<div class="form-group">
+				<%= label_tag 'Appartient également à la structure' %>
+				<%= select_tag(:structure_2_id, options_for_select(@structures), {:class => "form-control"}) %>
+			</div>
+			<% end %>
+				<% if @individual.structures.count == 2 %>
+					<div class="form-group">
+						<%= label_tag 'Appartient également à la structure' %>
+						<%= select_tag(:structure_2_id, options_for_select(@structures, @selected_structures[1]), {:class => "form-control"}) %>
+					</div>
+				<% end %> 
+			<% end %>
+
+			<% if @individual.structures == [] %>
+			<%= label_tag 'Appartient à la structure' %>
+			<%= select_tag(:structure_id, options_for_select(@structures), {:class => "form-control"}) %>
+			<% end %>
 
 			<br>
 			<%= submit_tag "Editer une entrée de personne", :class => "btn btn-lg btn-sm btn-block btn-success" %>
