@@ -2,7 +2,7 @@
 	<div class="row justify-content-center">
 		<div class="col-lg-8">
 
-			<h2>Créer une nouvelle structure</h2>
+			<h2>Ajouter une nouvelle structure</h2>
 			<br>
 
 			<%= form_tag url_for(action: 'create'), method: "post" do %>
@@ -31,9 +31,28 @@
 			</div>
 
 			<div class="form-group">
+			<%= check_box_tag 'association_details' %>
+			<small><%= label_tag "Ajouter des détails d'association (nombre d'adhérents, objet de l'association)" %></small>
+			</div>
+
+			<div class="association_details" id="associationdetails">
+				<div class="form-group">
+				<%= label_tag "Nombre d'adhérents" %>
+				<%= text_field_tag 'number_supporters', "", :placeholder =>"Nombre d'adhérents de l'association", :class => "form-control integeronly" %>
+				</div>
+
+				<div class="form-group">
+				<%= label_tag "Objet de l'association" %>
+				<%= text_area_tag 'object', "", :placeholder =>"Objet de l'association au journal officiel", :class => "form-control", :rows => "4" %>
+				</div>
+			</div>
+
+			<div class="form-group">
 			<%= label_tag 'Description' %>
 			<%= text_area_tag 'description', "", :placeholder =>"Description de la structure", :class => "form-control", :rows => "4" %>
 			</div>
+
+			<hr>
 
 			<div class="form-group">
 			<%= label_tag 'Adresse' %>
@@ -43,13 +62,17 @@
 			<div class="row form-group">
 			    <div class="col">
 			      	<%= label_tag 'Code postal' %>
-					<%= text_field_tag 'zip_code', "", :placeholder => "Code postal", :class => "form-control" %> 
+					<%= text_field_tag 'zip_code', "", :placeholder => "Code postal", :class => "form-control integeronly" %> 
 			    </div>
 			   
 			    <div class="col">
 			      	<%= label_tag 'Ville' %>
 					<%= text_field_tag 'city', "", :placeholder => "Nom de la ville", :class => "form-control" %>
 			    </div>
+			</div>
+			<div class="form-group">
+			      	<%= label_tag 'Pays' %>
+					<%= text_field_tag 'country', "", :placeholder => "Pays", :class => "form-control" %>
 			</div>
 
 			<div class="row form-group">
@@ -60,43 +83,67 @@
 			   
 			    <div class="col">
 			      	<%= label_tag 'Telephone' %>
-					<%= text_field_tag 'telephone', "", :placeholder => "Numéro de téléphone", :class => "form-control" %>
+					<%= text_field_tag 'telephone', "", :placeholder => "Numéro de téléphone", :class => "form-control integeronly" %>
 			    </div>
 			</div>
 
+			<hr>
+
 			<div class="form-group">
 			<%= label_tag 'Site Internet' %>
-			<%= text_field_tag 'website', "", :placeholder => "Adresse du site internet", :class => "form-control" %>
+			<div class="input-group mb-2">
+				<div class="input-group-prepend">
+	          		<div class="input-group-text">http://</div>
+	        	</div>
+				<%= text_field_tag 'website', "", :placeholder => "url.domaine", :class => "form-control" %>
+			</div>
 			</div>
 
 			<div class="row form-group">
 			    <div class="col">
 			      	<%= label_tag 'Facebook' %>
-					<%= text_field_tag 'facebook', "", :placeholder => "Adresse Facebook", :class => "form-control" %> 
+			      	<div class="input-group mb-2">
+					<div class="input-group-prepend">
+		          		<div class="input-group-text">http://</div>
+		        	</div>
+						<%= text_field_tag 'facebook', "", :placeholder => "url.facebook", :class => "form-control" %>
+					</div>
 			    </div>
 			   
 			    <div class="col">
 			      	<%= label_tag 'Twitter' %>
-					<%= text_field_tag 'twitter', "", :placeholder => "Adresse Twitter", :class => "form-control" %>
+			      	<div class="input-group mb-2">
+					<div class="input-group-prepend">
+		          		<div class="input-group-text">http://</div>
+		        	</div>
+						<%= text_field_tag 'twitter', "", :placeholder => "url.twitter", :class => "form-control" %>
+					</div>
 			    </div>
 
 			    <div class="col">
 			      	<%= label_tag 'Instagram' %>
-					<%= text_field_tag 'instagram', "", :placeholder => "Adresse Instagram", :class => "form-control" %>
+			      	<div class="input-group mb-2">
+					<div class="input-group-prepend">
+		          		<div class="input-group-text">http://</div>
+		        	</div>
+						<%= text_field_tag 'instagram', "", :placeholder => "url.instagram", :class => "form-control" %>
+					</div>
 			    </div>
 			</div>
 
 			<div class="row form-group">
 			    <div class="col">
 			      	<%= label_tag 'Année de création' %>
-					<%= text_field_tag 'creation', "", :placeholder => "Année de création", :class => "form-control" %> 
+					<%= text_field_tag 'creation', "", :placeholder => "Année de création", :class => "form-control integeronly" %> 
 			    </div>
 			   
 			    <div class="col">
 			      	<%= label_tag "Nombre d'employés" %>
-					<%= text_field_tag 'staff_number', "", :placeholder => "Nombre d'employés", :class => "form-control" %>
+					<%= text_field_tag 'staff_number', "", :placeholder => "Nombre d'employés", :class => "form-control integeronly" %>
 			    </div>
 			</div>
+
+			<hr>
 
 			<div class="form-group">
 			<%= label_tag 'Notes' %>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_19_074216) do
+ActiveRecord::Schema.define(version: 2019_04_19_092800) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(version: 2019_04_19_074216) do
     t.integer "supporters_amount"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "object"
     t.index ["structure_id"], name: "index_association_details_on_structure_id"
   end
 
@@ -121,6 +122,7 @@ ActiveRecord::Schema.define(version: 2019_04_19_074216) do
     t.bigint "structure_classification_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "country"
     t.index ["structure_classification_id"], name: "index_structures_on_structure_classification_id"
     t.index ["structure_type_id"], name: "index_structures_on_structure_type_id"
   end

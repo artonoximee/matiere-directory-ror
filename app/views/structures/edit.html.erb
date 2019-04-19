@@ -29,10 +29,24 @@
 			    </div>
 			</div>
 
+			<% if @structure.association_detail %>
+			<div class="form-group">
+			<%= label_tag "Nombre d'adhérents" %>
+			<%= text_field_tag 'number_supporters', @structure.association_detail.supporters_amount, :class => "form-control integeronly" %>
+			</div>
+
+			<div class="form-group">
+			<%= label_tag "Objet de l'association" %>
+			<%= text_area_tag 'object', @structure.association_detail.object, :class => "form-control", :rows => "4" %>
+			</div>
+			<% end %>
+
 			<div class="form-group">
 			<%= label_tag 'Description' %>
 			<%= text_area_tag 'description', @structure.description, :class => "form-control", :rows => "4" %>
 			</div>
+
+			<hr>
 
 			<div class="form-group">
 			<%= label_tag 'Adresse' %>
@@ -42,7 +56,7 @@
 			<div class="row form-group">
 			    <div class="col">
 			      	<%= label_tag 'Code postal' %>
-					<%= text_field_tag 'zip_code', @structure.zip_code, :class => "form-control" %> 
+					<%= text_field_tag 'zip_code', @structure.zip_code, :class => "form-control integeronly" %> 
 			    </div>
 			   
 			    <div class="col">
@@ -59,43 +73,67 @@
 			   
 			    <div class="col">
 			      	<%= label_tag 'Telephone' %>
-					<%= text_field_tag 'telephone', @structure.telephone, :class => "form-control" %>
+					<%= text_field_tag 'telephone', @structure.telephone, :class => "form-control integeronly" %>
 			    </div>
 			</div>
 
+			<hr>
+
 			<div class="form-group">
 			<%= label_tag 'Site Internet' %>
-			<%= text_field_tag 'website', @structure.website, :class => "form-control" %>
+			<div class="input-group mb-2">
+			<div class="input-group-prepend">
+          		<div class="input-group-text">http://</div>
+        	</div>
+				<%= text_field_tag 'website', @structure.website[7..-1], :class => "form-control" %>
+			</div>
 			</div>
 
 			<div class="row form-group">
 			    <div class="col">
 			      	<%= label_tag 'Facebook' %>
-					<%= text_field_tag 'facebook', @structure.facebook, :class => "form-control" %> 
+			      	<div class="input-group mb-2">
+					<div class="input-group-prepend">
+		          		<div class="input-group-text">http://</div>
+		        	</div>
+						<%= text_field_tag 'facebook', @structure.facebook[7..-1], :class => "form-control" %> 
+					</div>
 			    </div>
 			   
 			    <div class="col">
 			      	<%= label_tag 'Twitter' %>
-					<%= text_field_tag 'twitter', @structure.twitter, :class => "form-control" %>
+			      	<div class="input-group mb-2">
+					<div class="input-group-prepend">
+		          		<div class="input-group-text">http://</div>
+		        	</div>
+						<%= text_field_tag 'twitter', @structure.twitter[7..-1], :class => "form-control" %>
+					</div>
 			    </div>
 
 			    <div class="col">
 			      	<%= label_tag 'Instagram' %>
-					<%= text_field_tag 'instagram', @structure.instagram, :class => "form-control" %>
+			      	<div class="input-group mb-2">
+					<div class="input-group-prepend">
+		          		<div class="input-group-text">http://</div>
+		        	</div>
+						<%= text_field_tag 'instagram', @structure.instagram[7..-1], :class => "form-control" %>
+					</div>
 			    </div>
 			</div>
 
 			<div class="row form-group">
 			    <div class="col">
 			      	<%= label_tag 'Année de création' %>
-					<%= text_field_tag 'creation', @structure.creation, :class => "form-control" %> 
+					<%= text_field_tag 'creation', @structure.creation, :class => "form-control integeronly" %> 
 			    </div>
 			   
 			    <div class="col">
 			      	<%= label_tag "Nombre d'employés" %>
-					<%= text_field_tag 'staff_number', @structure.staff_number, :class => "form-control" %>
+					<%= text_field_tag 'staff_number', @structure.staff_number, :class => "form-control integeronly" %>
 			    </div>
 			</div>
+
+			<hr>
 
 			<div class="form-group">
 			<%= label_tag 'Notes' %>

@@ -4,7 +4,7 @@
 
 			<div class="card">
 			  <div class="card-body">
-			    <h5 class="card-title"><b><%= @structure.name %></b></h5>
+			    <h2 class="card-title"><b><%= @structure.name %></b></h2>
 			    <span class="badge badge-secondary"><%= @structure_classification.name %></span><br>
 			    <span class="badge badge-info"><%= @structure_type.name %></span><br>
 			   	<span class="badge badge-light"><%= @structure.status %></span>
@@ -57,6 +57,18 @@
 			    <% end %>
 			  </ul>
 			</div>
+
+			<% if @structure.association_detail %>
+			<div class="card" style="margin-top: 30px">
+				<div class="card-body">
+					<h5 class="card-title">Détails de l'association</h5>
+				</div>
+				<ul class="list-group list-group-flush">
+			  		<li class="list-group-item"><b>Nombre d'adhérents</b> : <%= @structure.association_detail.supporters_amount %></li>
+			  		<li class="list-group-item"><b>Objet de l'association</b> : <%= @structure.association_detail.object %></li>
+			  	</ul>
+			</div>
+			<% end %>
 
 			<% if @structure.notes != "" %>
 			<div class="card" style="margin-top: 30px">

@@ -15,7 +15,10 @@ class StructuresController < ApplicationController
   end
 
   def create
-    @structure = Structure.create(structure_type_id: params[:structure_type_id], structure_classification_id: params[:structure_classification_id], name: params[:name], description: params[:description], address: params[:address], zip_code: params[:zip_code], city: params[:city], telephone: params[:telephone], email: params[:email], website: params[:website], facebook: params[:facebook], twitter: params[:twitter], instagram: params[:instagram], creation: params[:creation], staff_number: params[:staff_number], status: params[:status], notes: params[:notes])
+    @structure = Structure.create(structure_type_id: params[:structure_type_id], structure_classification_id: params[:structure_classification_id], name: params[:name], description: params[:description], address: params[:address], zip_code: params[:zip_code], city: params[:city], country: params[:country], telephone: params[:telephone], email: params[:email], website: "http://" + params[:website], facebook: "http://" + params[:facebook], twitter: "http://" + params[:twitter], instagram: "http://" + params[:instagram], creation: params[:creation], staff_number: params[:staff_number], status: params[:status], notes: params[:notes])
+    if params[:association_details] == "1"
+      AssociationDetail.create(structure_id: @structure.id, supporters_amount: params[:number_supporters].to_i, object: params[:object])
+    end
     redirect_to structure_path(@structure.id)
   end
 
@@ -28,9 +31,14 @@ class StructuresController < ApplicationController
   def update
     @structure = Structure.find(params[:id])
     if params[:status] == "3"
-      @structure.update(structure_type_id: params[:structure_type_id], structure_classification_id: params[:structure_classification_id], name: params[:name], description: params[:description], address: params[:address], zip_code: params[:zip_code], city: params[:city], telephone: params[:telephone], email: params[:email], website: params[:website], facebook: params[:facebook], twitter: params[:twitter], instagram: params[:instagram], creation: params[:creation], staff_number: params[:staff_number], notes: params[:notes])
+      @structure.update(structure_type_id: params[:structure_type_id], structure_classification_id: params[:structure_classification_id], name: params[:name], description: params[:description], address: params[:address], zip_code: params[:zip_code], city: params[:city], telephone: params[:telephone], email: params[:email], website: "http://" + params[:website], facebook: "http://" + params[:facebook], twitter: "http://" + params[:twitter], instagram: "http://" + params[:instagram], creation: params[:creation], staff_number: params[:staff_number], notes: params[:notes])
     else
-      @structure.update(structure_type_id: params[:structure_type_id], structure_classification_id: params[:structure_classification_id], name: params[:name], description: params[:description], address: params[:address], zip_code: params[:zip_code], city: params[:city], telephone: params[:telephone], email: params[:email], website: params[:website], facebook: params[:facebook], twitter: params[:twitter], instagram: params[:instagram], creation: params[:creation], staff_number: params[:staff_number], status: params[:status], notes: params[:notes])
+      @structure.update(structure_type_id: params[:structure_type_id], structure_classification_id: params[:structure_classification_id], name: params[:name], description: params[:description], address: params[:address], zip_code: params[:zip_code], city: params[:city], telephone: params[:telephone], email: params[:email], website: "http://" + params[:website], facebook: "http://" + params[:facebook], twitter: "http://" + params[:twitter], instagram: "http://" + params[:instagram], creation: params[:creation], staff_number: params[:staff_number], status: params[:status], notes: params[:notes])
+    end
+
+    if @structure.association_detail
+      association_details = AssociationDetail.find(@structure.association_detail.id)
+      association_details.update(object: params[:object], supporters_amount: params[:number_supporters].to_i)
     end
     redirect_to structure_path(@structure.id)
   end

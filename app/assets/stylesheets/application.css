@@ -18,13 +18,11 @@ body {
 	margin-top: 5vh;
 }
 
-.second_author, .third_author, .fourth_author{
+.second_author, .third_author, .fourth_author, .association_details {
   display: none;
 }
 
-
-
-.second_author.active, .third_author.active, .fourth_author.active{
+.second_author.active, .third_author.active, .fourth_author.active, .association_details.active {
   display: inherit;
 }
 
