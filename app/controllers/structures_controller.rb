@@ -2,7 +2,7 @@ class StructuresController < ApplicationController
   before_action :set_variables
 
   def index
-    @structures = Structure.all
+    @structures = Structure.all.order("updated_at DESC")
   end
 
   def show
