@@ -46,7 +46,12 @@
 			</div>
 
 			<%= label_tag "Lien" %>
-			<%= text_field_tag 'link', @reference.link, :class => "form-control" %>
+			<div class="input-group mb-2">
+				<div class="input-group-prepend">
+	          		<div class="input-group-text">http://</div>
+	        	</div>
+				<%= text_field_tag 'link', @reference.link[7..-1], :class => "form-control" %>
+			</div>
 			<br>
 
 			<%= label_tag 'Résumé' %>
