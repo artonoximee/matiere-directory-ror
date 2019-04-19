@@ -14,7 +14,7 @@ class IndividualsController < ApplicationController
   end
 
   def create
-    individual = Individual.create(first_name: params[:first_name], last_name: params[:last_name], email: params[:email], telephone: params[:telephone], linkedin: "http://" + params[:linkedin])
+    individual = Individual.create(first_name: params[:first_name], last_name: params[:last_name], email: params[:email], telephone: params[:telephone], linkedin: "http://" + params[:linkedin], profession: params[:profession], notes: params[:notes])
     if params[:structure_id] != 0
       StructureIndividual.create(structure_id: params[:structure_id], individual: individual)
     end
@@ -34,7 +34,7 @@ class IndividualsController < ApplicationController
 
   def update
     @individual = Individual.find(params[:id])
-    @individual.update(first_name: params[:first_name], last_name: params[:last_name], email: params[:email], telephone: params[:telephone], linkedin: "http://" + params[:linkedin])
+    @individual.update(first_name: params[:first_name], last_name: params[:last_name], email: params[:email], telephone: params[:telephone], linkedin: "http://" + params[:linkedin], profession: params[:profession], notes: params[:notes])
     case
       when @individual.structures != [] && params[:structure_id] == "0" && params[:structure_2_id] == "0"
         @individual.structure_individuals.destroy_all

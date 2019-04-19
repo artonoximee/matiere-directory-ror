@@ -14,7 +14,7 @@
 						<small>
 							<% i = 1 %>
 			  				Appartient à <% individual.structures.each do |structure| %> 
-			  				<%= link_to structure.name, structure_path(structure.id) %><% if individual.structures.count > 1 && i != individual.structures.count %> et <% end %>
+			  				<%= link_to structure.name, structure_path(structure.id) %><% if individual.structures.count > 1 && i != individual.structures.count %> et à <% end %>
 			  				<% i = i + 1 %>
 			  				<% end %>
 			  			</small>

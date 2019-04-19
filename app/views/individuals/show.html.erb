@@ -5,6 +5,7 @@
 			<div class="card">
 			  <div class="card-body">
 			    <h5 class="card-title"><b><%= @individual.first_name.capitalize %> <%= @individual.last_name.upcase %></b></h5>
+			    <small class="badge badge-info"><%= @individual.profession %></small>
 			   
 			  </div>
 			  <ul class="list-group list-group-flush">
@@ -25,10 +26,19 @@
 				<div class="card-body">
 					<% i = 1 %>
 			  		Appartient à <% @individual.structures.each do |structure| %> 
-			  			<%= link_to structure.name, structure_path(structure.id) %><% if @count > 1 && i != @count %> et <% end %>
+			  			<%= link_to structure.name, structure_path(structure.id) %><% if @count > 1 && i != @count %> et à <% end %>
 			  			<% i = i + 1 %>
 			  		<% end %>
 			  	</div>
+			</div>
+			<% end %>
+
+			<% if @individual.notes != "" %>
+			<div class="card" style="margin-top: 30px">
+				<div class="card-body">
+					<h5 class="card-title">Notes</h5>
+					<p><%= @individual.notes %></p>
+				</div>
 			</div>
 			<% end %>
 
