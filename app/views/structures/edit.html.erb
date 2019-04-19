@@ -9,7 +9,7 @@
 
 			<div class="form-group">
 			  <%= label_tag 'Acteur, partenaire, ou les deux ?' %>
-				<%= select_tag(:status, options_for_select([['Choix', "3"], ['Acteur', "0"], ['Partenaire', "1"], ['Les deux', "2"]]), {:class => "form-control"}) %>
+				<%= select_tag(:status, options_for_select([['Choix', "3"], ['Acteur', "0"], ['Partenaire', "1"], ['Acteur & Partenaire', "2"]]), {:class => "form-control"}) %>
 			</div>
 
 			<div class="form-group">
@@ -63,6 +63,11 @@
 			      	<%= label_tag 'Ville' %>
 					<%= text_field_tag 'city', @structure.city, :class => "form-control" %>
 			    </div>
+			</div>
+
+			<div class="form-group">
+			<%= label_tag 'Pays' %>
+			<%= text_field_tag 'country', @structure.country, :class => "form-control" %>
 			</div>
 
 			<div class="row form-group">

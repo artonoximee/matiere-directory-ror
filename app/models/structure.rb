@@ -18,4 +18,14 @@ class Structure < ApplicationRecord
 	has_one :association_detail
 
 	enum status: {player: "0", partner: "1", both: "2"}
+
+	def status_fr
+		if self.status == "player"
+			return "Acteur"
+		elsif self.status == "partner"
+			return "Partenaire"
+		else
+			return "Acteur & Partenaire"
+		end
+	end
 end

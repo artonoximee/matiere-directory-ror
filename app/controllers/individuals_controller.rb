@@ -51,9 +51,8 @@ class IndividualsController < ApplicationController
         @individual.structure_individuals[0].destroy
         @individual.structure_individuals[1].update(structure_id: params[:structure_2_id], individual: @individual)
 
-      when @individual.structures != [] && params[:structure_id] != "0" && params[:structure_2_id] == "0"
+      when @individual.structures == 1 && params[:structure_id] != "0" && params[:structure_2_id] == "0"
         @individual.structure_individuals[0].update(structure_id: params[:structure_id], individual: @individual)
-        @individual.structure_individuals[1].destroy
 
       when @individual.structures == [] && params[:structure_id] != "0"
         StructureIndividual.create(structure_id: params[:structure_id], individual: @individual)

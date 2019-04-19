@@ -64,14 +64,17 @@
 			<% end %>
 
 			<% if @individual.structures == [] %>
-			<%= label_tag 'Appartient à la structure' %>
-			<%= select_tag(:structure_id, options_for_select(@structures), {:class => "form-control"}) %>
+			<div class="form-group">
+				<%= label_tag 'Appartient à la structure' %>
+				<%= select_tag(:structure_id, options_for_select(@structures), {:class => "form-control"}) %>
+			</div>
 			<% end %>
-			<br>
+			
 			<hr>
+
 			<div class="form-group">
 				<%= label_tag 'Notes' %>
-				<%= text_area_tag 'notes', "", :placeholder => "Notes supplémentaires", :class => "form-control", :rows => "4" %>
+				<%= text_area_tag 'notes', @individual.notes, :class => "form-control", :rows => "4" %>
 			</div>
 
 			<br>

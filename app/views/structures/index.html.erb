@@ -9,7 +9,7 @@
 			  	<% @structures.each do |structure| %>
 					<li class="list-group-item align-items-center"><%= link_to structure.name, structure_path(structure.id) %>
 						<br/><span class="small"><%= structure.city %> | <%= StructureType.find(structure.structure_type_id).name %> | <%= StructureClassification.find(structure.structure_classification_id).name %></span>
-						<span class="float-right small"><%= structure.creation %></span>
+						<span class="float-right small">créé en <%= structure.creation %></span>
 					</li>
 				<% end %>
 			  </ul>
