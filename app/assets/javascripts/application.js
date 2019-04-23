@@ -12,7 +12,9 @@
 //
 //= require jquery3
 //= require jquery_ujs
+//= require leaflet
 //= require activestorage
+//= require jquery-readyselector
 //= require_tree .
 
 $(document).ready(function () {

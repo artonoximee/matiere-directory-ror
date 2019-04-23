@@ -62,6 +62,9 @@ class Admin::StructuresController < ApplicationController
       association_details = AssociationDetail.find(@structure.association_detail.id)
       association_details.update(object: params[:object], supporters_amount: params[:number_supporters].to_i)
     end
+
+    @structure.get_lat_lng
+    
     redirect_to structure_path(@structure.id)
   end
 
