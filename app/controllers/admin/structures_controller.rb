@@ -16,6 +16,11 @@ class Admin::StructuresController < ApplicationController
   end
 
   def create
+    if params[:active] == "true"
+      params[:active] = true
+    else
+      params[:active] = false
+    end
     @structure = Structure.create(structure_type_id: params[:structure_type_id], structure_classification_id: params[:structure_classification_id], name: params[:name], description: params[:description], address: params[:address], zip_code: params[:zip_code], city: params[:city], country: params[:country], telephone: params[:telephone], email: params[:email], website: "http://" + params[:website], facebook: "http://" + params[:facebook], twitter: "http://" + params[:twitter], instagram: "http://" + params[:instagram], creation: params[:creation], staff_number: params[:staff_number], status: params[:status], notes: params[:notes], public: params[:public], active: params[:active])
     if params[:association_details] == "1"
       AssociationDetail.create(structure_id: @structure.id, supporters_amount: params[:number_supporters].to_i, object: params[:object])
@@ -30,6 +35,11 @@ class Admin::StructuresController < ApplicationController
   end
 
   def update
+    if params[:active] == "true"
+      params[:active] = true
+    else
+      params[:active] = false
+    end
     @structure = Structure.find(params[:id])
     if params[:status] == "3" && params[:active] == "3" && params[:public] == "3"
       @structure.update(structure_type_id: params[:structure_type_id], structure_classification_id: params[:structure_classification_id], name: params[:name], description: params[:description], address: params[:address], zip_code: params[:zip_code], city: params[:city], country: params[:country], telephone: params[:telephone], email: params[:email], website: "http://" + params[:website], facebook: "http://" + params[:facebook], twitter: "http://" + params[:twitter], instagram: "http://" + params[:instagram], creation: params[:creation], staff_number: params[:staff_number], notes: params[:notes])
