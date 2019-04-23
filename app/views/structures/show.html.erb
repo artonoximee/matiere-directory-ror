@@ -7,29 +7,52 @@
 			    <h2 class="card-title"><b><%= @structure.name %></b></h2>
 			    <span class="badge badge-secondary"><%= @structure_classification.name %></span><br>
 			    <span class="badge badge-info"><%= @structure_type.name %></span><br>
-				<span class="badge badge-light"><%= @structure.status_fr %></span>
+				<span class="badge badge-light"><%= @structure.status_fr %></span> <span class="badge badge-light"><%= @structure.public_fr %></span> <span class="badge badge-light"><%= @structure.active? %></span>
+				<% if @structure.creation != nil %>
 			   	<span class="float-right">Créé en <%= @structure.creation %></span>
+			   	<% end %>
 			  </div>
 			  <ul class="list-group list-group-flush">
-			  	<li class="list-group-item"><b>Description</b> : <%= @structure.description %></li>
+			  	<li class="list-group-item"><b>Description</b> : 
+			  		<% if @structure.staff_number != nil %>
+			  		<%= @structure.description %>
+			  		<% else %>
+			  		<i>non informée</i>
+			  		<% end %>
+			  	</li>
+			  	<% if @structure.staff_number != nil %>
 			  	<li class="list-group-item"><b>Nombre d'employés / de membres actifs</b> : <%= @structure.staff_number %></li>
+			  	<% end %>
+			  	<% if @structure.address != "" %>
 			    <li class="list-group-item"><b>Adresse</b> : <%= @structure.address %>, <%= @structure.zip_code %>, <%= @structure.city %>, <%= @structure.country.upcase %></li>
-			    <li class="list-group-item"><b>Email</b> : <%= link_to @structure.email, "mailto:#{@structure.email}" %> 
+			    <% end %>
+			    <li class="list-group-item"><b>Email</b> : 
+			    	<% if @structure.email != "" %>
+			    	<%= link_to @structure.email, "mailto:#{@structure.email}" %>
+			    	<% else %>
+			    	<i>non informé</i>
+			    	<% end %>
+
 			    	<% if @structure.telephone != "" %>
 			    	<span class="float-right">Telephone : <%= @structure.telephone %></span>
 			    	<% end %>
 			    </li>
-			    <li class="list-group-item"><b>Site internet</b> : <a href="<%= @structure.website %>"><%= @structure.website %></a>
+			    <li class="list-group-item"><b>Site internet</b> : 
+			    	<% if @structure.website != "http://" %>
+			    	<a href="<%= @structure.website %>"><%= @structure.website %></a>
+			    	<% else %>
+			    	<i>non informé</i>
+			    	<% end %>
 			    	<span class="float-right">
-			    		<% if @structure.facebook != "" %>
+			    		<% if @structure.facebook != "http://" %>
 			    			<a href="<%= @structure.facebook %>" target="_blank">
 			    			<i class="fab fa-facebook-f"></i></a> &nbsp;&nbsp;&nbsp;
 			    		<% end %>
-			    		<% if @structure.twitter != "" %>
+			    		<% if @structure.twitter != "http://" %>
 			    			<a href="<%= @structure.twitter %>" target="_blank">
 			    			<i class="fab fa-twitter"></i></a> &nbsp;&nbsp;&nbsp;
 			    		<% end %>
-			    		<% if @structure.instagram != "" %>
+			    		<% if @structure.instagram != "http://" %>
 			    			<a href="<%= @structure.instagram %>" target="_blank">
 			    			<i class="fab fa-instagram"></i></a>
 			    		<% end %>
@@ -75,14 +98,18 @@
 			</div>
 			<% end %>
 
-			<% if @structure.association_detail %>
+			<% if @structure.association_detail && @structure.association_detail.supporters_amount != 0 || @structure.association_detail.object != "" %>
 			<div class="card" style="margin-top: 30px">
 				<div class="card-body">
 					<h5 class="card-title">Détails de l'association</h5>
 				</div>
 				<ul class="list-group list-group-flush">
+					<% if @structure.association_detail.supporters_amount != 0 %>
 			  		<li class="list-group-item"><b>Nombre d'adhérents</b> : <%= @structure.association_detail.supporters_amount %></li>
+			  		<% end %>
+			  		<% if @structure.association_detail.object != "" %>
 			  		<li class="list-group-item"><b>Objet de l'association</b> : <%= @structure.association_detail.object %></li>
+			  		<% end %>
 			  	</ul>
 			</div>
 			<% end %>

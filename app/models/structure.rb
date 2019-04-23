@@ -19,6 +19,8 @@ class Structure < ApplicationRecord
 
 	enum status: {player: "0", partner: "1", both: "2"}
 
+	enum public: {large_public: "0", professional: "1", for_all: "2"}
+
 	def status_fr
 		if self.status == "player"
 			return "Acteur"
@@ -28,4 +30,23 @@ class Structure < ApplicationRecord
 			return "Acteur & Partenaire"
 		end
 	end
+
+	def public_fr
+		if self.public == "large_public"
+			return "Grand Public"
+		elsif self.public == "professional"
+			return "Professionnel"
+		else
+			return "Grand public & Professionnel"
+		end
+	end
+
+	def active?
+		if self.active == true
+			return "Actif"
+		else
+			return "Non Actif"
+		end
+	end
+
 end

@@ -29,6 +29,18 @@
 			    </div>
 			</div>
 
+			<div class="row form-group">
+			    <div class="col">
+			      	<%= label_tag 'Actif ou non actif ?' %>
+					<%= select_tag(:active, options_for_select([['Choix', "3"], ['Actif', true], ['Non actif', false]]), {:class => "form-control"}) %>
+			    </div>
+			   
+			    <div class="col">
+			      	<%= label_tag 'Pour quel public ?' %>
+					<%= select_tag(:public, options_for_select([['Choix', "3"], ["Grand public", "0"], ["Professionnel", "1"], ["Professionnel et grand public", "2"]]), {:class => "form-control"}) %>
+			    </div>
+			</div>
+
 			<% if @structure.association_detail %>
 			<div class="form-group">
 			<%= label_tag "Nombre d'adhérents" %>

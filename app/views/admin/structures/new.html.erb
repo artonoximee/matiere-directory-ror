@@ -30,6 +30,18 @@
 			    </div>
 			</div>
 
+			<div class="row form-group">
+			    <div class="col">
+			      	<%= label_tag 'Actif ou non actif ?' %>
+					<%= select_tag(:active, options_for_select([['Actif', true], ['Non Actif', false]]), {:class => "form-control"}) %>
+			    </div>
+			   
+			    <div class="col">
+			      	<%= label_tag 'Pour quel public ?' %>
+					<%= select_tag(:public, options_for_select([["Grand public", "0"], ["Professionnel", "1"], ["Professionnel et Grand public", "2"]]), {:class => "form-control"}) %>
+			    </div>
+			</div>
+
 			<div class="form-group">
 			<%= check_box_tag 'association_details' %>
 			<small><%= label_tag "Ajouter des détails d'association (nombre d'adhérents, objet de l'association)" %></small>
@@ -83,7 +95,7 @@
 			   
 			    <div class="col">
 			      	<%= label_tag 'Telephone' %>
-					<%= text_field_tag 'telephone', "", :placeholder => "Numéro de téléphone", :class => "form-control integeronly" %>
+					<%= text_field_tag 'telephone', "", :placeholder => "Numéro de téléphone", :class => "form-control" %>
 			    </div>
 			</div>
 
