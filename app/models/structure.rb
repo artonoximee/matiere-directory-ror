@@ -1,6 +1,10 @@
 class Structure < ApplicationRecord
-	#belongs_to :structure_type
-	#belongs_to :structure_classification
+	include Geokit::Geocoders
+
+	after_create :get_lat_lng
+
+	belongs_to :structure_type
+	belongs_to :structure_classification
 
 	has_many :structure_individuals
 	has_many :individuals, through: :structure_individuals
@@ -20,6 +24,12 @@ class Structure < ApplicationRecord
 	enum status: {player: "0", partner: "1", both: "2"}
 
 	enum public: {large_public: "0", professional: "1", for_all: "2"}
+
+	acts_as_mappable :default_units => :kms,
+                   :default_formula => :sphere,
+                   :distance_field_name => :distance,
+                   :lat_column_name => :lat,
+                   :lng_column_name => :lng
 
 	def status_fr
 		if self.status == "player"
@@ -46,6 +56,18 @@ class Structure < ApplicationRecord
 			return "Actif"
 		else
 			return "Non Actif"
+		end
+	end
+
+	def full_address
+		return self.address + ", " + self.zip_code + ", " +  self.city + ", " + self.country
+	end
+
+	def get_lat_lng
+		full_address = self.address + ", " + self.zip_code + ", " +  self.city + ", " + self.country
+		loc = Geokit::Geocoders::GoogleGeocoder.geocode(full_address)
+		if loc.success
+			self.update(lat: loc.lat, lng: loc.lng)
 		end
 	end
 
