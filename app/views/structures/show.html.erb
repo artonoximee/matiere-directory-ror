@@ -15,7 +15,7 @@
 			  <ul class="list-group list-group-flush">
 			  	<li class="list-group-item"><b>Description</b> : 
 			  		<% if @structure.description != "" %>
-			  		<%= @structure.description %>
+			  		<%= break_the_lines(@structure.description) %>
 			  		<% else %>
 			  		<i>non informée</i>
 			  		<% end %>
@@ -108,7 +108,7 @@
 			  		<li class="list-group-item"><b>Nombre d'adhérents</b> : <%= @structure.association_detail.supporters_amount %></li>
 			  		<% end %>
 			  		<% if @structure.association_detail.object != "" %>
-			  		<li class="list-group-item"><b>Objet de l'association</b> : <%= @structure.association_detail.object %></li>
+			  		<li class="list-group-item"><b>Objet de l'association</b> : <%= break_the_lines(@structure.association_detail.object) %></li>
 			  		<% end %>
 			  	</ul>
 			</div>
@@ -120,7 +120,7 @@
 			<div class="card" style="margin-top: 30px">
 				<div class="card-body">
 					<h5 class="card-title">Notes</h5>
-					<p><%= @structure.notes %></p>
+					<p><%= break_the_lines(@structure.notes) %></p>
 				</div>
 			</div>
 			<% end %>

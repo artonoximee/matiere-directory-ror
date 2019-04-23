@@ -39,7 +39,7 @@
 			<div class="card" style="margin-top: 30px">
 				<div class="card-body">
 					<h5 class="card-title">Notes</h5>
-					<p><%= @individual.notes %></p>
+					<p><%= break_the_lines(@individual.notes) %></p>
 				</div>
 			</div>
 			<% end %>

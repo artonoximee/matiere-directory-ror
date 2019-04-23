@@ -14,7 +14,7 @@
 			  	<li class="list-group-item"><b>Ville</b> : <%= @reference.city.capitalize %> </li>
 			  	<li class="list-group-item"><b>PAYS</b> : <%= @reference.country.upcase %> </li>
 			  	<li class="list-group-item"><b>Lien</b> : <a href="<%= @reference.link %>" target="_blank"> <%= @reference.link %> </a></li>
-			  	<li class="list-group-item"><b>Résumé</b> : <%= @reference.summary %></li>
+			  	<li class="list-group-item"><b>Résumé</b> : <%= break_the_lines(@reference.summary) %></li>
 			  </ul>
 			</div>
 
