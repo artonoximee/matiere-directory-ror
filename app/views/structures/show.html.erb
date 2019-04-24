@@ -114,6 +114,9 @@
 			</div>
 			<% end %>
 
+			<div id="mapid" class="card" style="height: 500px; margin-top: 30px">
+			 </div>
+
 			<% if user_signed_in? && current_user.admin == true %>
 
 			<% if @structure.notes != "" %>
@@ -124,9 +127,6 @@
 				</div>
 			</div>
 			<% end %>
-
-			 <div id="mapid" class="card" style="height: 500px; margin-top: 30px">
-			 </div>
 
 			<div class="float-right" style="margin-top: 30px">
 				<%= link_to "Éditer", edit_admin_structure_path(@structure.id), :class => "btn btn-warning" %> &nbsp;
