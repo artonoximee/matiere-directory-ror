@@ -52,6 +52,6 @@ $(document).ready(function () {
     };
 
     $(".integeronly").inputFilter(function(value) {
-    return /^\d*$/.test(value); });
+        return /^\d*$/.test(value); });
 
 });
