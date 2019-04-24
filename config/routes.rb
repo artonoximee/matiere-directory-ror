@@ -14,6 +14,7 @@ Rails.application.routes.draw do
 	  resources :structure_relations, only: [:index, :create, :new, :destroy]
 	  resources :parent_child_relations, only: [:index, :new, :create, :destroy]
 	  resources :references
+    resources :reference_classes, only: [:new, :create, :edit, :update, :destroy]
 	  resources :individuals
   end
 end

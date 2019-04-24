@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_23_181240) do
+ActiveRecord::Schema.define(version: 2019_04_24_083346) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -61,6 +61,12 @@ ActiveRecord::Schema.define(version: 2019_04_23_181240) do
     t.index ["reference_id"], name: "index_reference_authors_on_reference_id"
   end
 
+  create_table "reference_classes", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "references", force: :cascade do |t|
     t.string "title"
     t.integer "year"
@@ -72,6 +78,8 @@ ActiveRecord::Schema.define(version: 2019_04_23_181240) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.text "summary"
+    t.bigint "reference_class_id"
+    t.index ["reference_class_id"], name: "index_references_on_reference_class_id"
   end
 
   create_table "structure_classifications", force: :cascade do |t|
