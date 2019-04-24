@@ -58,6 +58,11 @@
 			    		<% end %>
 			    	</span>
 			    </li>
+			    <% if @structure.partners != [] %>
+			    <li class="list-group-item">
+			    	<b>Est soutenu par</b> : <%= @structure.array_partners.join(", ") %>
+			    </li>
+			    <% end %>
 			    <% if @structure.is_supported_by != [] %>
 			    <li class="list-group-item">
 			    	<b>Est supporté par</b> : <% @structure.is_supported_by.each do |support| %><%= link_to support.name, structure_path(support.id) %><% end %>

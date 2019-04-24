@@ -17,5 +17,6 @@ Rails.application.routes.draw do
     resources :reference_classes, only: [:new, :create, :edit, :update, :destroy]
 	  resources :individuals
     resources :partners, only: [:new, :create, :edit, :update, :destroy]
+    resources :structure_partners, only: [:new, :create, :destroy]
   end
 end

@@ -74,4 +74,12 @@ class Structure < ApplicationRecord
 		end
 	end
 
+	def array_partners
+		array_partners = []
+		self.partners.each do |partner|
+			array_partners << partner.name
+		end
+		return array_partners
+	end
+
 end

@@ -32,7 +32,10 @@
             <%= link_to "Ajouter un partenaire", new_admin_partner_path, :class => "small" %>
         </li>
         <li class="nav-item">
-            <%= link_to "Ajouter une relation entre deux structures", new_admin_structure_relation_path, :class => "small" %>
+            <%= link_to "Ajouter relation partenaire/structure", new_admin_structure_partner_path, :class => "small" %>
+        </li>
+        <li class="nav-item">
+            <%= link_to "Ajouter relation structure/structure", new_admin_structure_relation_path, :class => "small" %>
         </li>
         <li class="nav-item">
             <%= link_to "Ajouter relation parent/enfant", new_admin_parent_child_relation_path, :class => "small" %>

@@ -1,0 +1,47 @@
+<div class="container">
+	<div class="row justify-content-center">
+		<div class="col-lg-8">
+
+			<h2>Ajouter une nouvelle relation entre une structure et son partenaire</h2>
+			<br>
+
+			<%= form_tag url_for(action: 'create'), method: "post" do %>
+
+			<div class="form-group">
+			  <%= label_tag 'La structure suivante' %>
+				<%= select_tag(:structure_id, options_for_select(@structures), {:class => "form-control"}) %>
+			</div>
+
+			<br>
+
+			<div class="form-group">
+			  <%= label_tag 'Est supportée par le partenaire suivant :' %>
+				<%= select_tag(:partner_id, options_for_select(@partners), {:class => "form-control"}) %>
+			</div>
+
+			
+
+			<br>
+			<%= submit_tag "Créer une nouvelle relation entre une structure et un partenaire", :class => "btn btn-lg btn-sm btn-block btn-success" %>
+			<br><br>
+			<% end %>
+
+			<h2>Relations existantes</h2><br>
+
+			<div class="card">
+			  <ul class="list-group list-group-flush">
+			  	<% @structure_partners.each do |structure_partner| %>
+					<li class="list-group-item d-flex justify-content-between align-items-center">
+						<span><%= link_to Structure.find(structure_partner.structure_id).name, structure_path(structure_partner.structure_id) %> est supporté par <b><%= structure_partner.partner.name %></b>
+						</span>
+						<span>
+							<%= link_to "Supprimer la relation", admin_structure_partner_path(structure_partner.id), :class => "btn btn-danger btn-sm", data: { confirm: "Êtes-vous sûr(e) ?" }, :method => "delete" %>
+						</span>
+					</li>
+				<% end %>
+			  </ul>
+			</div>
+
+		</div>
+	</div>
+</div>

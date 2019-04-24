@@ -4,6 +4,7 @@ class Admin::StructureRelationsController < ApplicationController
   def index
     @structure_relations = StructureRelation.all
   end
+  
   def new
     @structures = []
     Structure.all.each do |structure|
