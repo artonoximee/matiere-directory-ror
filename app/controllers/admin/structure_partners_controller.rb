@@ -1,16 +1,16 @@
 class Admin::StructurePartnersController < ApplicationController
 	def new
-		@structure_partners = StructurePartner.all
+	@structure_partners = StructurePartner.all
 
-		@structures = []
-    Structure.all.each do |structure|
-      @structures << [structure.name, structure.id]
-    end
+	@structures = []
+  Structure.all.each do |structure|
+    @structures << [structure.name, structure.id]
+  end
 
-    @partners = []
-    Partner.all.each do |partner|
-    	@partners << [partner.name, partner.id]
-    end
+  @partners = []
+  Partner.all.each do |partner|
+  	@partners << [partner.name, partner.id]
+  end
 	end
 
 	def create
