@@ -1,0 +1,22 @@
+<div class="container">
+	<div class="row justify-content-center">
+		<div class="col-lg-8">
+
+			<h2>Editer une classification de référence</h2>
+			<br>
+
+			<%= form_tag url_for(action: 'update'), method: "put" do %>
+
+			<div class="form-group">
+			<%= label_tag 'Nom de la classification de référence' %>
+			<%= text_field_tag 'name', @reference_class.name, :class => "form-control" %>
+			</div>
+
+			<br>
+			<%= submit_tag "Editer une classification de référence", :class => "btn btn-lg btn-sm btn-block btn-success" %>
+			<br><br>
+			<% end %>
+
+		</div>
+	</div>
+</div>

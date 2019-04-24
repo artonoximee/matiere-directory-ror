@@ -1,0 +1,43 @@
+<div class="container">
+	<div class="row justify-content-center">
+		<div class="col-lg-8">
+
+			<h2>Ajouter une nouvelle classification de référence</h2>
+			<br>
+
+			<%= form_tag url_for(action: 'create'), method: "post" do %>
+
+			<div class="form-group">
+			<%= label_tag 'Nom de la classification de référence' %>
+			<%= text_field_tag 'name', "", :placeholder => "Nom de la classification de référence", :class => "form-control" %>
+			</div>
+
+			<br>
+			<%= submit_tag "Créer une nouvelle classification de référence", :class => "btn btn-lg btn-sm btn-block btn-success" %>
+			<br><br>
+			<% end %>
+
+			<hr/>
+
+			<h2>Classifications de références</h2>
+			<br>
+
+			<div class="card">
+			  <ul class="list-group list-group-flush">
+			  	<% @reference_classes.each do |reference_class| %>
+					<li class="list-group-item d-flex justify-content-between align-items-center">
+						<span><%= reference_class.name %>
+						</span>
+						<span>
+							<%= link_to "Éditer", edit_admin_reference_class_path(reference_class.id), :class => "btn btn-warning btn-sm" %>
+
+							<%= link_to "X", admin_reference_class_path(reference_class.id), :class => "btn btn-danger btn-sm", data: { confirm: "Attention ! Supprimer un type de catégorie va entraîner la suppression des références catégorisées selon cette classification. Êtes-vous sûr(e) de vouloir continuer cette action ?" }, :method => "delete" %>
+						</span>
+					</li>
+				<% end %>
+			  </ul>
+			</div>
+
+		</div>
+	</div>
+</div>
