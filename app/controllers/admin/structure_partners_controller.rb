@@ -1,14 +1,14 @@
 class Admin::StructurePartnersController < ApplicationController
 	def new
-	@structure_partners = StructurePartner.all
+	@structure_partners = StructurePartner.all.order("updated_at DESC")
 
 	@structures = []
-  Structure.all.each do |structure|
+  Structure.all.order("name ASC").each do |structure|
     @structures << [structure.name, structure.id]
   end
 
   @partners = []
-  Partner.all.each do |partner|
+  Partner.all.order("name ASC").each do |partner|
   	@partners << [partner.name, partner.id]
   end
 	end

@@ -78,12 +78,12 @@ class Admin::StructuresController < ApplicationController
 
   def set_variables
     @structure_types = []
-    StructureType.all.each do |structure_type|
+    StructureType.all.order("name ASC").each do |structure_type|
       @structure_types << [structure_type.name, structure_type.id]
     end
 
     @structure_classifications = []
-    StructureClassification.all.each do |structure_classification|
+    StructureClassification.all.order("name ASC").each do |structure_classification|
       @structure_classifications << [structure_classification.name, structure_classification.id]
     end
   end

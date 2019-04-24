@@ -61,7 +61,7 @@ class Admin::ReferencesController < ApplicationController
 
   def set_variables
     @reference_classes = []
-    ReferenceClass.all.each do |reference_class|
+    ReferenceClass.all.order("name ASC").each do |reference_class|
       @reference_classes << [reference_class.name, reference_class.id]
     end
   end

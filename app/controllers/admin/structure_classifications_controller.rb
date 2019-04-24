@@ -2,7 +2,7 @@ class Admin::StructureClassificationsController < ApplicationController
   before_action :is_admin, only: [:new, :create, :edit, :update, :destroy]
   
   def new
-    @structure_classifications = StructureClassification.all
+    @structure_classifications = StructureClassification.all.order("name ASC")
   end
 
   def create

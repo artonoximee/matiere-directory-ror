@@ -1,7 +1,7 @@
 class ReferencesController < ApplicationController
 
   def index
-    @references = Reference.all
+    @references = Reference.all.order("title ASC")
   end
 
   def show

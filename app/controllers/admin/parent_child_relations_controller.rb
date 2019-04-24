@@ -2,10 +2,10 @@ class Admin::ParentChildRelationsController < ApplicationController
   before_action :is_admin, only: [:new, :create, :destroy]
 
   def new
-    @parent_child_relations = ParentChildRelation.all
+    @parent_child_relations = ParentChildRelation.all.order("updated_at DESC")
 
   	@structures = []
-    Structure.all.each do |structure|
+    Structure.all.order("name ASC").each do |structure|
       @structures << [structure.name, structure.id]
     end
   end
