@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_24_083346) do
+ActiveRecord::Schema.define(version: 2019_04_24_094656) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -50,6 +50,12 @@ ActiveRecord::Schema.define(version: 2019_04_24_083346) do
     t.datetime "updated_at", null: false
     t.index ["child_id"], name: "index_parent_child_relations_on_child_id"
     t.index ["parent_id"], name: "index_parent_child_relations_on_parent_id"
+  end
+
+  create_table "partners", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "reference_authors", force: :cascade do |t|
@@ -95,6 +101,15 @@ ActiveRecord::Schema.define(version: 2019_04_24_083346) do
     t.datetime "updated_at", null: false
     t.index ["individual_id"], name: "index_structure_individuals_on_individual_id"
     t.index ["structure_id"], name: "index_structure_individuals_on_structure_id"
+  end
+
+  create_table "structure_partners", force: :cascade do |t|
+    t.bigint "structure_id"
+    t.bigint "partner_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["partner_id"], name: "index_structure_partners_on_partner_id"
+    t.index ["structure_id"], name: "index_structure_partners_on_structure_id"
   end
 
   create_table "structure_relations", force: :cascade do |t|

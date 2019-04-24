@@ -7,7 +7,7 @@ class Admin::ReferenceClassesController < ApplicationController
 
 	def create
 		ReferenceClass.create(name: params[:name])
-    redirect_to new_admin_reference_class_path
+    	redirect_to new_admin_reference_class_path
 	end
 
 	def edit

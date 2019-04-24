@@ -4,21 +4,16 @@
     </div>
 
     <ul class="list-unstyled components">
-        <p>Version Alpha Expérimentale 0.4</p>
+        <p>Version Alpha Expérimentale 0.6</p>
+        <hr>
         <li><small><b><i class="fas fa-sitemap"></i> Annuaire</b></small></li>
         <li>
             <%= link_to "Toutes les structures", root_path, :class => "small" %>
         </li>
+        <% if user_signed_in? && current_user.admin == true %>
         <li>
             <%= link_to "Toutes les personnes", individuals_path, :class => "small" %>
         </li>
-        <li>
-            <%= link_to "Toutes les relations entre structures", structure_relations_path, :class => "small" %>
-        </li>
-        <li>
-            <%= link_to "Toutes les relations parent/enfant", parent_child_relations_path, :class => "small" %>
-        </li>
-        <% if user_signed_in? && current_user.admin == true %>
         <hr>
         <li><small><b><i class="fas fa-plus"></i> Ajout de nouvelles informations</b></small></li>
         <li>
@@ -27,11 +22,17 @@
         <li>
             <%= link_to "Ajouter une personne", new_admin_individual_path, :class => "small" %>
         </li>
-        <li class="nav-item">
-            <%= link_to "Ajouter une relation entre deux structures", new_admin_structure_relation_path, :class => "small" %>
+        <li>
+            <%= link_to "Gérer les partenaires", new_admin_partner_path, :class => "small" %>
         </li>
         <li class="nav-item">
-            <%= link_to "Ajouter relation parent/enfant", new_admin_parent_child_relation_path, :class => "small" %>
+            <%= link_to "Gérer relations partenaire/structure", new_admin_structure_partner_path, :class => "small" %>
+        </li>
+        <li class="nav-item">
+            <%= link_to "Gérer relations structure/structure", new_admin_structure_relation_path, :class => "small" %>
+        </li>
+        <li class="nav-item">
+            <%= link_to "Gérer relations parent/enfant", new_admin_parent_child_relation_path, :class => "small" %>
         </li>
         <hr>
         <li><small><b><i class="fas fa-edit"></i> Gérer les types et classifications</b></small></li>
