@@ -1,6 +1,8 @@
 class Reference < ApplicationRecord
 	has_many :reference_authors
 	has_many :authors, through: :reference_authors
+	
+	belongs_to :reference_class
 
 	def authors_array
 		authors = []

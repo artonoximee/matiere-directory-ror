@@ -5,7 +5,7 @@
 			<div class="card">
 			  <div class="card-body">
 			    <h5 class="card-title"><b><%= @reference.title %></b></h5>
-			   
+			   	<span class="badge badge-secondary"><%= @reference.reference_class.name %></span>
 			  </div>
 			  <ul class="list-group list-group-flush">
 			  	<li class="list-group-item"><b>Auteur.e.s</b> : <%= @reference.authors_array.join(', ') %></li>
