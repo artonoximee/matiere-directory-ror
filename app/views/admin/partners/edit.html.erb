@@ -1,0 +1,22 @@
+<div class="container">
+	<div class="row justify-content-center">
+		<div class="col-lg-8">
+
+			<h2>Editer un partenaire</h2>
+			<br>
+
+			<%= form_tag url_for(action: 'update'), method: "put" do %>
+
+			<div class="form-group">
+			<%= label_tag 'Nom du partenaire' %>
+			<%= text_field_tag 'name', @partner.name, :class => "form-control" %>
+			</div>
+
+			<br>
+			<%= submit_tag "Editer un partenaire", :class => "btn btn-lg btn-sm btn-block btn-success" %>
+			<br><br>
+			<% end %>
+
+		</div>
+	</div>
+</div>
