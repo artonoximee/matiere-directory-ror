@@ -12,6 +12,16 @@
 			<%= text_field_tag 'name', @partner.name, :class => "form-control" %>
 			</div>
 
+			<div class="form-group">
+			<%= label_tag 'Site internet du partenaire' %>
+			<div class="input-group mb-2">
+					<div class="input-group-prepend">
+		          		<div class="input-group-text">http://</div>
+		        	</div>
+				<%= text_field_tag 'website', @partner.website[7..-1], :class => "form-control" %>
+			</div>
+			</div>
+
 			<br>
 			<%= submit_tag "Editer un partenaire", :class => "btn btn-lg btn-sm btn-block btn-success" %>
 			<br><br>

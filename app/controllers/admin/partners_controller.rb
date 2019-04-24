@@ -6,7 +6,7 @@ class Admin::PartnersController < ApplicationController
 	end
 
 	def create
-		Partner.create(name: params[:name])
+		Partner.create(name: params[:name], website: "http://" + params[:website])
     redirect_to new_admin_partner_path
 	end
 
@@ -16,7 +16,7 @@ class Admin::PartnersController < ApplicationController
 
 	def update
 		partner = Partner.find(params[:id])
-    partner.update(name: params[:name])
+    partner.update(name: params[:name], website: "http://" + params[:website])
     redirect_to new_admin_partner_path
 	end
 

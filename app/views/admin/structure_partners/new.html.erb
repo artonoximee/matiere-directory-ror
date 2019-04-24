@@ -34,7 +34,7 @@
 			  <ul class="list-group list-group-flush">
 			  	<% @structure_partners.each do |structure_partner| %>
 					<li class="list-group-item d-flex justify-content-between align-items-center">
-						<span><%= link_to Structure.find(structure_partner.structure_id).name, structure_path(structure_partner.structure_id) %> est supporté par <b><%= structure_partner.partner.name %></b>
+						<span><%= link_to Structure.find(structure_partner.structure_id).name, structure_path(structure_partner.structure_id) %> est supporté par <%= link_to structure_partner.partner.name, structure_partner.partner.website, target: "_blank" %>
 						</span>
 						<span>
 							<%= link_to "Supprimer la relation", admin_structure_partner_path(structure_partner.id), :class => "btn btn-danger btn-sm", data: { confirm: "Êtes-vous sûr(e) ?" }, :method => "delete" %>

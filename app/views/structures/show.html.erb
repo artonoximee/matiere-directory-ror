@@ -60,27 +60,66 @@
 			    </li>
 			    <% if @structure.partners != [] %>
 			    <li class="list-group-item">
-			    	<b>Est soutenu par</b> : <%= @structure.array_partners.join(", ") %>
+			    	<% if @structure.partners.count == 1 %>
+			    		<b>Est soutenu par le partenaire</b> : 
+			    	<% else %>
+			    		<b>Est soutenu par les partenaires</b> :
+			    	<% end %>
+			    	<% i = 1 %>
+			    	<% @structure.partners.each do |partner| %>
+			    		<%= link_to partner.name, partner.website, target: "_blank" %><% if @structure.partners.count > 1 && i != @structure.partners.count %>, <% end %>
+			    		<% i += 1 %>
+			    	<% end %>
 			    </li>
 			    <% end %>
 			    <% if @structure.is_supported_by != [] %>
 			    <li class="list-group-item">
-			    	<b>Est supporté par</b> : <% @structure.is_supported_by.each do |support| %><%= link_to support.name, structure_path(support.id) %><% end %>
+			    	<% if @structure.is_supported_by.count == 1 %>
+			    		<b>Est soutenu par la structure</b> : 
+			    	<% else %>
+			    		<b>Est soutenu par les structures</b> : 
+			    	<% end %>
+
+			    	<% j = 1 %>
+			    	<% @structure.is_supported_by.each do |support| %>
+			    		<%= link_to support.name, structure_path(support.id) %><% if @structure.is_supported_by.count > 1 && j != @structure.is_supported_by.count %>, <% end %>
+			    		<% j += 1 %>
+			    	<% end %>
 			    </li>
 			    <% end %>
 			    <% if @structure.supports != [] %>
 			    <li class="list-group-item">
-			    	<b>Supporte</b> : <% @structure.supports.each do |support| %><%= link_to support.name, structure_path(support.id) %><% end %>
+			    	<% if @structure.supports.count == 1 %>
+			    		<b>Soutient la structure suivante</b> : 
+			    	<% else %>
+			    		<b>Soutient les structures suivantes</b> : 
+			    	<% end %>
+
+			    	<% k = 1 %>
+			    	<% @structure.supports.each do |support| %>
+			    		<%= link_to support.name, structure_path(support.id) %><% if @structure.supports.count > 1 && k != @structure.supports.count %>, <% end %>
+			    		<% k += 1 %>
+			    	<% end %>
 			    </li>
 			    <% end %>
 			    <% if @structure.child_structures != [] %>
 			    <li class="list-group-item">
-			    	<b>Est parent de</b> : <% @structure.child_structures.each do |child| %><%= link_to child.name, structure_path(child.id) %><% end %>
+			    	<b>Est parent de</b> : 
+			    	<% l = 1 %>
+			    	<% @structure.child_structures.each do |child| %>
+			    		<%= link_to child.name, structure_path(child.id) %><% if @structure.child_structures.count > 1 && l != @structure.child_structures.count %>, <% end %>
+			    		<% l += 1 %>
+			    	<% end %>
 			    </li>
 			    <% end %>
 			    <% if @structure.parent_structures != [] %>
 			    <li class="list-group-item">
-			    	<b>Est enfant de</b> : <% @structure.parent_structures.each do |parent| %><%= link_to parent.name, structure_path(parent.id) %><% end %>
+			    	<b>Est enfant de</b> : 
+			    	<% m = 1 %>
+			    	<% @structure.parent_structures.each do |parent| %>
+			    		<%= link_to parent.name, structure_path(parent.id) %><% if @structure.parent_structures.count > 1 && m != @structure.parent_structures.count %>, <% end %>
+			    		<% m += 1 %>
+			    	<% end %>
 			    </li>
 			    <% end %>
 			  </ul>
