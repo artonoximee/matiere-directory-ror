@@ -19,6 +19,9 @@ class Structure < ApplicationRecord
 	has_many :supports_structures, foreign_key: "supporting_id", class_name: "StructureRelation"
 	has_many :supports, through: :supports_structures, source: :supported
 
+	has_many :structure_partners
+	has_many :partners, through: :structure_partners
+
 	has_one :association_detail
 
 	enum status: {player: "0", partner: "1", both: "2"}
