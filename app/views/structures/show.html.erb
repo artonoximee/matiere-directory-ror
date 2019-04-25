@@ -39,7 +39,7 @@
 			    </li>
 			    <li class="list-group-item"><b>Site internet</b> : 
 			    	<% if @structure.website != "http://" %>
-			    	<a href="<%= @structure.website %>"><%= @structure.website %></a>
+			    	<a href="<%= @structure.website %>" target="_blank"><%= @structure.website %></a>
 			    	<% else %>
 			    	<i>non informé</i>
 			    	<% end %>
