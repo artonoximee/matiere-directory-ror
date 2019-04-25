@@ -10,6 +10,9 @@ class Project < ApplicationRecord
 	has_many :partner_projects
 	has_many :partners, through: :partner_projects
 
+	has_many :structure_projects
+	has_many :structures, through: :structure_projects
+
 	enum status: {executed: "0", ongoing: "1", upcoming: "2"}
 
 	acts_as_mappable :default_units => :kms,
@@ -26,6 +29,14 @@ class Project < ApplicationRecord
 		else
 			return "À venir"
 		end
+	end
+
+	def structures_array
+		structures = []
+		self.structures.each do |structure|
+			structures << structure.name
+		end
+		return structures
 	end
 
   def get_lat_lng

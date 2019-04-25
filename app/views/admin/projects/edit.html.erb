@@ -7,6 +7,37 @@
 			<% end %><br><br>
 			<hr>
 
+			<h2>Editer les structures porteuses du projet</h2>
+			<br>
+
+			<p>Structures porteuses du projet</p>
+			<div class="card" style="margin-top: -5px; margin-bottom: 20px">
+				<ul class="list-group list-group-flush">
+					<% @project.structure_projects.each do |structure_project| %>
+					<li class="list-group-item align-items-center">
+						<span class="float-left"><%= structure_project.structure.name %></span>
+						<span class="float-right"><%= link_to "X", admin_structure_project_path(structure_project.id), :class => "btn btn-danger btn-sm", data: { confirm: "Êtes-vous sûr(e) de vouloir continuer cette action ?" }, :method => "delete" %></span>
+					</li>
+					<% end %>
+				</ul>
+			</div>
+
+			<%= form_tag admin_structure_projects_path, :method => :post do %>
+
+			<div class="form-group">
+			<%= label_tag 'Ajouter une structure porteuse du projet' %>
+			<%= select_tag(:structure_id, options_for_select(@structures), {:class => "form-control"}) %>
+			</div>
+			<br>
+
+			<%= hidden_field_tag :project_id, @project.id %>
+
+			<%= submit_tag "Ajouter une structure porteuse du projet", :class => "btn btn-lg btn-sm btn-block btn-success" %>
+			<% end %>
+			<br>
+
+			<hr>
+
 			<h2>Editer la classification du projet</h2>
 			<br>
 

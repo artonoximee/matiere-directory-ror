@@ -5,6 +5,13 @@
 			<div class="card">
 			  <div class="card-body">
 			    <h2 class="card-title"><b><%= @project.title %></b></h2>
+			    <h5>Un projet de
+			    	<% k = 1 %>
+			    	<% @project.structures.each do |structure| %>
+			    	<%= link_to structure.name, structure_path(structure.id) %><% if @project.structures.count > 1 && k != @project.structures.count %>, <% end %>
+			    	<% k += 1 %>
+			    	<% end %>
+			    </h5>
 					<span class="badge badge-light"><%= @project.status_fr %></span><br/>
 					<% @project.project_classes.each do |project_class| %>
 					<span class="badge badge-info"><%= project_class.name %></span> 

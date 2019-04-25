@@ -22,6 +22,9 @@ class Structure < ApplicationRecord
 	has_many :structure_partners
 	has_many :partners, through: :structure_partners
 
+	has_many :structure_projects
+	has_many :projects, through: :structure_projects
+
 	has_one :association_detail
 
 	enum status: {player: "0", partner: "1", both: "2"}

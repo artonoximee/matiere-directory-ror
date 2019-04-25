@@ -142,6 +142,23 @@
 			</div>
 			<% end %>
 
+			<% if @structure.projects.count > 0 %>
+			<div class="card" style="margin-top: 30px">
+				<div class="card-body">
+					<% if @structure.projects.count == 1 %>
+					<h5 class="card-title">Projet de <%= @structure.name %></h5>
+					<% else %>
+					<h5 class="card-title">Projets de <%= @structure.name %></h5>
+					<% end %>
+				</div>
+				<ul class="list-group list-group-flush">
+					<% @structure.projects.each do |project| %>
+			  		<li class="list-group-item"> <%= link_to project.title, project_path(project.id) %> </li>
+			  		<% end %>
+			  	</ul>
+			</div>
+			<% end %>
+
 			<% if @structure.association_detail %>
 			<div class="card" style="margin-top: 30px">
 				<div class="card-body">

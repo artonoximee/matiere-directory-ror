@@ -14,6 +14,10 @@ class Admin::ProjectsController < ApplicationController
 	def create
 		project = Project.create(title: params[:title], description: params[:description], website: "http://" + params[:website], status: params[:status], year: params[:year], address: params[:address], zip_code: params[:zip_code], city: params[:city], country: params[:country], notes: params[:notes])
 		ProjectProjectClass.create(project: project, project_class_id: params[:project_class_id])
+		StructureProject.create(structure_id: params[:structure_id], project: project)
+		if params[:second_structure] == "1"
+			StructureProject.create(structure_id: params[:second_structure_id], project: project)
+		end
 		if params[:second_class] == "1"
 			ProjectProjectClass.create(project: project, project_class_id: params[:second_project_class_id])
 		end
@@ -61,6 +65,11 @@ class Admin::ProjectsController < ApplicationController
     @partners = []
     Partner.all.order("name ASC").each do |partner|
       @partners << [partner.name, partner.id]
+    end
+
+    @structures = []
+    Structure.all.order("name ASC").each do |structure|
+    	@structures << [structure.name, structure.id]
     end
   end
 

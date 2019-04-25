@@ -2,7 +2,7 @@
 	<div class="row justify-content-center">
 		<div class="col-lg-8">
 
-			<h2>Ajouter une nouvelle structure</h2>
+			<h2>Ajouter un nouveau projet</h2>
 			<br>
 
 			<%= form_tag url_for(action: 'create'), method: "post" do %>
@@ -12,6 +12,22 @@
 			<%= label_tag 'Titre du projet' %>
 			<%= text_field_tag 'title', "", :placeholder => "Titre du projet", :class => "form-control" %>
 			</div>
+
+			<div class="form-group">
+				<%= label_tag "Structure à l'origine du projet" %>
+				<%= select_tag(:structure_id, options_for_select(@structures), {:class => "form-control"}) %>
+			</div>
+
+			<%= check_box_tag 'second_structure' %>
+			<small><%= label_tag "Ajouter une seconde structure au projet" %></small>
+				<br>
+
+				<div class="second_structure" id="secondstructure">
+					<div class="form-group">
+						<%= label_tag "Seconde structure à l'origine du projet" %>
+						<%= select_tag(:second_structure_id, options_for_select(@structures), {:class => "form-control"}) %>
+					</div>
+				</div>
 
 			<hr>
 
