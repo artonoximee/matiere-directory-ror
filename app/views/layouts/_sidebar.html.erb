@@ -10,6 +10,9 @@
         <li>
             <%= link_to "Toutes les structures", root_path, :class => "small" %>
         </li>
+        <li>
+            <%= link_to "Tous les projets", projects_path, :class => "small" %>
+        </li>
         <% if user_signed_in? && current_user.admin == true %>
         <li>
             <%= link_to "Toutes les personnes", individuals_path, :class => "small" %>
@@ -18,6 +21,9 @@
         <li><small><b><i class="fas fa-plus"></i> Ajout de nouvelles informations</b></small></li>
         <li>
             <%= link_to "Ajouter une structure", new_admin_structure_path, :class => "small" %>
+        </li>
+        <li>
+            <%= link_to "Ajouter un projet", new_admin_project_path, :class => "small" %>
         </li>
         <li>
             <%= link_to "Ajouter une personne", new_admin_individual_path, :class => "small" %>
@@ -41,6 +47,9 @@
         </li>
         <li class="nav-item">
             <%= link_to "Gérer les classifications de structures", new_admin_structure_classification_path, :class => "small" %>
+        </li>
+        <li class="nav-item">
+            <%= link_to "Gérer les classifications de projets", new_admin_project_class_path, :class => "small" %>
         </li>
         <% end %>
         <hr>

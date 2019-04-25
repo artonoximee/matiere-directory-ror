@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_24_152906) do
+ActiveRecord::Schema.define(version: 2019_04_25_124344) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -52,11 +52,52 @@ ActiveRecord::Schema.define(version: 2019_04_24_152906) do
     t.index ["parent_id"], name: "index_parent_child_relations_on_parent_id"
   end
 
+  create_table "partner_projects", force: :cascade do |t|
+    t.bigint "partner_id"
+    t.bigint "project_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["partner_id"], name: "index_partner_projects_on_partner_id"
+    t.index ["project_id"], name: "index_partner_projects_on_project_id"
+  end
+
   create_table "partners", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "website"
+  end
+
+  create_table "project_classes", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "project_project_classes", force: :cascade do |t|
+    t.bigint "project_id"
+    t.bigint "project_class_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["project_class_id"], name: "index_project_project_classes_on_project_class_id"
+    t.index ["project_id"], name: "index_project_project_classes_on_project_id"
+  end
+
+  create_table "projects", force: :cascade do |t|
+    t.string "title"
+    t.text "description"
+    t.string "website"
+    t.string "status"
+    t.integer "year"
+    t.string "address"
+    t.string "zip_code"
+    t.string "city"
+    t.string "country"
+    t.decimal "lat", precision: 10, scale: 6
+    t.decimal "lng", precision: 10, scale: 6
+    t.text "notes"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "reference_authors", force: :cascade do |t|
@@ -111,6 +152,15 @@ ActiveRecord::Schema.define(version: 2019_04_24_152906) do
     t.datetime "updated_at", null: false
     t.index ["partner_id"], name: "index_structure_partners_on_partner_id"
     t.index ["structure_id"], name: "index_structure_partners_on_structure_id"
+  end
+
+  create_table "structure_projects", force: :cascade do |t|
+    t.bigint "structure_id"
+    t.bigint "project_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["project_id"], name: "index_structure_projects_on_project_id"
+    t.index ["structure_id"], name: "index_structure_projects_on_structure_id"
   end
 
   create_table "structure_relations", force: :cascade do |t|

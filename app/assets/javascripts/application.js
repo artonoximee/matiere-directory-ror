@@ -38,6 +38,22 @@ $(document).ready(function () {
         $("#secondstructure").toggleClass('active');
     });
 
+    $("#second_class").on("change", function(){
+        $("#secondclass").toggleClass('active');
+    });
+
+    $("#third_class").on("change", function(){
+        $("#thirdclass").toggleClass('active');
+    });
+
+    $("#add_partner").on("change", function(){
+        $("#addpartner").toggleClass('active');
+    });
+
+    $("#second_partner").on("change", function(){
+        $("#secondpartner").toggleClass('active');
+    });
+
     $.fn.inputFilter = function(inputFilter) {
     return this.on("input keydown keyup mousedown mouseup select contextmenu drop", function() {
       if (inputFilter(this.value)) {
