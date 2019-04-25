@@ -20,5 +20,6 @@ Rails.application.routes.draw do
     resources :projects
     resources :project_classes, only: [:new, :create, :edit, :update, :destroy]
     resources :project_project_classes, only: [:create, :destroy]
+    resources :partner_projects, only: [:create, :destroy]
   end
 end

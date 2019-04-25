@@ -13,6 +13,8 @@
 			<%= text_field_tag 'title', "", :placeholder => "Titre du projet", :class => "form-control" %>
 			</div>
 
+			<hr>
+
 			<div class="form-group">
 			<%= label_tag 'Classification de projet' %>
 			<%= select_tag(:project_class_id, options_for_select(@project_classes), {:class => "form-control"}) %>
@@ -40,6 +42,29 @@
 				</div>
 
 			</div>
+
+			<hr>
+			<%= check_box_tag 'add_partner' %>
+			<small><%= label_tag "Ajouter un partenaire" %></small>
+
+			<div class="add_partner" id="addpartner">
+				<div class="form-group">
+				<%= label_tag 'Partenaire du projet' %>
+				<%= select_tag(:partner_id, options_for_select(@partners), {:class => "form-control"}) %>
+				</div>
+
+				<%= check_box_tag 'second_partner' %>
+				<small><%= label_tag "Ajouter un second partenaire" %></small>
+
+				<div class="second_partner" id="secondpartner">
+					<div class="form-group">
+					<%= label_tag 'Second partenaire du projet' %>
+					<%= select_tag(:second_partner_id, options_for_select(@partners), {:class => "form-control"}) %>
+					</div>
+				</div>		
+
+			</div>
+			<hr>
 
 			<div class="form-group">
 			<%= label_tag 'Description' %>

@@ -20,6 +20,12 @@ class Admin::ProjectsController < ApplicationController
 		if params[:third_class] == "1"
 			ProjectProjectClass.create(project: project, project_class_id: params[:third_project_class_id])
 		end
+		if params[:add_partner] == "1"
+			PartnerProject.create(project: project, partner_id: params[:partner_id])
+		end
+		if params[:second_partner] == "1"
+			PartnerProject.create(project: project, partner_id: params[:second_partner_id])
+		end
 		redirect_to project_path(project.id)
 	end
 
@@ -50,6 +56,11 @@ class Admin::ProjectsController < ApplicationController
     @project_classes = []
     ProjectClass.all.order("name ASC").each do |project_class|
       @project_classes << [project_class.name, project_class.id]
+    end
+
+    @partners = []
+    Partner.all.order("name ASC").each do |partner|
+      @partners << [partner.name, partner.id]
     end
   end
 

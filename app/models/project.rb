@@ -7,6 +7,9 @@ class Project < ApplicationRecord
 	has_many :project_project_classes
 	has_many :project_classes, through: :project_project_classes
 
+	has_many :partner_projects
+	has_many :partners, through: :partner_projects
+
 	enum status: {executed: "0", ongoing: "1", upcoming: "2"}
 
 	acts_as_mappable :default_units => :kms,

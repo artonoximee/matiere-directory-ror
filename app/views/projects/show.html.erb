@@ -33,6 +33,22 @@
 			    	<i>non informé</i>
 			    	<% end %>
 			    </li>
+			    
+			    <% if @project.partners != [] %>
+			    	<li class="list-group-item">
+				    	<% if @project.partners.count == 1 %>
+				    	<b>Partenaire du projet</b> :
+				    	<% else %>
+				    	<b>Partenaires du projet</b> :
+				    	<% end %>
+				    		<% i = 1 %>
+				    		<% @project.partners.each do |partner| %>
+				    			<%= link_to partner.name, partner.website, target: "_blank" %><% if @project.partners.count > 1 && i != @project.partners.count %>, <% end %>
+				    			<% i += 1 %>
+				    		<% end %>
+				    </li>
+			    <% end %>
+			    
 			  </ul>
 			</div>
 

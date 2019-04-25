@@ -11,8 +11,9 @@
 			  <ul class="list-group list-group-flush">
 			  	<% @projects.each do |project| %>
 					<li class="list-group-item align-items-center">
+						<i class="fas fa-home"></i>
 						<%= link_to project.title, project_path(project.id) %>
-						<br/><span class="small"><%= project.city %></span>
+						<br/><span class="small"><%= project.city %> | <%= project.status_fr %></span>
 						<span class="float-right small"><%= project.year %></span>
 					</li>
 				<% end %>

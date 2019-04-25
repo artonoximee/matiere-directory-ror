@@ -2,7 +2,9 @@
 	<div class="row justify-content-center">
 		<div class="col-lg-8">
 
-			<%= link_to "< Retour à la page projet", project_path(@project.id) %><br><br>
+			<%= link_to project_path(@project.id) do %>
+			<i class="fas fa-arrow-left"></i> Retour à la page projet
+			<% end %><br><br>
 			<hr>
 
 			<h2>Editer la classification du projet</h2>
@@ -25,6 +27,37 @@
 			<div class="form-group">
 			<%= label_tag 'Ajouter classification de projet supplémentaire' %>
 			<%= select_tag(:project_class_id, options_for_select(@project_classes), {:class => "form-control"}) %>
+			</div>
+			<br>
+
+			<%= hidden_field_tag :project_id, @project.id %>
+
+			<%= submit_tag "Ajouter classification de projet supplémentaire", :class => "btn btn-lg btn-sm btn-block btn-success" %>
+			<% end %>
+			<br>
+
+			<hr>
+
+			<h2>Editer les partenaires du projet</h2>
+			<br>
+
+			<p>Partenaires du projet</p>
+			<div class="card" style="margin-top: -5px; margin-bottom: 20px">
+				<ul class="list-group list-group-flush">
+					<% @project.partner_projects.each do |partner_project| %>
+					<li class="list-group-item align-items-center">
+						<span class="float-left"><%= partner_project.partner.name %></span>
+						<span class="float-right"><%= link_to "X", admin_partner_project_path(partner_project.id), :class => "btn btn-danger btn-sm", data: { confirm: "Êtes-vous sûr(e) de vouloir continuer cette action ?" }, :method => "delete" %></span>
+					</li>
+					<% end %>
+				</ul>
+			</div>
+
+			<%= form_tag admin_partner_projects_path, :method => :post do %>
+
+			<div class="form-group">
+			<%= label_tag 'Ajouter un partenaire de projet supplémentaire' %>
+			<%= select_tag(:partner_id, options_for_select(@partners), {:class => "form-control"}) %>
 			</div>
 			<br>
 
