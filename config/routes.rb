@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :structures, only: [:index, :show]
   resources :references, only: [:index, :show]
   resources :individuals, only: [:index, :show]
+  resources :projects, only: [:index, :show]
 
   namespace :admin do 
 	  resources :structures
@@ -16,5 +17,6 @@ Rails.application.routes.draw do
 	  resources :individuals
     resources :partners, only: [:new, :create, :edit, :update, :destroy]
     resources :structure_partners, only: [:new, :create, :destroy]
+    resources :projects
   end
 end

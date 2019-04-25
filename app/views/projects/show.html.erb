@@ -1,0 +1,76 @@
+<div class="container">
+	<div class="row justify-content-center">
+		<div class="col-lg-8" style="margin-bottom: 5vh">
+
+			<div class="card">
+			  <div class="card-body">
+			    <h2 class="card-title"><b><%= @project.title %></b></h2>
+					<span class="badge badge-light"><%= @project.status_fr %></span>
+					<% if @project.year != nil %>
+			   		<span class="float-right"><b>Année de livraison</b> : <%= @project.year %></span>
+			   	<% end %>
+			  </div>
+
+			  <ul class="list-group list-group-flush">
+			  	<li class="list-group-item"><b>Description</b> : 
+			  		<% if @project.description != "" %>
+			  		<%= break_the_lines(@project.description) %>
+			  		<% else %>
+			  		<i>non informée</i>
+			  		<% end %>
+			  	</li>
+			  	<% if @project.address != "" %>
+			    <li class="list-group-item"><b>Adresse</b> : <%= @project.full_address %></li>
+			    <% end %>
+
+			    <li class="list-group-item"><b>Site internet</b> : 
+			    	<% if @project.website != "http://" %>
+			    	<a href="<%= @project.website %>"><%= @project.website %></a>
+			    	<% else %>
+			    	<i>non informé</i>
+			    	<% end %>
+			    </li>
+			  </ul>
+
+			</div>
+
+
+			<div id="mapid" class="card" style="height: 500px; margin-top: 30px">
+			 </div>
+
+
+			<% if user_signed_in? && current_user.admin == true %>
+
+			<% if @project.notes != "" %>
+			<div class="card" style="margin-top: 30px">
+				<div class="card-body">
+					<h5 class="card-title">Notes</h5>
+					<p><%= break_the_lines(@project.notes) %></p>
+				</div>
+			</div>
+			<% end %>
+
+			<div class="float-right" style="margin-top: 30px">
+				<%= link_to "Éditer", edit_admin_project_path(@project.id), :class => "btn btn-warning" %> &nbsp;
+				<%= link_to "Supprimer", admin_project_path(@project.id), :class => "btn btn-danger", data: { confirm: "Êtes-vous sûr(e) ?" }, :method => "delete" %>
+			</div>
+
+			<% end %>
+
+		</div>
+	</div>
+</div>
+
+<script type="text/javascript">
+	var mymap = L.map('mapid').setView([<%= @project.lat.to_s + ", " + @project.lng.to_s %>], 14);
+	var marker = L.marker([<%= @project.lat.to_s + ", " + @project.lng.to_s %>]).addTo(mymap);
+
+	marker.bindPopup("<b><%= @project.title %></b><br/><%= @project.full_address %>").openPopup();
+
+    L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
+    attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+    maxZoom: 18,
+    id: 'mapbox.streets',
+    accessToken: 'pk.eyJ1IjoiYXZuZDI2IiwiYSI6ImNqdXUwamMwNTBjcDA0YW52ODM1Nnp5OW4ifQ.X2B60gqbpNhbYZvIkhsZRg'
+	}).addTo(mymap);
+  </script>
