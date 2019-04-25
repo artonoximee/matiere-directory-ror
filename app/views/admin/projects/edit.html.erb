@@ -1,0 +1,79 @@
+<div class="container">
+	<div class="row justify-content-center">
+		<div class="col-lg-8">
+
+			<h2>Editer un projet</h2>
+			<br>
+
+			<%= form_tag url_for(action: 'update'), method: "put" do %>
+
+
+			<div class="form-group">
+			<%= label_tag 'Titre du projet' %>
+			<%= text_field_tag 'title', @project.title, :class => "form-control" %>
+			</div>
+
+
+			<div class="form-group">
+			<%= label_tag 'Description' %>
+			<%= text_area_tag 'description', @project.description, :class => "form-control", :rows => "4" %>
+			</div>
+
+			<div class="form-group">
+			<%= label_tag 'Site Internet' %>
+			<div class="input-group mb-2">
+				<div class="input-group-prepend">
+	          		<div class="input-group-text">http://</div>
+	        	</div>
+				<%= text_field_tag 'website', @project.website[7..-1], :class => "form-control" %>
+			</div>
+			</div>
+
+			<div class="form-group">
+				<%= label_tag 'Année' %>
+				<%= text_field_tag 'year', @project.year, :class => "form-control integeronly" %> 
+			</div>
+
+			<div class="form-group">
+			  <%= label_tag 'Statut du projet' %>
+				<%= select_tag(:status, options_for_select([["Choix", "3"], ['Réalisé', "0"], ['En cours', "1"], ['À venir', "2"]]), {:class => "form-control"}) %>
+			</div>
+
+			<hr>
+
+			<div class="form-group">
+			<%= label_tag 'Adresse' %>
+			<%= text_field_tag 'address', @project.address, :class => "form-control" %>
+			</div>
+
+			<div class="row form-group">
+			    <div class="col">
+			      	<%= label_tag 'Code postal' %>
+					<%= text_field_tag 'zip_code', @project.zip_code, :class => "form-control integeronly" %> 
+			    </div>
+			   
+			    <div class="col">
+			      	<%= label_tag 'Ville' %>
+					<%= text_field_tag 'city', @project.city, :class => "form-control" %>
+			    </div>
+			</div>
+			<div class="form-group">
+			      	<%= label_tag 'Pays' %>
+					<%= text_field_tag 'country', @project.country, :class => "form-control" %>
+			</div>
+
+			<hr>
+
+			<div class="form-group">
+			<%= label_tag 'Notes' %>
+			<%= text_area_tag 'notes', @project.notes, :class => "form-control", :rows => "4" %>
+			</div>
+
+			<br>
+			<%= submit_tag "Editer le projet", :class => "btn btn-lg btn-sm btn-block btn-success" %>
+			<br><br>
+			<% end %>
+
+		</div>
+	</div>
+</div>
