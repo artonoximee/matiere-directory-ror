@@ -2,7 +2,41 @@
 	<div class="row justify-content-center">
 		<div class="col-lg-8">
 
-			<h2>Editer un projet</h2>
+			<%= link_to "< Retour à la page projet", project_path(@project.id) %><br><br>
+			<hr>
+
+			<h2>Editer la classification du projet</h2>
+			<br>
+
+			<p>Classifications du projet</p>
+			<div class="card" style="margin-top: -5px; margin-bottom: 20px">
+				<ul class="list-group list-group-flush">
+					<% @project.project_project_classes.each do |project_project_class| %>
+					<li class="list-group-item align-items-center">
+						<span class="float-left"><%= project_project_class.project_class.name %></span>
+						<span class="float-right"><%= link_to "X", admin_project_project_class_path(project_project_class.id), :class => "btn btn-danger btn-sm", data: { confirm: "Êtes-vous sûr(e) de vouloir continuer cette action ?" }, :method => "delete" %></span>
+					</li>
+					<% end %>
+				</ul>
+			</div>
+
+			<%= form_tag admin_project_project_classes_path, :method => :post do %>
+
+			<div class="form-group">
+			<%= label_tag 'Ajouter classification de projet supplémentaire' %>
+			<%= select_tag(:project_class_id, options_for_select(@project_classes), {:class => "form-control"}) %>
+			</div>
+			<br>
+
+			<%= hidden_field_tag :project_id, @project.id %>
+
+			<%= submit_tag "Ajouter classification de projet supplémentaire", :class => "btn btn-lg btn-sm btn-block btn-success" %>
+			<% end %>
+			<br>
+
+			<hr>
+
+			<h2>Editer les informations du projet</h2>
 			<br>
 
 			<%= form_tag url_for(action: 'update'), method: "put" do %>
@@ -12,7 +46,6 @@
 			<%= label_tag 'Titre du projet' %>
 			<%= text_field_tag 'title', @project.title, :class => "form-control" %>
 			</div>
-
 
 			<div class="form-group">
 			<%= label_tag 'Description' %>

@@ -5,7 +5,10 @@
 			<div class="card">
 			  <div class="card-body">
 			    <h2 class="card-title"><b><%= @project.title %></b></h2>
-					<span class="badge badge-info"><%= @project.status_fr %></span>
+					<span class="badge badge-light"><%= @project.status_fr %></span><br/>
+					<% @project.project_classes.each do |project_class| %>
+					<span class="badge badge-info"><%= project_class.name %></span> 
+					<% end %>
 					<% if @project.year != nil %>
 			   		<span class="float-right"><b>Année de livraison</b> : <%= @project.year %></span>
 			   	<% end %>

@@ -1,4 +1,5 @@
 class Admin::ProjectsController < ApplicationController
+	before_action :set_variables
 	before_action :is_admin, only: [:new, :create, :edit, :update, :destroy]
 
 	def index
@@ -12,6 +13,13 @@ class Admin::ProjectsController < ApplicationController
 
 	def create
 		project = Project.create(title: params[:title], description: params[:description], website: "http://" + params[:website], status: params[:status], year: params[:year], address: params[:address], zip_code: params[:zip_code], city: params[:city], country: params[:country], notes: params[:notes])
+		ProjectProjectClass.create(project: project, project_class_id: params[:project_class_id])
+		if params[:second_class] == "1"
+			ProjectProjectClass.create(project: project, project_class_id: params[:second_project_class_id])
+		end
+		if params[:third_class] == "1"
+			ProjectProjectClass.create(project: project, project_class_id: params[:third_project_class_id])
+		end
 		redirect_to project_path(project.id)
 	end
 
@@ -35,4 +43,14 @@ class Admin::ProjectsController < ApplicationController
 		project.destroy
 		redirect_to projects_path
 	end
+
+	private
+
+  def set_variables
+    @project_classes = []
+    ProjectClass.all.order("name ASC").each do |project_class|
+      @project_classes << [project_class.name, project_class.id]
+    end
+  end
+
 end

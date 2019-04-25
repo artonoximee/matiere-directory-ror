@@ -13,6 +13,33 @@
 			<%= text_field_tag 'title', "", :placeholder => "Titre du projet", :class => "form-control" %>
 			</div>
 
+			<div class="form-group">
+			<%= label_tag 'Classification de projet' %>
+			<%= select_tag(:project_class_id, options_for_select(@project_classes), {:class => "form-control"}) %>
+			</div>
+
+			<%= check_box_tag 'second_class' %>
+			<small><%= label_tag "Ajouter une seconde classification" %></small>
+			<br>
+
+			<div class="second_class" id="secondclass">
+				<div class="form-group">
+					<%= label_tag 'Seconde classification de projet' %>
+					<%= select_tag(:second_project_class_id, options_for_select(@project_classes), {:class => "form-control"}) %>
+				</div>
+
+				<%= check_box_tag 'third_class' %>
+				<small><%= label_tag "Ajouter une troisième classification" %></small>
+				<br>
+
+				<div class="third_class" id="thirdclass">
+					<div class="form-group">
+						<%= label_tag 'Troisième classification de projet' %>
+						<%= select_tag(:third_project_class_id, options_for_select(@project_classes), {:class => "form-control"}) %>
+					</div>
+				</div>
+
+			</div>
 
 			<div class="form-group">
 			<%= label_tag 'Description' %>
