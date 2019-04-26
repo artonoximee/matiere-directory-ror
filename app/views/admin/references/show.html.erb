@@ -5,7 +5,7 @@
 			<div class="card">
 			  <div class="card-body">
 			    <h5 class="card-title"><b><%= @reference.title %></b></h5>
-			   
+			   	<span class="badge badge-secondary"><%= @reference.reference_class.name %></span>
 			  </div>
 			  <ul class="list-group list-group-flush">
 			  	<li class="list-group-item"><b>Auteur.e.s</b> : <%= @reference.authors_array.join(', ') %></li>
@@ -14,7 +14,7 @@
 			  	<li class="list-group-item"><b>Ville</b> : <%= @reference.city.capitalize %> </li>
 			  	<li class="list-group-item"><b>PAYS</b> : <%= @reference.country.upcase %> </li>
 			  	<li class="list-group-item"><b>Lien</b> : <a href="<%= @reference.link %>" target="_blank"> <%= @reference.link %> </a></li>
-			  	<li class="list-group-item"><b>Résumé</b> : <%= @reference.summary %></li>
+			  	<li class="list-group-item"><b>Résumé</b> : <%= break_the_lines(@reference.summary) %></li>
 			  </ul>
 			</div>
 
@@ -26,11 +26,12 @@
 				</div>
 			</div>
 			<% end %>
-
+			<% if user_signed_in? && current_user.admin == true %>
 			<div class="float-right" style="margin-top: 30px">
 				<%= link_to "Éditer", edit_admin_reference_path(@reference.id), :class => "btn btn-warning" %> &nbsp;
 				<%= link_to "Supprimer", admin_reference_path(@reference.id), :class => "btn btn-danger", data: { confirm: "Êtes-vous sûr(e) ?" }, :method => "delete" %>
 			</div>
+			<% end %>
 
 		</div>
 	</div>

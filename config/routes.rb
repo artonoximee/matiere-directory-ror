@@ -1,12 +1,17 @@
 Rails.application.routes.draw do
   devise_for :users
-  root 'structures#index'
+  root 'maps#global'
   resources :structures, only: [:index, :show]
   resources :references, only: [:index, :show]
   resources :individuals, only: [:index, :show]
   resources :projects, only: [:index, :show]
+  get '/map_structures', to: 'structures#map'
+  get '/map_projects', to: 'projects#map'
+  get '/global_map', to: 'maps#global'
+  resources :partners, only: [:index]
+  get '/about', to: 'statics#about'
 
-  namespace :admin do 
+  namespace :admin do
 	  resources :structures
 	  resources :structure_types, only: [:create, :new, :edit, :update, :destroy]
 	  resources :structure_classifications, only: [:new, :create, :edit, :update, :destroy]

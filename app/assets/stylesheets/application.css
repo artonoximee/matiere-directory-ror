@@ -15,10 +15,6 @@
  *= require leaflet
  */
 
-body {
-	margin-top: 5vh;
-}
-
 .second_author, .third_author, .fourth_author, .association_details, .second_structure, .second_class, .third_class, .add_partner, .second_partner {
   display: none;
 }
@@ -29,11 +25,39 @@ body {
 
 .container {
   margin-left: 300px !important;
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
   transition: all 0.3s;
 }
 
-.container.active {
-  margin-left: 15px !important;
+.container-sidebar {
+  width: 100%;
+  padding-right: 15px;
+  margin-right: auto;
+  min-height: calc(90vh - 120px) !important;
+}
+
+.wrapper {
+  width: 100%;
+  align-items: stretch;
+}
+
+#content {
+  padding: 0 5vh 5vh 5vh;
+  margin-left: 300px;
+  transition: all 0.3s;
+}
+
+#map-content {
+  padding: 0;
+  margin-left: 300px;
+  transition: all 0.3s;
+}
+
+#content.active {
+  margin-left: 15px;
 }
 
 #sidebar {
@@ -68,6 +92,10 @@ a[data-toggle="collapse"] {
     transform: translateY(-50%);
 }
 
+.pad-left {
+  padding-left: 15px;
+}
+
 @media (max-width: 990px) {
     #sidebar {
         margin-left: -300px;
@@ -75,7 +103,10 @@ a[data-toggle="collapse"] {
     #sidebar.active {
         margin-left: 0;
     }
-    .conatiner {
+    #content {
+        margin-left: 0;
+    }
+    #map-content {
         margin-left: 0;
     }
 }

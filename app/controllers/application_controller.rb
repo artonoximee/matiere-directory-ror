@@ -1,5 +1,9 @@
 class ApplicationController < ActionController::Base
 
+	def after_sign_in_path_for(resource)
+  	admin_structures_path
+	end
+
 	private
 
 	def is_admin

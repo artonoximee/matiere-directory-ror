@@ -3,7 +3,7 @@ class Admin::StructuresController < ApplicationController
   before_action :is_admin, only: [:new, :create, :edit, :update, :destroy]
 
   def index
-    @structures = Structure.all.order("updated_at DESC")
+    @structures = Structure.all.order("name ASC")
   end
 
   def show
@@ -25,7 +25,7 @@ class Admin::StructuresController < ApplicationController
     if params[:association_details] == "1"
       AssociationDetail.create(structure_id: @structure.id, supporters_amount: params[:number_supporters].to_i, object: params[:object])
     end
-    redirect_to structure_path(@structure.id)
+    redirect_to admin_structure_path(@structure.id)
   end
 
   def edit
@@ -65,13 +65,13 @@ class Admin::StructuresController < ApplicationController
 
     @structure.get_lat_lng
     
-    redirect_to structure_path(@structure.id)
+    redirect_to admin_structure_path(@structure.id)
   end
 
   def destroy
     @structure = Structure.find(params[:id])
     @structure.destroy
-    redirect_to root_path
+    redirect_to admin_structures_path
   end
 
   private

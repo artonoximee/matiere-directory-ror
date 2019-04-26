@@ -1,6 +1,15 @@
-<div class="container">
-	<div class="row justify-content-center">
-		<div class="col-lg-8" style="margin-bottom: 5vh">
+<div class="container-sidebar-wrapper">
+
+	<%= render 'layouts/sidebar_user' if !user_signed_in? %>
+
+	<div id="content">
+			<div class="row justify-content-center">
+				<div class="col-xl-8 col-lg-10 col-md-12" style="margin-top: 8vh; margin-bottom: 8vh">
+
+					<%= link_to references_path do %>
+					<p class="small"><i class="fas fa-arrow-left"></i> Retour à la liste des références</p>
+					<% end %>
+					<br>
 
 			<div class="card">
 			  <div class="card-body">
@@ -17,6 +26,11 @@
 			  	<li class="list-group-item"><b>Résumé</b> : <%= break_the_lines(@reference.summary) %></li>
 			  </ul>
 			</div>
+
+			<%= link_to "mailto:contact@matiere.co" do %>
+					<p class="float-right small" style="margin-top: 30px"><i class="fas fa-envelope"></i> Pour toute réclamation ou information, veuillez nous contacter en cliquant ici</p>
+					<% end %>
+					<br>
 
 			<% if @reference.notes != "" %>
 			<div class="card" style="margin-top: 30px">
@@ -35,4 +49,5 @@
 
 		</div>
 	</div>
+</div>
 </div>

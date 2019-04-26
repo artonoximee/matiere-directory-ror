@@ -3,7 +3,7 @@ class Admin::ReferencesController < ApplicationController
   before_action :is_admin, only: [:new, :create, :edit, :update, :destroy]
 
   def index
-    @references = Reference.all
+    @references = Reference.all.order("title ASC")
   end
 
   def show
@@ -27,7 +27,7 @@ class Admin::ReferencesController < ApplicationController
       fourth_author = Author.create(first_name: params[:fourth_first_name], last_name: params[:fourth_last_name])
       reference_fourth_author = ReferenceAuthor.create(reference_id: reference.id, author_id: fourth_author.id)
     end
-    redirect_to reference_path(reference.id)
+    redirect_to admin_reference_path(reference.id)
   end
 
   def new
@@ -48,13 +48,13 @@ class Admin::ReferencesController < ApplicationController
       author.update(first_name: params[first.to_sym], last_name: params[last.to_sym])
       i = i + 1
     end
-    redirect_to reference_path(@reference.id)
+    redirect_to admin_reference_path(@reference.id)
   end
 
   def destroy
     @reference = Reference.find(params[:id])
     @reference.destroy
-    redirect_to references_path
+    redirect_to admin_references_path
   end
 
   private
