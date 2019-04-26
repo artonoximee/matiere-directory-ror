@@ -3,12 +3,12 @@ class Admin::ProjectProjectClassesController < ApplicationController
 
 	def create
 		ProjectProjectClass.create(project_id: params[:project_id], project_class_id: params[:project_class_id])
-		redirect_back(fallback_location: project_path(params[:project_id]))
+		redirect_back(fallback_location: admin_project_path(params[:project_id]))
 	end
 
 	def destroy
 		project_project_class = ProjectProjectClass.find(params[:id])
 		project_project_class.destroy
-		redirect_back(fallback_location: projects_path)
+		redirect_back(fallback_location: admin_projects_path)
 	end
 end

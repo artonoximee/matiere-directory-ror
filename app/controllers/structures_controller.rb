@@ -9,4 +9,8 @@ class StructuresController < ApplicationController
     @structure_type = StructureType.find(@structure.structure_type_id)
     @structure_classification = StructureClassification.find(@structure.structure_classification_id)
   end
+
+  def map
+  	@structures = Structure.all.order("name ASC")
+  end
 end

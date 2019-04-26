@@ -3,12 +3,12 @@ class Admin::StructureProjectsController < ApplicationController
 
 	def create
 		StructureProject.create(project_id: params[:project_id], structure_id: params[:structure_id])
-		redirect_back(fallback_location: project_path(params[:project_id]))
+		redirect_back(fallback_location: admin_project_path(params[:project_id]))
 	end
 
 	def destroy
 		structure_project = StructureProject.find(params[:id])
 		structure_project.destroy
-		redirect_back(fallback_location: projects_path)
+		redirect_back(fallback_location: admin_projects_path)
 	end
 end

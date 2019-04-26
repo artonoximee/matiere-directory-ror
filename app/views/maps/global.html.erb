@@ -1,0 +1,58 @@
+<div class="container-sidebar-wrapper">
+
+	<%= render 'layouts/sidebar_user' if !user_signed_in? %>
+
+<div id="map-content">
+		<div id="mapid" style="height: 100vh; width: 100%;">
+		</div>
+</div>
+
+</div>
+
+<script type="text/javascript">
+    
+	var mymap = L.map('mapid').setView([46.52863469527167,2.43896484375], 6);
+	L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
+    attribution: 'Map data <a href="https://matiere.co">Matiere.co</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+    maxZoom: 18,
+    id: 'mapbox.light',
+    accessToken: 'pk.eyJ1IjoiYXZuZDI2IiwiYSI6ImNqdXUwamMwNTBjcDA0YW52ODM1Nnp5OW4ifQ.X2B60gqbpNhbYZvIkhsZRg'
+	}).addTo(mymap);
+
+	var squareIcon = L.icon({
+    iconUrl: '<%= image_path("square_icon.png") %>',
+
+    iconSize:     [22, 36],
+    iconAnchor:   [11, 35],
+    popupAnchor:  [-3, -76] 
+	});
+
+	<% @structures.each do |structure| %>
+
+		var <%= "marker" + structure.id.to_s %> = L.marker([<%= structure.lat.to_s + ", " + structure.lng.to_s %>]).addTo(mymap);
+
+		var <%= "container" + structure.id.to_s %> = $('<div />');
+
+		<%= "container" + structure.id.to_s %>.on('click', '.smallPolygonLink', function() {});
+
+		<%= "container" + structure.id.to_s %>.html("<a href='<%= structure_path(structure.id) %>' class='smallPolygonLink'><%= structure.name %></a><br/>");
+		<%= "container" + structure.id.to_s %>.append($('<span class="bold">').text(" <%= StructureClassification.find(structure.structure_classification_id).name %> | <%= StructureType.find(structure.structure_type_id).name %>"))
+
+		<%= "marker" + structure.id.to_s %>.bindPopup(<%= "container" + structure.id.to_s %>[0]);
+	<% end %>
+
+	<% @projects.each do |project| %>
+
+		var <%= "marker" + project.id.to_s %> = L.marker([<%= project.lat.to_s + ", " + project.lng.to_s %>]).addTo(mymap);
+
+		var <%= "container" + project.id.to_s %> = $('<div />');
+
+		<%= "container" + project.id.to_s %>.on('click', '.smallPolygonLink', function() {});
+
+		<%= "container" + project.id.to_s %>.html("<a href='<%= project_path(project.id) %>' class='smallPolygonLink'><%= project.title %></a><br/>");
+		<%= "container" + project.id.to_s %>.append($('<span class="bold">').text(" <%= project.city %> "))
+
+		<%= "marker" + project.id.to_s %>.bindPopup(<%= "container" + project.id.to_s %>[0]);
+	<% end %>
+
+  </script>

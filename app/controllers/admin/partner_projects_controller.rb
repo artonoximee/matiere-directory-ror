@@ -3,12 +3,12 @@ class Admin::PartnerProjectsController < ApplicationController
 
 	def create
 		PartnerProject.create(project_id: params[:project_id], partner_id: params[:partner_id])
-		redirect_back(fallback_location: project_path(params[:project_id]))
+		redirect_back(fallback_location: admin_project_path(params[:project_id]))
 	end
 
 	def destroy
 		partner_project = PartnerProject.find(params[:id])
 		partner_project.destroy
-		redirect_back(fallback_location: projects_path(params[:project_id]))
+		redirect_back(fallback_location: admin_projects_path(params[:project_id]))
 	end
 end

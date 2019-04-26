@@ -1,0 +1,41 @@
+<nav id="sidebar">
+
+    <div class="sidebar-header">
+        <h4><i class="fas fa-database"></i> ANNUAIRE MATIÈRE</h4>
+    </div>
+
+    <ul class="list-unstyled components">
+        <p>Version Alpha Expérimentale 0.7</p>
+        <hr>
+        <li>
+            <b><i class="fas fa-map-marked-alt"></i></b> <%= link_to "Carte générale", global_map_path %>
+        </li>
+        <hr>
+        <li>
+            <b><i class="fas fa-sitemap"></i> Structures</b>
+        </li>
+        <li>
+            <small class="pad-left"><i class="fas fa-list-ul"></i> <%= link_to "Liste des structures", structures_path %></small>
+        </li>
+        <li>
+            <small class="pad-left"><i class="fas fa-map-marked-alt"></i> <%= link_to "Carte des structures", map_structures_path %></small>
+        </li>
+
+        <hr>
+
+        <li>
+            <b><i class="fas fa-home"></i> Projets</b>
+        </li>
+        <li>
+            <small class="pad-left"><i class="fas fa-list-ul"></i> <%= link_to "Liste des projets", projects_path %></small>
+        </li>
+        <li>
+            <small class="pad-left"><i class="fas fa-map-marked-alt"></i> <%= link_to "Carte des projets", map_projects_path %></small>
+        </li>
+
+        <hr>
+        <li>
+            <b><i class="fas fa-bookmark"></i></b> <%= link_to "Références", references_path %>
+        </li>
+    </ul>
+</nav>

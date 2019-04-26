@@ -6,4 +6,8 @@ class ProjectsController < ApplicationController
 	def show
 		@project = Project.find(params[:id])
 	end
+
+	def map
+  	@projects = Project.all.order("title ASC")
+  end
 end

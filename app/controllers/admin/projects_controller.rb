@@ -3,9 +3,11 @@ class Admin::ProjectsController < ApplicationController
 	before_action :is_admin, only: [:new, :create, :edit, :update, :destroy]
 
 	def index
+		@projects = Project.all.order("title ASC")
 	end
 
 	def show
+		@project = Project.find(params[:id])
 	end
 
 	def new
@@ -30,7 +32,7 @@ class Admin::ProjectsController < ApplicationController
 		if params[:second_partner] == "1"
 			PartnerProject.create(project: project, partner_id: params[:second_partner_id])
 		end
-		redirect_to project_path(project.id)
+		redirect_to admin_project_path(project.id)
 	end
 
 	def edit
@@ -45,13 +47,13 @@ class Admin::ProjectsController < ApplicationController
 			project.update(title: params[:title], description: params[:description], website: "http://" + params[:website], status: params[:status], year: params[:year], address: params[:address], zip_code: params[:zip_code], city: params[:city], country: params[:country], notes: params[:notes])
 		end
 		project.get_lat_lng
-		redirect_to project_path(project.id)
+		redirect_to admin_project_path(project.id)
 	end
 
 	def destroy
 		project = Project.find(params[:id])
 		project.destroy
-		redirect_to projects_path
+		redirect_to admin_projects_path
 	end
 
 	private

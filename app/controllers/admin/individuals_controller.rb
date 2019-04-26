@@ -22,7 +22,7 @@ class Admin::IndividualsController < ApplicationController
     if params[:second_structure] == "1"
       StructureIndividual.create(structure_id: params[:structure_2_id], individual: individual)
     end
-    redirect_to individual_path(individual.id)
+    redirect_to admin_individual_path(individual.id)
   end
 
   def edit
@@ -58,14 +58,14 @@ class Admin::IndividualsController < ApplicationController
       when @individual.structures == [] && params[:structure_id] != "0"
         StructureIndividual.create(structure_id: params[:structure_id], individual: @individual)
     end
-    redirect_to individual_path(@individual.id)
+    redirect_to admin_individual_path(@individual.id)
   end
 
   def destroy
     individual = Individual.find(params[:id])
     individual.structure_individuals.destroy_all
     individual.destroy
-    redirect_to individuals_path
+    redirect_to admin_individuals_path
   end
 
   private

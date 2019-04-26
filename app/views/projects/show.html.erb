@@ -1,87 +1,102 @@
-<div class="container">
-	<div class="row justify-content-center">
-		<div class="col-lg-8" style="margin-bottom: 5vh">
+<div class="container-sidebar-wrapper">
 
-			<div class="card">
-			  <div class="card-body">
-			    <h2 class="card-title"><b><%= @project.title %></b></h2>
-			    <h5>Un projet de
-			    	<% k = 1 %>
-			    	<% @project.structures.each do |structure| %>
-			    	<%= link_to structure.name, structure_path(structure.id) %><% if @project.structures.count > 1 && k != @project.structures.count %>, <% end %>
-			    	<% k += 1 %>
-			    	<% end %>
-			    </h5>
-					<span class="badge badge-light"><%= @project.status_fr %></span><br/>
-					<% @project.project_classes.each do |project_class| %>
-					<span class="badge badge-info"><%= project_class.name %></span> 
+	<%= render 'layouts/sidebar_user' if !user_signed_in? %>
+
+	<div id="content">
+			<div class="row justify-content-center">
+				<div class="col-xl-8 col-lg-10 col-md-12" style="margin-top: 10vh; margin-bottom: 10vh">
+
+					<%= link_to projects_path do %>
+					<p class="small"><i class="fas fa-arrow-left"></i> Retour à la liste des projets</p>
 					<% end %>
-					<% if @project.year != nil %>
-			   		<span class="float-right"><b>Année de livraison</b> : <%= @project.year %></span>
-			   	<% end %>
-			  </div>
+					<br>
 
-			  <ul class="list-group list-group-flush">
-			  	<li class="list-group-item"><b>Description</b> : 
-			  		<% if @project.description != "" %>
-			  		<%= break_the_lines(@project.description) %>
-			  		<% else %>
-			  		<i>non informée</i>
-			  		<% end %>
-			  	</li>
-			  	<% if @project.address != "" %>
-			    <li class="list-group-item"><b>Adresse</b> : <%= @project.full_address %></li>
-			    <% end %>
-
-			    <li class="list-group-item"><b>Site internet</b> : 
-			    	<% if @project.website != "http://" %>
-			    	<a href="<%= @project.website %>"><%= @project.website %></a>
-			    	<% else %>
-			    	<i>non informé</i>
-			    	<% end %>
-			    </li>
-			    
-			    <% if @project.partners != [] %>
-			    	<li class="list-group-item">
-				    	<% if @project.partners.count == 1 %>
-				    	<b>Partenaire du projet</b> :
-				    	<% else %>
-				    	<b>Partenaires du projet</b> :
+				<div class="card">
+				  <div class="card-body">
+				    <h2 class="card-title"><b><%= @project.title %></b></h2>
+				    <h5>Un projet de
+				    	<% k = 1 %>
+				    	<% @project.structures.each do |structure| %>
+				    	<%= link_to structure.name, structure_path(structure.id) %><% if @project.structures.count > 1 && k != @project.structures.count %>, <% end %>
+				    	<% k += 1 %>
 				    	<% end %>
-				    		<% i = 1 %>
-				    		<% @project.partners.each do |partner| %>
-				    			<%= link_to partner.name, partner.website, target: "_blank" %><% if @project.partners.count > 1 && i != @project.partners.count %>, <% end %>
-				    			<% i += 1 %>
-				    		<% end %>
+				    </h5>
+						<span class="badge badge-light"><%= @project.status_fr %></span><br/>
+						<% @project.project_classes.each do |project_class| %>
+						<span class="badge badge-info"><%= project_class.name %></span> 
+						<% end %>
+						<% if @project.year != nil %>
+				   		<span class="float-right"><b>Année de livraison</b> : <%= @project.year %></span>
+				   	<% end %>
+				  </div>
+
+				  <ul class="list-group list-group-flush">
+				  	<li class="list-group-item"><b>Description</b> : 
+				  		<% if @project.description != "" %>
+				  		<%= break_the_lines(@project.description) %>
+				  		<% else %>
+				  		<i>non informée</i>
+				  		<% end %>
+				  	</li>
+				  	<% if @project.address != "" %>
+				    <li class="list-group-item"><b>Adresse</b> : <%= @project.full_address %></li>
+				    <% end %>
+
+				    <li class="list-group-item"><b>Site internet</b> : 
+				    	<% if @project.website != "http://" %>
+				    	<a href="<%= @project.website %>"><%= @project.website %></a>
+				    	<% else %>
+				    	<i>non informé</i>
+				    	<% end %>
 				    </li>
-			    <% end %>
-			    
-			  </ul>
-			</div>
-
-
-			<div id="mapid" class="card" style="height: 500px; margin-top: 30px">
-			 </div>
-
-
-			<% if user_signed_in? && current_user.admin == true %>
-
-			<% if @project.notes != "" %>
-			<div class="card" style="margin-top: 30px">
-				<div class="card-body">
-					<h5 class="card-title">Notes</h5>
-					<p><%= break_the_lines(@project.notes) %></p>
+				    
+				    <% if @project.partners != [] %>
+				    	<li class="list-group-item">
+					    	<% if @project.partners.count == 1 %>
+					    	<b>Partenaire du projet</b> :
+					    	<% else %>
+					    	<b>Partenaires du projet</b> :
+					    	<% end %>
+					    		<% i = 1 %>
+					    		<% @project.partners.each do |partner| %>
+					    			<%= link_to partner.name, partner.website, target: "_blank" %><% if @project.partners.count > 1 && i != @project.partners.count %>, <% end %>
+					    			<% i += 1 %>
+					    		<% end %>
+					    </li>
+				    <% end %>
+				    
+				  </ul>
 				</div>
+
+
+				<div id="mapid" class="card" style="height: 500px; margin-top: 30px">
+				 </div>
+
+				 <%= link_to "mailto:contact@matiere.co" do %>
+					<p class="float-right small" style="margin-top: 30px"><i class="fas fa-envelope"></i> Pour toute réclamation ou information, veuillez nous contacter en cliquant ici</p>
+					<% end %>
+					<br>
+
+
+				<% if user_signed_in? && current_user.admin == true %>
+
+				<% if @project.notes != "" %>
+				<div class="card" style="margin-top: 30px">
+					<div class="card-body">
+						<h5 class="card-title">Notes</h5>
+						<p><%= break_the_lines(@project.notes) %></p>
+					</div>
+				</div>
+				<% end %>
+
+				<div class="float-right" style="margin-top: 30px">
+					<%= link_to "Éditer", edit_admin_project_path(@project.id), :class => "btn btn-warning" %> &nbsp;
+					<%= link_to "Supprimer", admin_project_path(@project.id), :class => "btn btn-danger", data: { confirm: "Êtes-vous sûr(e) ?" }, :method => "delete" %>
+				</div>
+
+				<% end %>
+
 			</div>
-			<% end %>
-
-			<div class="float-right" style="margin-top: 30px">
-				<%= link_to "Éditer", edit_admin_project_path(@project.id), :class => "btn btn-warning" %> &nbsp;
-				<%= link_to "Supprimer", admin_project_path(@project.id), :class => "btn btn-danger", data: { confirm: "Êtes-vous sûr(e) ?" }, :method => "delete" %>
-			</div>
-
-			<% end %>
-
 		</div>
 	</div>
 </div>

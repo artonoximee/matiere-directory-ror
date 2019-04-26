@@ -5,6 +5,9 @@ Rails.application.routes.draw do
   resources :references, only: [:index, :show]
   resources :individuals, only: [:index, :show]
   resources :projects, only: [:index, :show]
+  get '/map_structures', to: 'structures#map'
+  get '/map_projects', to: 'projects#map'
+  get '/global_map', to: 'maps#global'
 
   namespace :admin do 
 	  resources :structures

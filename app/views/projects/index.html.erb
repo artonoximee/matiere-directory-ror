@@ -1,25 +1,29 @@
-<div class="container">
-	<div class="row justify-content-center">
-		<div class="col-lg-8" style="margin-bottom: 5vh">
+<div class="container-sidebar-wrapper">
 
-			<h2>Projets (<span class="count"><%= @projects.count %></span>)</h2><br>
+	<%= render 'layouts/sidebar_user' if !user_signed_in? %>
 
-			<div id="mapid" class="card" style="height: 600px">
-			 </div>
+	<div id="content">
 
-			<div class="card" style="margin-top: 30px">
-			  <ul class="list-group list-group-flush">
-			  	<% @projects.each do |project| %>
-					<li class="list-group-item align-items-center">
-						<i class="fas fa-home"></i>
-						<%= link_to project.title, project_path(project.id) %>
-						<br/><span class="small">de <%= project.structures_array.join(", ") %> | <%= project.city %> | <%= project.status_fr %></span>
-						<span class="float-right small"><%= project.year %></span>
-					</li>
-				<% end %>
-			  </ul>
+		<div class="row justify-content-center">
+
+			<div class="col-xl-8 col-lg-10 col-md-12" style="margin-top: 8vh">
+
+				<h2 class="text-center"><span class="count"><%= @projects.count %></span> Projets référencées sur Matière</h2><br>
+
+				<div class="card">
+				  <ul class="list-group list-group-flush">
+				  	<% @projects.each do |project| %>
+						<li class="list-group-item align-items-center">
+							<i class="fas fa-home"></i>
+							<%= link_to project.title, project_path(project.id) %>
+							<br/><span class="small">de <%= project.structures_array.join(", ") %> | <%= project.city %> | <%= project.status_fr %></span>
+							<span class="float-right small"><%= project.year %></span>
+						</li>
+					<% end %>
+				  </ul>
+				</div>
+				
 			</div>
-			
 		</div>
 	</div>
 </div>
@@ -37,27 +41,4 @@
             }
         });
     });
-    
-	var mymap = L.map('mapid').setView([46.52863469527167,2.43896484375], 6);
-	L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
-    attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-    maxZoom: 18,
-    id: 'mapbox.light',
-    accessToken: 'pk.eyJ1IjoiYXZuZDI2IiwiYSI6ImNqdXUwamMwNTBjcDA0YW52ODM1Nnp5OW4ifQ.X2B60gqbpNhbYZvIkhsZRg'
-	}).addTo(mymap);
-
-	<% @projects.each do |project| %>
-
-		var <%= "marker" + project.id.to_s %> = L.marker([<%= project.lat.to_s + ", " + project.lng.to_s %>]).addTo(mymap);
-
-		var <%= "container" + project.id.to_s %> = $('<div />');
-
-		<%= "container" + project.id.to_s %>.on('click', '.smallPolygonLink', function() {});
-
-		<%= "container" + project.id.to_s %>.html("<a href='<%= project_path(project.id) %>' class='smallPolygonLink'><%= project.title %></a><br/>");
-		<%= "container" + project.id.to_s %>.append($('<span class="bold">').text(" <%= project.city %> "))
-
-		<%= "marker" + project.id.to_s %>.bindPopup(<%= "container" + project.id.to_s %>[0]);
-	<% end %>
-
   </script>
