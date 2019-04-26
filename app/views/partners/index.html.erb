@@ -43,16 +43,26 @@
 						<li class="list-group-item align-items-center">
 							<i class="fas fa-handshake"></i>
 							<%= link_to partner.name, partner.website, target: "_blank" %>
-							<br/><span class="small">Soutient 
+							<br/>
+							<span class="small">
+								<% if partner.structures.count != 0 %>
+								Soutient 
 								<%= partner.structures.count %> 
 								<% if partner.structures.count <= 1 %> structure
 								<% else %> structures
 								<% end %>
+								<% end %>
+
+								<% if partner.structures.count != 0 && partner.projects.count != 0 %>
 								|
+								<% end %>
+								
+								<% if partner.projects.count != 0 %>
 								Soutient
 								<%= partner.projects.count %> 
 								<% if partner.projects.count <= 1 %> projet
 								<% else %> projets
+								<% end %>
 								<% end %>
 								</span>
 						</li>
