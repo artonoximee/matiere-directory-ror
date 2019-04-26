@@ -11,7 +11,7 @@
 				<%= form_tag url_for(action: 'index'), method: :get do %>
 				<div class="row form-groug">
 					<div class="col-11">
-						<%= text_field_tag :search, params[:search],:class => "form-control" %>
+						<%= text_field_tag :search, params[:search], :placeholder => "Rechercher parmis les structures", :class => "form-control" %>
 					</div>
 					<div class="col-1">
 						<%= button_tag(type: '', class: "btn btn-info") do %>
@@ -21,9 +21,21 @@
 				</div>
 				<% end %>
 
-
 				<br/>
-				<p class="small"><b><span class="count"><%= @structures_count %></span> Structures référencées sur Matière</b></p>
+				
+				<% if params[:search] && params[:search] != "" && params[:search] != " " %>
+				<p class="small"><b><%= @structures.count %>
+					<% if @structures.count <= 1 %>
+					structure correspondant à votre recherche.
+					<% else %>
+					structures correspondent à votre recherche.
+					<% end %>
+				</b></p>
+				<% else %>
+				<p class="small"><b><span class="count"><%= @structures_count %></span> structures référencées sur Matière.</b></p>
+				<% end %>
+
+				<% if @structures.count > 0 %>
 
 				<div class="card">
 				  <ul class="list-group list-group-flush">
@@ -43,6 +55,8 @@
 					<% end %>
 				  </ul>
 				</div>
+
+				<% end %>
 				
 			</div>
 		</div>

@@ -5,20 +5,32 @@
     </div>
 
     <ul class="list-unstyled components">
-        <p>Version Alpha Expérimentale 0.7</p>
+        <p>Version Alpha Expérimentale 0.8</p>
         <hr>
         <li class="small">
+            <% if controller_name == "maps" %>
             <b><i class="fas fa-map-marked-alt"></i> <%= link_to "Carte générale", global_map_path %></b>
+            <% else %>
+            <i class="fas fa-map-marked-alt"></i> <%= link_to "Carte générale", global_map_path %>
+            <% end %>
         </li>
         <hr>
         <li class="small">
             <b><i class="fas fa-sitemap"></i> Structures</b>
         </li>
         <li>
+            <% if controller_name == "structures" && action_name == "index" %>
+            <small class="pad-left"><b><i class="fas fa-list-ul"></i> <%= link_to "Liste des structures", structures_path %></b></small>
+            <% else %>
             <small class="pad-left"><i class="fas fa-list-ul"></i> <%= link_to "Liste des structures", structures_path %></small>
+            <% end %>
         </li>
         <li>
-            <small class="pad-left"><i class="fas fa-map-marked-alt"></i> <%= link_to "Carte des structures", map_structures_path %></small>
+            <% if controller_name == "structures" && action_name == "map" %>
+            <small class="pad-left"><b><i class="fas fa-map-marker-alt"></i> <%= link_to "Carte des structures", map_structures_path %></b></small>
+            <% else %>
+            <small class="pad-left"><i class="fas fa-map-marker-alt"></i> <%= link_to "Carte des structures", map_structures_path %></small>
+            <% end %>
         </li>
 
         <hr>
@@ -27,23 +39,43 @@
             <b><i class="fas fa-home"></i> Projets</b>
         </li>
         <li>
+            <% if controller_name == "projects" && action_name == "index" %>
+            <small class="pad-left"><b><i class="fas fa-list-ul"></i> <%= link_to "Liste des projets", projects_path %></b></small>
+            <% else %>
             <small class="pad-left"><i class="fas fa-list-ul"></i> <%= link_to "Liste des projets", projects_path %></small>
+            <% end %>
         </li>
         <li>
-            <small class="pad-left"><i class="fas fa-map-marked-alt"></i> <%= link_to "Carte des projets", map_projects_path %></small>
+            <% if controller_name == "projects" && action_name == "map" %>
+            <small class="pad-left"><b><i class="fas fa-map-marker-alt"></i> <%= link_to "Carte des projets", map_projects_path %></b></small>
+            <% else %>
+            <small class="pad-left"><i class="fas fa-map-marker-alt"></i> <%= link_to "Carte des projets", map_projects_path %></small>
+            <% end %>
         </li>
 
         <hr>
         <li class="small">
+            <% if controller_name == "references" %>
             <b><i class="fas fa-bookmark"></i> <%= link_to "Références", references_path %></b>
+            <% else %>
+            <i class="fas fa-bookmark"></i> <%= link_to "Références", references_path %>
+            <% end %>
         </li>
         <hr>
         <li class="small">
+            <% if controller_name == "partners" %>
             <b><i class="fas fa-handshake"></i> <%= link_to "Partenaires", partners_path %></b>
+            <% else %>
+            <i class="fas fa-handshake"></i> <%= link_to "Partenaires", partners_path %>
+            <% end %>
         </li>
         <hr>
         <li class="small">
+            <% if controller_name == "statics" && action_name == "about" %>
             <b><i class="fas fa-info-circle"></i> <%= link_to "À Propos", about_path %></b>
+            <% else %>
+            <i class="fas fa-info-circle"></i> <%= link_to "À Propos", about_path %>
+            <% end %>
         </li>
     </ul>
 </nav>

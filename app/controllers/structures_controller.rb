@@ -1,7 +1,8 @@
 class StructuresController < ApplicationController
-
   def index
-    if params[:search]
+    if params[:search] == " " || params[:search] == ""
+      @structures = Structure.all.order("name ASC")
+    elsif params[:search]
       @structures = Structure.where('lower(name) LIKE ?', "%#{params[:search].downcase}%") + Structure.where('lower(city) LIKE ?', "%#{params[:search].downcase}%")
     else
       @structures = Structure.all.order("name ASC")

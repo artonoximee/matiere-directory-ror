@@ -8,7 +8,34 @@
 
 			<div class="col-xl-8 col-lg-10 col-md-12" style="margin-top: 8vh; margin-bottom: 8vh">
 
-				<h2 class="text-center"><span class="count"><%= @partners.count %></span> Partenaires référencés sur Matière</h2><br>
+				<%= form_tag url_for(action: 'index'), method: :get do %>
+				<div class="row form-groug">
+					<div class="col-11">
+						<%= text_field_tag :search, params[:search], :placeholder => "Rechercher parmis les partenaires", :class => "form-control" %>
+					</div>
+					<div class="col-1">
+						<%= button_tag(type: '', class: "btn btn-info") do %>
+	          <i class="fas fa-search"></i>
+	          <% end %>
+	        </div>
+				</div>
+				<% end %>
+
+				<br/>
+				
+				<% if params[:search] && params[:search] != "" && params[:search] != " " %>
+				<p class="small"><b><%= @partners.count %>
+					<% if @partners.count <= 1 %>
+					partenaire correspondant à votre recherche.
+					<% else %>
+					partenaires correspondent à votre recherche.
+					<% end %>
+				</b></p>
+				<% else %>
+				<p class="small"><b><span class="count"><%= @partners_count %></span> partenaires référencés sur Matière.</b></p>
+				<% end %>
+
+				<% if @partners.count > 0 %>
 
 				<div class="card">
 				  <ul class="list-group list-group-flush">
@@ -32,6 +59,8 @@
 					<% end %>
 				  </ul>
 				</div>
+
+				<% end %>
 				
 			</div>
 		</div>

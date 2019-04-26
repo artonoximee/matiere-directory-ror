@@ -8,8 +8,34 @@
 
 			<div class="col-xl-8 col-lg-10 col-md-12" style="margin-top: 8vh; margin-bottom: 8vh">
 
-			<h2 class="text-center">Références bibliographiques</h2>
-			<br>
+			<%= form_tag url_for(action: 'index'), method: :get do %>
+				<div class="row form-groug">
+					<div class="col-11">
+						<%= text_field_tag :search, params[:search], :placeholder => "Rechercher parmis les références",:class => "form-control" %>
+					</div>
+					<div class="col-1">
+						<%= button_tag(type: '', class: "btn btn-info") do %>
+	          <i class="fas fa-search"></i>
+	          <% end %>
+	        </div>
+				</div>
+				<% end %>
+
+				<br/>
+				
+				<% if params[:search] && params[:search] != "" && params[:search] != " " %>
+				<p class="small"><b><%= @references.count %>
+					<% if @references.count <= 1 %>
+					référence correspondant à votre recherche.
+					<% else %>
+					références correspondent à votre recherche.
+					<% end %>
+				</b></p>
+				<% else %>
+				<p class="small"><b><span class="count"><%= @references_count %></span> articles, livres, films, site internet référencés sur Matière.</b></p>
+				<% end %>
+
+				<% if @references.count > 0 %>
 
 			<div class="card">
 			  <ul class="list-group list-group-flush">
@@ -23,6 +49,9 @@
 				<% end %>
 			  </ul>
 			</div>
+
+			<% end %>
+
 		</div>
 	</div>
 </div>

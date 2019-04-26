@@ -1,6 +1,13 @@
 class ProjectsController < ApplicationController
 	def index
-		@projects = Project.all
+		if params[:search] == " " || params[:search] == ""
+      @projects = Project.all.order("title ASC")
+    elsif params[:search]
+      @projects = Project.where('lower(title) LIKE ?', "%#{params[:search].downcase}%") + Structure.where('lower(city) LIKE ?', "%#{params[:search].downcase}%")
+    else
+      @projects = Project.all.order("title ASC")
+    end
+    @projects_count = Project.all.count
 	end
 
 	def show
