@@ -8,16 +8,26 @@
 
 			<div class="col-xl-8 col-lg-10 col-md-12" style="margin-top: 8vh; margin-bottom: 8vh">
 
-				<h2 class="text-center"><span class="count"><%= @projects.count %></span> Projets référencés sur Matière</h2><br>
+				<h2 class="text-center"><span class="count"><%= @partners.count %></span> Partenaires référencés sur Matière</h2><br>
 
 				<div class="card">
 				  <ul class="list-group list-group-flush">
-				  	<% @projects.each do |project| %>
+				  	<% @partners.each do |partner| %>
 						<li class="list-group-item align-items-center">
-							<i class="fas fa-home"></i>
-							<%= link_to project.title, project_path(project.id) %>
-							<br/><span class="small">de <%= project.structures_array.join(", ") %> | <%= project.city %> | <%= project.status_fr %></span>
-							<span class="float-right small"><%= project.year %></span>
+							<i class="fas fa-handshake"></i>
+							<%= link_to partner.name, partner.website, target: "_blank" %>
+							<br/><span class="small">Soutient 
+								<%= partner.structures.count %> 
+								<% if partner.structures.count <= 1 %> structure
+								<% else %> structures
+								<% end %>
+								|
+								Soutient
+								<%= partner.projects.count %> 
+								<% if partner.projects.count <= 1 %> projet
+								<% else %> projets
+								<% end %>
+								</span>
 						</li>
 					<% end %>
 				  </ul>

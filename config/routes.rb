@@ -8,6 +8,8 @@ Rails.application.routes.draw do
   get '/map_structures', to: 'structures#map'
   get '/map_projects', to: 'projects#map'
   get '/global_map', to: 'maps#global'
+  resources :partners, only: [:index]
+  get '/about', to: 'statics#about'
 
   namespace :admin do 
 	  resources :structures

@@ -7,11 +7,11 @@
     <ul class="list-unstyled components">
         <p>Version Alpha Expérimentale 0.7</p>
         <hr>
-        <li>
-            <b><i class="fas fa-map-marked-alt"></i></b> <%= link_to "Carte générale", global_map_path %>
+        <li class="small">
+            <b><i class="fas fa-map-marked-alt"></i> <%= link_to "Carte générale", global_map_path %></b>
         </li>
         <hr>
-        <li>
+        <li class="small">
             <b><i class="fas fa-sitemap"></i> Structures</b>
         </li>
         <li>
@@ -23,7 +23,7 @@
 
         <hr>
 
-        <li>
+        <li class="small">
             <b><i class="fas fa-home"></i> Projets</b>
         </li>
         <li>
@@ -34,8 +34,16 @@
         </li>
 
         <hr>
-        <li>
-            <b><i class="fas fa-bookmark"></i></b> <%= link_to "Références", references_path %>
+        <li class="small">
+            <b><i class="fas fa-bookmark"></i> <%= link_to "Références", references_path %></b>
+        </li>
+        <hr>
+        <li class="small">
+            <b><i class="fas fa-handshake"></i> <%= link_to "Partenaires", partners_path %></b>
+        </li>
+        <hr>
+        <li class="small">
+            <b><i class="fas fa-info-circle"></i> <%= link_to "À Propos", about_path %></b>
         </li>
     </ul>
 </nav>
