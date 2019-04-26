@@ -8,13 +8,13 @@
 
 			<div class="col-xl-8 col-lg-10 col-md-12" style="margin-top: 8vh; margin-bottom: 8vh">
 
+				<h3>Partenaires</h3>
+
 				<%= form_tag url_for(action: 'index'), method: :get do %>
-				<div class="row form-groug">
-					<div class="col-11">
-						<%= text_field_tag :search, params[:search], :placeholder => "Rechercher parmis les partenaires", :class => "form-control" %>
-					</div>
-					<div class="col-1">
-						<%= button_tag(type: '', class: "btn btn-info") do %>
+				<div class="input-group mb-3">
+					<%= text_field_tag :search, params[:search], :placeholder => "Rechercher parmis les structures", :class => "form-control" %>
+					<div class="input-group-append">
+						<%= button_tag(type: 'button', class: "btn btn-dark") do %>
 	          <i class="fas fa-search"></i>
 	          <% end %>
 	        </div>
@@ -64,9 +64,11 @@
 				
 			</div>
 		</div>
+
+		<%= render 'layouts/footer' %>
+
 	</div>
 </div>
-
 
 <script type="text/javascript">
 	$('.count').each(function () {

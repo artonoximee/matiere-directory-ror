@@ -32,21 +32,6 @@
 					<% end %>
 					<br>
 
-			<% if @reference.notes != "" %>
-			<div class="card" style="margin-top: 30px">
-				<div class="card-body">
-					<h5 class="card-title"><b>Notes</b></h5>
-					<p><%= @reference.notes %></p>
-				</div>
-			</div>
-			<% end %>
-			<% if user_signed_in? && current_user.admin == true %>
-			<div class="float-right" style="margin-top: 30px">
-				<%= link_to "Éditer", edit_admin_reference_path(@reference.id), :class => "btn btn-warning" %> &nbsp;
-				<%= link_to "Supprimer", admin_reference_path(@reference.id), :class => "btn btn-danger", data: { confirm: "Êtes-vous sûr(e) ?" }, :method => "delete" %>
-			</div>
-			<% end %>
-
 		</div>
 	</div>
 </div>
