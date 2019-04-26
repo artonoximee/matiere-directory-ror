@@ -1,7 +1,12 @@
 class StructuresController < ApplicationController
 
   def index
-    @structures = Structure.all.order("name ASC")
+    if params[:search]
+      @structures = Structure.where('lower(name) LIKE ?', "%#{params[:search].downcase}%") + Structure.where('lower(city) LIKE ?', "%#{params[:search].downcase}%")
+    else
+      @structures = Structure.all.order("name ASC")
+    end
+    @structures_count = Structure.all.count
   end
 
   def show
