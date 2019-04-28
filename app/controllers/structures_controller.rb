@@ -79,7 +79,7 @@ class StructuresController < ApplicationController
             end
           end
         end
-
+        
       else
          @structures = Structure.all.order("name ASC")
     end
