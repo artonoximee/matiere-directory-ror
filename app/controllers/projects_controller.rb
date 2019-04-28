@@ -7,6 +7,9 @@ class ProjectsController < ApplicationController
     @project_classes.insert(0, ["Tous les classifications de projets", 0])
 
     case 
+      when params[:search] == nil && params[:project_class_id] == nil
+        @projects = Project.all.order("title ASC")
+
       when (params[:search] == "" || params[:search] == " " || params[:search] == nil) && params[:project_class_id] == "0"
         @projects = Project.all.order("title ASC")
 
@@ -23,7 +26,7 @@ class ProjectsController < ApplicationController
           end
         end
 
-      when (params[:search] != "" || params[:search] != " " || params[:search] != nil) && params[:project_class_id] != "0"
+      when (params[:search] != "" || params[:search] != " " || params[:search] != nil) && params[:project_class_id] != nil
         @projects_search = Project.where('lower(title) LIKE ?', "%#{params[:search].downcase}%") + Project.where('lower(city) LIKE ?', "%#{params[:search].downcase}%")
         @projects = []
         @projects_search.each do |project|
