@@ -26,7 +26,7 @@
 
 				<br/>
 
-				<% if params[:search] && params[:search] != "" && params[:search] != " " %>
+				<% if params[:project_class_id].to_i != 0 || (params[:search] && params[:search] != "" && params[:search] != " ") %>
 				<p class="small"><b><%= @projects.count %>
 					<% if @projects.count <= 1 %>
 					projet correspondant à votre recherche.
