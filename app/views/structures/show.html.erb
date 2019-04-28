@@ -32,8 +32,8 @@
 				  	<% if @structure.staff_number != nil %>
 				  	<li class="list-group-item"><b>Nombre d'employés / de membres actifs</b> : <%= @structure.staff_number %></li>
 				  	<% end %>
-				  	<% if @structure.address != "" %>
-				    <li class="list-group-item"><b>Adresse</b> : <%= @structure.address %>, <%= @structure.zip_code %>, <%= @structure.city %>, <%= @structure.country.upcase %></li>
+				  	<% if @structure.full_address != "" %>
+				    <li class="list-group-item"><b>Adresse</b> : <%= @structure.full_address %></li>
 				    <% end %>
 				    <li class="list-group-item"><b>Email</b> : 
 				    	<% if @structure.email != "" %>
@@ -204,7 +204,7 @@
 	marker.bindPopup("<b><%= @structure.name %></b><br/><%= @structure.full_address %>").openPopup();
 
     L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
-    attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+    attribution: 'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
     maxZoom: 18,
     id: 'mapbox.streets',
     accessToken: 'pk.eyJ1IjoiYXZuZDI2IiwiYSI6ImNqdXUwamMwNTBjcDA0YW52ODM1Nnp5OW4ifQ.X2B60gqbpNhbYZvIkhsZRg'

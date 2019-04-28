@@ -66,7 +66,15 @@ class Structure < ApplicationRecord
 	end
 
 	def full_address
-		return self.address + ", " + self.zip_code + ", " +  self.city + ", " + self.country
+		if self.address != "" && self.zip_code != "" && self.city != "" && self.country != ""
+			return self.address + ", " + self.zip_code + ", " +  self.city + ", " + self.country
+		elsif self.address == "" && self.zip_code != "" && self.city != "" && self.country != ""
+			return self.zip_code + ", " +  self.city + ", " + self.country
+		elsif self.address == "" && self.zip_code == "" && self.city != "" && self.country != ""
+			return self.city + ", " + self.country
+		elsif self.address == "" && self.zip_code == "" && self.city == "" && self.country != ""
+			return self.country
+		end
 	end
 
 	def get_lat_lng
