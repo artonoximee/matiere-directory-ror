@@ -1,3 +1,4 @@
+
 class MapsController < ApplicationController
 	def global
 		@structures = Structure.all.order("name ASC")

@@ -11,13 +11,15 @@
 
 <script type="text/javascript">
     
-	var mymap = L.map('mapid').setView([46.803178243429265,2.735502332685428], 6);
-	L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
-    attribution: 'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-    maxZoom: 18,
-    id: 'mapbox.light',
-    accessToken: 'pk.eyJ1IjoiYXZuZDI2IiwiYSI6ImNqdXUwamMwNTBjcDA0YW52ODM1Nnp5OW4ifQ.X2B60gqbpNhbYZvIkhsZRg'
-	}).addTo(mymap);
+	var map = L.map('mapid').setView([46.803178243429265,2.735502332685428], 6);
+	L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
+	attribution: '© <a href="https://www.mapbox.com/about/maps/">Mapbox</a> © <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+	tileSize: 512,
+	maxZoom: 18,
+	zoomOffset: -1,
+	id: 'mapbox/light-v10',
+	accessToken: 'pk.eyJ1IjoiYXZuZDI2IiwiYSI6ImNqdXUwamMwNTBjcDA0YW52ODM1Nnp5OW4ifQ.X2B60gqbpNhbYZvIkhsZRg'
+	}).addTo(map);
 
 	var squareIcon = L.icon({
     iconUrl: '<%= image_path("square_icon.png") %>',
