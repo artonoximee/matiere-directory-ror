@@ -1,24 +1,7 @@
-# README
+# matiere directory
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This Ruby on Rails app aims at referencing construction materials reuse actors in France.
 
-Things you may want to cover:
+An online version of this app is [available here](https://matiere-directory.herokuapp.com/). This online version is no longer maintained, and may be unavailable in the future.
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Developed by [Maud Lévy](mailto:maud@mlav.land) and [Antoine Vercoutère](mailto:antoine@mlav.land) as part of a project made by [MLAV.LAND](https://mlav.land/).
